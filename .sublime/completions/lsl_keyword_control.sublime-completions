@@ -1,0 +1,42 @@
+{
+    "scope": "meta.function.user-defined.body.lsl, meta.block.event.lsl",
+    "completions":
+    [
+        {
+            "trigger": "@\tkeyword control",
+            "contents": "@${1:label};${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "do\tkeyword control",
+            "contents": "do${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_BEFORE}while (${1:condition});${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "else\tkeyword control",
+            "contents": "else${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${1:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "else if\tkeyword control",
+            "contents": "else if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "for\tkeyword control",
+            "contents": "for (${1:start}; ${2:condition}; ${3:step})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${4:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "if\tkeyword control",
+            "contents": "if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "jump\tkeyword control",
+            "contents": "jump ${1:target};${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "return\tkeyword control",
+            "contents": "return ${1:value};${LSL_WHITESPACE_AFTER}$0"
+        },
+        {
+            "trigger": "while\tkeyword control",
+            "contents": "while (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+        }
+    ]
+}

@@ -1,0 +1,1866 @@
+%YAML 1.2
+---
+# https://yaml.org/spec/1.2/spec.html
+# https://www.sublimetext.com/docs/3/syntax.html
+# https://www.sublimetext.com/docs/3/syntax.html#testing
+# https://www.sublimetext.com/docs/3/scope_naming.html
+# http://wiki.secondlife.com/wiki/LSL_Portal
+# https://bitbucket.org/lindenlab/viewer-release/raw/default/indra/newview/app_settings/keywords_lsl_default.xml
+# https://bitbucket.org/Sei_Lisa/kwdb/raw/default/database/kwdb.xml
+name: LSL
+author: "Builder's Brewery <buildersbrewery@gmail.com>"
+comment: 'Linden Scripting Language of Second Life by Linden Labs'
+hidden: false
+file_extensions:
+  - lsl
+first_line_match: |-
+  (?x:                                # ignore whitespace
+    \b(?:
+      default                           # entity.name.class.state
+    )\b
+    (?:
+      \s*
+      \{                                # punctuation.section.class.state.begin
+    )?
+  )
+scope: source.lsl
+variables:
+  # FIXME: remove capture groups from variables
+  # FIXME: sort by most used for better performance
+  invalid_deprecated: |-
+    (?x:                                # ignore whitespace
+      ATTACH_[LR]PEC|
+      DATA_RATING|
+      LAND_(?:LARGE|MEDIUM|SMALL)_BRUSH|
+      PRIM_(?:MATERIAL_LIGHT|TYPE_LEGACY)|
+      PSYS_SRC_(?:INNER|OUTER)ANGLE|
+      VEHICLE_FLAG_NO_FLY_UP|
+      ll(?:
+        Make(?:Explosion|Fire|Fountain|Smoke)|
+        RemoteDataSetRegion|
+        Sound(?:Preload)?|
+        XorBase64Strings(?:Correct)?
+      )
+    )
+  invalid_illegal: |-
+    (?x:                                # ignore whitespace
+      CHARACTER_(?:
+        MAX_ANGULAR_(?:ACCEL|SPEED)|
+        TURN_SPEED_MULTIPLIER
+      )|
+      KFM_CMD_SET_MODE|
+      OBJECT_(?:
+        ATTACHMENT_(?:GEOMETRY_BYTES|SURFACE_AREA)|
+        (?:RETURN|REZ)_TIME|
+        SAT_UPON|
+        SELECTED
+      )|
+      PERMISSION_EXPERIENCE|
+      PRIM_PHYSICS_MATERIAL
+    )
+  invalid_illegal_unimplemented: |-
+    (?x:                                # ignore whitespace
+      PERMISSION_(?:
+        CHANGE_(?:JOINTS|PERMISSIONS)|
+        RELEASE_OWNERSHIP|
+        REMAP_CONTROLS
+      )|
+      PRIM_CAST_SHADOWS|
+      PSYS_SRC_OBJ_REL_MASK|
+      SKY_(?:
+        (?:ABSORPTION|MIE|RAYLEIGH)_CONFIG|
+        DENSITY_PROFILE_COUNTS
+      )|
+      STATUS_CAST_SHADOWS|
+      event|
+      ll(?:
+        ClearExperiencePermissions|
+        Cloud|
+        CollisionSprite|
+        GetExperienceList|
+        (?:Stop)?PointAt|
+        (?:(?:Refresh|Set)Prim)URL|
+        (?:Release|Take)Camera|
+        RemoteLoadScript
+      )
+    )
+  invalid_illegal_constant_numeric_integer_binary: |-
+    (?x:                                # ignore whitespace
+      (?:\B[-+])?
+      (?:
+        \b0b[0-1]*                      # binary
+      )
+    )
+  invalid_illegal_constant_numeric_integer_octal: |-
+    (?x:                                # ignore whitespace
+      (?:\B[-+])?
+      (?:
+        \b0o[0-7]*                        # octal
+      )
+    )
+  reserved_godmode: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        GodLikeRezObject|
+        Set(?:Inventory|Object)PermMask
+      )
+    )
+  reserved_log: |-
+    (?x:                                # ignore whitespace
+      print
+    )
+  event: |-
+    (?x:                                # ignore whitespace
+      state_(?:entry|exit)|
+      touch(?:_(?:start|end))?|
+      (?:land_)?collision(?:_(?:start|end))?|
+      timer|
+      listen|
+      (?:no_)?sensor|
+      control|
+      (?:not_)?at_(?:rot_)?target|
+      money|
+      email|
+      experience_permissions(?:_denied)?|
+      run_time_permissions|
+      changed|
+      attach|
+      dataserver|
+      moving_(?:start|end)|
+      link_message|
+      (?:on|object)_rez|
+      remote_data|
+      http_re(?:sponse|quest)|
+      path_update|
+      transaction_result
+    )
+  constant_language_float: |-
+    (?x:                                # ignore whitespace
+      PI|
+      TWO_PI|
+      PI_BY_TWO|
+      DEG_TO_RAD|
+      RAD_TO_DEG|
+      SQRT2
+    )
+  constant_language_integer: |-
+    (?x:                                # ignore whitespace
+      (?:DEBUG|PUBLIC)_CHANNEL|
+      (?:PATROL|WANDER)_PAUSE_AT_WAYPOINTS|
+      ACTIVE|
+      AGENT(?:_(?:
+        BY_(?:LEGACY_|USER)NAME|
+        LIST_(?:PARCEL(?:_OWNER)?|REGION)
+      ))?|
+      ALL_SIDES|
+      ANIM_ON|
+      ATTACH_(?:
+        (?:LEFT|RIGHT)_PEC|
+        AVATAR_CENTER|
+        BACK|
+        BELLY|
+        CHEST|
+        CHIN|
+        FACE_(?:JAW|[LR]EAR|[LR]EYE|TONGUE)|
+        GROIN|
+        HEAD|
+        HIND_[LR]FOOT|
+        HUD_(?:
+          CENTER_[12]|
+          TOP_(?:RIGHT|CENTER|LEFT)|
+          BOTTOM(?:_(?:RIGHT|LEFT))?
+        )|
+        MOUTH|
+        NECK|
+        NOSE|
+        PELVIS|
+        TAIL_(?:BASE|TIP)|
+        [LR](?:SHOULDER|HAND|FOOT|EAR|EYE|[UL](?:ARM|LEG)|HIP)|
+        [LR]HAND_RING1|
+        [LR]WING
+      )|
+      AVOID_(?:CHARACTERS|DYNAMIC_OBSTACLES|NONE)|
+      CAMERA_(?:
+        (?:FOCUS|POSITION)(?:_(?:THRESHOLD|LOCKED|LAG))?|
+        ACTIVE|
+        BEHINDNESS_(?:ANGLE|LAG)|
+        DISTANCE|
+        FOCUS_OFFSET|
+        PITCH
+      )|
+      CHARACTER_(?:
+        ACCOUNT_FOR_SKIPPED_FRAMES|
+        AVOIDANCE_MODE|
+        CMD_(?:(?:SMOOTH_)?STOP|JUMP)|
+        DESIRED_(?:TURN_)?SPEED|
+        LENGTH|
+        MAX_(?:DECEL|TURN_RADIUS|(?:ACCEL|SPEED))|
+        ORIENTATION|
+        RADIUS|
+        STAY_WITHIN_PARCEL|
+        TYPE(?:_(?:[ABCD]|NONE))?
+      )|
+      CLICK_ACTION_(?:NONE|TOUCH|SIT|BUY|PAY|OPEN(?:_MEDIA)?|PLAY|ZOOM)|
+      CONTENT_TYPE_(?:ATOM|FORM|HTML|JSON|LLSD|RSS|TEXT|XHTML|XML)|
+      CONTROL_(?:FWD|BACK|(?:ROT_)?(?:LEFT|RIGHT)|UP|DOWN|(?:ML_)?LBUTTON)|
+      DATA_(?:ONLINE|NAME|BORN|SIM_(?:POS|STATUS|RATING)|PAYINFO)|
+      DENSITY|
+      ENV(?:
+        IRONMENT_DAYINFO|
+        _(?:
+          INVALID_(?:AGENT|RULE)|
+          NOT_EXPERIENCE|
+          NO_(?:
+            ENVIRONMENT|
+            EXPERIENCE_(?:
+              LAND|
+              PERMISSION
+            )
+          )|
+          THROTTLE|
+          VALIDATION_FAIL
+        )
+      )|
+      ERR_(?:
+        GENERIC|
+        PARCEL_PERMISSIONS|
+        MALFORMED_PARAMS|
+        RUNTIME_PERMISSIONS|
+        THROTTLED
+      )|
+      ESTATE_ACCESS_(?:
+        ALLOWED_(?:AGENT|GROUP)_(?:ADD|REMOVE)|
+        BANNED_AGENT_(?:ADD|REMOVE)
+      )|
+      FORCE_DIRECT_PATH|
+      FRICTION|
+      GCNP_(?:RADIUS|STATIC)|
+      GRAVITY_MULTIPLIER|
+      HORIZONTAL|
+      HTTP_(?:
+        ACCEPT|
+        USER_AGENT|
+        METHOD|
+        MIMETYPE|
+        BODY_(?:MAXLENGTH|TRUNCATED)|
+        CUSTOM_HEADER|
+        PRAGMA_NO_CACHE|
+        VERBOSE_THROTTLE|
+        VERIFY_CERT
+      )|
+      INVENTORY_(?:
+        ALL|
+        ANIMATION|
+        BODYPART|
+        CLOTHING|
+        GESTURE|
+        LANDMARK|
+        NONE|
+        NOTECARD|
+        OBJECT|
+        SCRIPT|
+        SETTING|
+        SOUND|
+        TEXTURE
+      )|
+      JSON_APPEND|
+      KFM_(?:
+        COMMAND|
+        CMD_(?:PLAY|STOP|PAUSE)|
+        MODE|
+        FORWARD|
+        LOOP|
+        PING_PONG|
+        REVERSE|
+        DATA|
+        ROTATION|
+        TRANSLATION
+      )|
+      LAND_(?:LEVEL|RAISE|LOWER|SMOOTH|NOISE|REVERT)|
+      LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)|
+      LIST_STAT_(?:
+        MAX|
+        MIN|
+        MEAN|
+        MEDIAN|
+        STD_DEV|
+        SUM(?:_SQUARES)?|
+        NUM_COUNT|
+        GEOMETRIC_MEAN|
+        RANGE
+      )|
+      LOOP|
+      MASK_(?:BASE|OWNER|GROUP|EVERYONE|NEXT)|
+      OBJECT_(?:
+        (?:BODY_SHAPE|PATHFINDING)_TYPE|
+        (?:PHYSICS|SERVER|STREAMING)_COST|
+        (?:RUNNING|TOTAL)_SCRIPT_COUNT|
+        ANIMATED_(?:COUNT|SLOTS_AVAILABLE)|
+        ATTACHED_(?:POINT|SLOTS_AVAILABLE)|
+        CHARACTER_TIME|
+        CLICK_ACTION|
+        CREAT(?:ION_TIME|OR)|
+        SELECT(?:ED|_COUNT)|
+        SIT_COUNT|
+        SAT_UPON|
+        REZ_TIME|
+        DESC|
+        GROUP(?:_TAG)?|
+        HOVER_HEIGHT|
+        LAST_OWNER_ID|
+        NAME|
+        OMEGA|
+        OWNER|
+        PHANTOM|
+        PHYSICS|
+        POS|
+        PRIM_(?:COUNT|EQUIVALENCE)|
+        RENDER_WEIGHT|
+        RETURN_(?:PARCEL(?:_OWNER)?|REGION|TIME)|
+        REZZER_KEY|
+        ROO?T|
+        SCRIPT_(?:MEMORY|TIME)|
+        TEMP_(?:ATTACHED|ON_REZ)|
+        TOTAL_INVENTORY_COUNT|
+        UNKNOWN_DETAIL|
+        VELOCITY
+      )|
+      OPT_(?:
+        AVATAR|
+        CHARACTER|
+        EXCLUSION_VOLUME|
+        LEGACY_LINKSET|
+        MATERIAL_VOLUME|
+        OTHER|
+        STATIC_OBSTACLE|
+        WALKABLE
+      )|
+      PARCEL_(?:
+        COUNT_(?:TOTAL|OWNER|GROUP|OTHER|SELECTED|TEMP)|
+        DETAILS_(?:NAME|DESC|OWNER|GROUP|AREA|ID|SEE_AVATARS)|
+        FLAG_(?:
+          ALLOW_(?:
+            FLY|
+            (?:GROUP_)?SCRIPTS|
+            LANDMARK|
+            TERRAFORM|
+            DAMAGE|
+            CREATE_(?:GROUP_)?OBJECTS
+          )|
+          USE_(?:ACCESS_(?:GROUP|LIST)|BAN_LIST|LAND_PASS_LIST)|
+          LOCAL_SOUND_ONLY|
+          RESTRICT_PUSHOBJECT|
+          ALLOW_(?:GROUP|ALL)_OBJECT_ENTRY
+        )|
+        MEDIA_COMMAND_(?:
+          AGENT|
+          AUTO_ALIGN|
+          DESC|
+          LOOP_SET|
+          LOOP|
+          PAUSE|
+          PLAY|
+          SIZE|
+          STOP|
+          TEXTURE|
+          TIME|
+          TYPE|
+          UNLOAD|
+          URL
+        )
+      )|
+      PASS(?:IVE|_(?:ALWAYS|IF_NOT_HANDLED|NEVER))|
+      PAYMENT_INFO_(?:ON_FILE|USED)|
+      PAY_(?:HIDE|DEFAULT)|
+      PERMISSION_(?:
+        (?:CONTROL|TRACK)_CAMERA|
+        ATTACH|
+        CHANGE_LINKS|
+        DEBIT|
+        OVERRIDE_ANIMATIONS|
+        RETURN_OBJECTS|
+        SILENT_ESTATE_MANAGEMENT|
+        TAKE_CONTROLS|
+        TELEPORT|
+        TRIGGER_ANIMATION
+      )|
+      PERM_(?:TRANSFER|MODIFY|COPY|MOVE|ALL)|
+      PING_PONG|
+      PRIM_(?:
+        (?:POS|ROT)_LOCAL|
+        ALLOW_UNSIT|
+        ALPHA_MODE(?:_(?:BLEND|EMISSIVE|MASK|NONE))?|
+        BUMP_(?:
+          NONE|
+          BRIGHT|
+          DARK|
+          WOOD|
+          BARK|
+          BRICKS|
+          CHECKER|
+          CONCRETE|
+          TILE|
+          STONE|
+          DISKS|
+          GRAVEL|
+          BLOBS|
+          SIDING|
+          LARGETILE|
+          STUCCO|
+          SUCTION|
+          WEAVE
+        )|
+        BUMP_SHINY|
+        COLOR|
+        DESC|
+        FLEXIBLE|
+        FULLBRIGHT|
+        GLOW|
+        HOLE_(?:DEFAULT|CIRCLE|SQUARE|TRIANGLE)|
+        LINK_TARGET|
+        MATERIAL(?:_(?:STONE|METAL|GLASS|WOOD|FLESH|PLASTIC|RUBBER))?|
+        MEDIA_(?:
+          (?:CURRENT|HOME)_URL|
+          (?:WIDTH|HEIGHT)_PIXELS|
+          ALT_IMAGE_ENABLE|
+          AUTO_(?:LOOP|PLAY|SCALE|ZOOM)|
+          CONTROLS_(?:STANDARD|MINI)|
+          CONTROLS|
+          FIRST_CLICK_INTERACT|
+          MAX_(?:URL_LENGTH|WHITELIST_(?:SIZE|COUNT)|(?:WIDTH|HEIGHT)_PIXELS)|
+          PARAM_MAX|
+          PERMS_(?:INTERACT|CONTROL)|
+          PERM_(?:NONE|OWNER|GROUP|ANYONE)|
+          WHITELIST(?:_ENABLE)?
+        )|
+        NAME|
+        NORMAL|
+        OMEGA|
+        PHANTOM|
+        PHYSICS(?:_(?:SHAPE_(?:CONVEX|NONE|PRIM|TYPE)))?|
+        POINT_LIGHT|
+        POSITION|
+        ROTATION|
+        SCRIPTED_SIT_ONLY|
+        SCULPT_(?:
+          TYPE_(?:SPHERE|TORUS|PLANE|CYLINDER|MASK)|
+          FLAG_(?:MIRROR|INVERT)
+        )|
+        SHINY_(?:NONE|LOW|MEDIUM|HIGH)|
+        SIT_TARGET|
+        SIZE|
+        SLICE|
+        SPECULAR|
+        TEMP_ON_REZ|
+        TEXGEN_(?:DEFAULT|PLANAR)|
+        TEXGEN|
+        TEXTURE|
+        TEXT|
+        TYPE(?:_(?:BOX|CYLINDER|PRISM|SPHERE|TORUS|TUBE|RING|SCULPT))?
+      )|
+      PROFILE_(?:NONE|SCRIPT_MEMORY)|
+      PSYS_(?:
+        PART_(?:
+          BF_(?:
+            ZERO|
+            ONE(?:_MINUS_(?:DEST_COLOR|SOURCE_(ALPHA|COLOR)))?|
+            DEST_COLOR|
+            SOURCE_(ALPHA|COLOR)
+          )|
+          BLEND_FUNC_(DEST|SOURCE)|
+          FLAGS|
+          (?:START|END)_(?:COLOR|ALPHA|SCALE|GLOW)|
+          MAX_AGE|
+          (?:
+            RIBBON|
+            WIND|
+            INTERP_(?:COLOR|SCALE)|
+            BOUNCE|
+            FOLLOW_(?:SRC|VELOCITY)|
+            TARGET_(?:POS|LINEAR)|
+            EMISSIVE
+          )_MASK
+        )|
+        SRC_(?:
+          ACCEL|
+          ANGLE_(?:BEGIN|END)|
+          BURST_(?:RATE|PART_COUNT|RADIUS|SPEED_(?:MIN|MAX))|
+          MAX_AGE|
+          OMEGA|
+          PATTERN_(?:DROP|EXPLODE|ANGLE(?:_CONE(?:_EMPTY)?)?)|
+          PATTERN|
+          TARGET_KEY|
+          TEXTURE
+        )
+      )|
+      PURSUIT_(?:OFFSET|FUZZ_FACTOR|GOAL_TOLERANCE|INTERCEPT)|
+      PU_(?:
+        EVADE_(?:HIDDEN|SPOTTED)|
+        FAILURE_(?:
+          (?:PARCEL_)?UNREACHABLE|
+          DYNAMIC_PATHFINDING_DISABLED|
+          INVALID_(?:GOAL|START)|
+          NO_(?:NAVMESH|VALID_DESTINATION)|
+          OTHER|
+          TARGET_GONE
+        )|
+        (?:GOAL|SLOWDOWN_DISTANCE)_REACHED
+      )|
+      RCERR_(?:CAST_TIME_EXCEEDED|SIM_PERF_LOW|UNKNOWN)|
+      RC_(?:
+        DATA_FLAGS|
+        DETECT_PHANTOM|
+        GET_(?:LINK_NUM|NORMAL|ROOT_KEY)|
+        MAX_HITS|
+        REJECT_(?:TYPES|AGENTS|(?:NON)?PHYSICAL|LAND)
+      )|
+      REGION_FLAG_(?:
+        ALLOW_DAMAGE|
+        ALLOW_DIRECT_TELEPORT|
+        BLOCK_FLY|
+        BLOCK_TERRAFORM|
+        DISABLE_(?:COLLISIONS|PHYSICS)|
+        FIXED_SUN|
+        RESTRICT_PUSHOBJECT|
+        SANDBOX
+      )|
+      REMOTE_DATA_(?:CHANNEL|REQUEST|REPLY)|
+      REQUIRE_LINE_OF_SIGHT|
+      RESTITUTION|
+      REVERSE|
+      ROTATE|
+      SCALE|
+      SCRIPTED|
+      SIM_STAT_PCT_CHARS_STEPPED|
+      SIT_(?:
+        INVALID_(?:AGENT|LINK|OBJECT)|
+        NO(?:
+          T_EXPERIENCE|
+          _(?:ACCESS|EXPERIENCE_PERMISSION|SIT_TARGET)
+        )
+      )|
+      SKY_(?:
+        AMBIENT|
+        CLOUD(?:S|_TEXTURE)|
+        DOME|
+        GAMMA|
+        GLOW|
+        LIGHT|
+        MOON(?:_TEXTURE)?|
+        PLANET|
+        REFRACTION|
+        STAR_BRIGHTNESS|
+        SUN(?:_TEXTURE)?|
+        TEXTURE_DEFAULTS|
+        TRACKS
+      )|
+      SMOOTH|
+      STATUS_(?:
+        BOUNDS_ERROR|
+        INTERNAL_ERROR|
+        MALFORMED_PARAMS|
+        NOT_(?:FOUND|SUPPORTED)|
+        OK|
+        TYPE_MISMATCH|
+        WHITELIST_FAILED
+      )|
+      STRING_(?:TRIM(?:_(?:HEAD|TAIL))?)|
+      TOUCH_INVALID_FACE|
+      TRAVERSAL_TYPE(?:_(?:FAST|NONE|SLOW))?|
+      TYPE_(?:FLOAT|INTEGER|INVALID|KEY|ROTATION|STRING|VECTOR)|
+      VEHICLE_(?:
+        (?:LINEAR|ANGULAR)_(?:
+          DEFLECTION_(?:EFFICIENCY|TIMESCALE)|
+          FRICTION_TIMESCALE|
+          MOTOR_(?:DECAY_)?TIMESCALE|
+          MOTOR_DIRECTION
+        )|
+        BANKING_(?:EFFICIENCY|MIX|TIMESCALE)|
+        BUOYANCY|
+        FLAG_(?:
+          NO_DEFLECTION_UP
+        )|
+        HOVER_(?:HEIGHT|EFFICIENCY|TIMESCALE)|
+        LINEAR_MOTOR_OFFSET|
+        REFERENCE_FRAME|
+        TYPE_(?:NONE|SLED|CAR|BOAT|AIRPLANE|BALLOON)|
+        VERTICAL_ATTRACTION_(?:EFFICIENCY|TIMESCALE)
+      )|
+      VERTICAL|
+      WATER_(?:
+        BLUR_MULTIPLIER|
+        FOG|
+        FRESNEL|
+        NORMAL_(?:SCALE|TEXTURE)|
+        REFRACTION|
+        TEXTURE_DEFAULTS|
+        WAVE_DIRECTION
+      )|
+      XP_ERROR_(?:
+        EXPERIENCES_DISABLED|
+        EXPERIENCE_(?:DISABLED|SUSPENDED)|
+        INVALID_(?:EXPERIENCE|PARAMETERS)|
+        KEY_NOT_FOUND|
+        MATURITY_EXCEEDED|
+        NONE|
+        NOT_(?:FOUND|PERMITTED(?:_LAND)?)|
+        NO_EXPERIENCE|
+        QUOTA_EXCEEDED|
+        REQUEST_PERM_TIMEOUT|
+        RETRY_UPDATE|
+        STORAGE_EXCEPTION|
+        STORE_DISABLED|
+        THROTTLED|
+        UNKNOWN_ERROR
+      )
+    )
+  constant_language_integer_bitfield: |-
+    (?x:                                # ignore whitespace
+      AGENT_(?:
+        ALWAYS_RUN|
+        ATTACHMENTS|
+        AUTOPILOT|
+        AWAY|
+        BUSY|
+        CROUCHING|
+        FLYING|
+        IN_AIR|
+        MOUSELOOK|
+        ON_OBJECT|
+        SCRIPTED|
+        SITTING|
+        TYPING|
+        WALKING
+      )|
+      CHANGED_(?:
+        ALLOWED_DROP|
+        COLOR|
+        INVENTORY|
+        LINK|
+        MEDIA|
+        OWNER|
+        REGION(?:_START)?|
+        SCALE|
+        SHAPE|
+        TELEPORT|
+        TEXTURE
+      )
+    )
+  constant_language_integer_bitfield_bitmask: |-
+    (?x:                                # ignore whitespace
+      STATUS_(?:
+        (?:DIE|RETURN)_AT_EDGE|
+        BLOCK_GRAB(?:_OBJECT)?|
+        PHANTOM|
+        PHYSICS|
+        ROTATE_[XYZ]|
+        SANDBOX
+      )|
+      VEHICLE_FLAG_(?:
+        CAMERA_DECOUPLED|
+        HOVER_(?:(?:WATER|TERRAIN|UP)_ONLY|GLOBAL_HEIGHT)|
+        LIMIT_(?:MOTOR_UP|ROLL_ONLY)|
+        MOUSELOOK_(?:BANK|STEER)
+      )
+    )
+  constant_language_integer_boolean: |-
+    (?x:                                # ignore whitespace
+      FALSE|
+      TRUE
+    )
+  constant_language_rotation: |-
+    (?x:                                # ignore whitespace
+      (?:
+        ZERO_ROTATION
+      )
+    )
+  constant_language_string: |-
+    (?x:                                # ignore whitespace
+      EOF|
+      IMG_USE_BAKED_(?:
+        AUX(?:1|2|3)|
+        EYES|
+        HAIR|
+        HEAD|
+        LEFT(?:ARM|LEG)|
+        LOWER|
+        SKIRT|
+        UPPER
+      )|
+      JSON_(?:
+        ARRAY|
+        DELETE|
+        FALSE|
+        INVALID|
+        NULL|
+        NUMBER|
+        OBJECT|
+        STRING|
+        TRUE
+      )|
+      NULL_KEY|
+      TEXTURE_(?:BLANK|DEFAULT|MEDIA|PLYWOOD|TRANSPARENT)|
+      URL_REQUEST_(?:GRANTED|DENIED)
+    )
+  constant_language_vector: |-
+    (?x:                                # ignore whitespace
+      TOUCH_INVALID_(?:TEXCOORD|VECTOR)|
+      ZERO_VECTOR
+    )
+  constant_numeric_float: |-
+    (?xi:                               # ignore whitespace and case
+      # TODO: valid float range: 1.401298464E-45 to 3.402823466E+38
+      (?:\B[-+])?
+      (?:
+        (?:
+          \B\.[0-9]+|                     # e.g. .999
+          \b(?:
+            [1-9]+[0-9]*|
+            0
+          )\.(?:[0-9]+)?                  # e.g. 999.999
+        )(?:e[-+]?[1-9]+[0-9]*)? |        # e.g. base float with exponent
+        (?:
+          \b(?:
+            [1-9]+[0-9]*|
+            0
+          )(?:e[-+]?[1-9]+[0-9]*)         # e.g. base integer with exponent
+        )
+      )
+    )
+  constant_numeric_integer_hexadecimal: |-
+    (?x:                                # ignore whitespace
+      (?:\B[-+])?
+      (?:
+        \b0x\h*                           # hex
+      )
+    )
+  constant_numeric_integer_decimal: |-
+    (?x:                                # ignore whitespace
+      # TODO: valid integer range: −2,147,483,648 to +2,147,483,647
+      (?:\B[-+])?
+      (?:
+        \b[1-9]+[0-9]*|                   # e.g. 999
+        \b0                               # e.g. 0
+      )
+    )
+  function_builtin: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        (?:(?:Delete|Get)Sub|Insert|MD5|SHA1|DumpList2)String|
+        (?:AvatarOn)?(?:Link)?SitTarget|
+        (?:CSV|ParseString)2List|
+        (?:Break|Create)Link|
+        (?:Create|DataSize|Delete|KeyCount|Keys|Read|Update)KeyValue|
+        (?:Create|Delete)Character|
+        (?:Axes|Euler)2Rot|
+        (?:GetNext)?Email|
+        (?:Get|Request)(?:Username|DisplayName)|
+        (?:Get|Reset|GetAndReset)Time|
+        (?:Give|Remove)Inventory|
+        (?:Integer|String)ToBase64|
+        (?:Link)?ParticleSystem|
+        (?:Load|Release|(?:E|Une)scape)URL|
+        (?:Open|Close)RemoteDataChannel|
+        (?:Region|Owner)?Say|
+        (?:AddTo|RemoveFrom|Reset)Land(?:Ban|Pass)List|
+        (?:Rot)?Target(?:Remove)?|
+        (?:Scale|Offset|Rotate)Texture|
+        (?:Clear|Set)CameraParams|
+        (?:Remove|Set)VehicleFlags|
+        (?:Start|Stop)Animation|
+        (?:Stop)?LookAt|
+        (?:Stop)?MoveToTarget|
+        (?:Take|Release)Controls|
+        (?:Trigger|Stop|Preload)Sound|
+        (?:[GS]et)(?:
+          Alpha|
+          AnimationOverride|
+          Color|
+          Force|
+          MemoryLimit|
+          Object(?:Desc|Name)|
+          ParcelMusicURL|
+          PhysicsMaterial|
+          Pos|
+          PrimMediaParams|
+          Rot|
+          Scale|
+          Status|
+          Texture|
+          Torque
+        )|
+        A(?:cos|sin)|
+        Abs|
+        AdjustSoundVolume|
+        AgentInExperience|
+        AllowInventoryDrop|
+        AngleBetween|
+        Apply(?:Rotational)?Impulse|
+        Atan2|
+        AttachToAvatar(?:Temp)?|
+        AxisAngle2Rot|
+        Base64To(?:String|Integer)|
+        BreakAllLinks|
+        CastRay|
+        Ceil|
+        Clear(?:Prim|Link)Media|
+        Collision(?:Filter|Sound)|
+        Cos|
+        DeleteSubList|
+        DetachFromAvatar|
+        Detected(?:Name|Key|Owner|Type|Pos|Vel|Grab|Rot|Group|LinkNumber)|
+        DetectedTouch(?:UV|Face|Pos|(?:N|Bin)ormal|ST)|
+        Dialog|
+        Die|
+        EdgeOfWorld|
+        EjectFromLand|
+        Evade|
+        ExecCharacterCmd|
+        Fabs|
+        FleeFrom|
+        Floor|
+        ForceMouselook|
+        Frand|
+        GenerateKey|
+        Get(?:
+          (?:Camera|Local)(?:Pos|Rot)|
+          (?:Max|Min)ScaleFactor|
+          (?:Object|CenterOf)?Mass|
+          (?:Owner)?Key|
+          (?:Parcel|Region)Flags|
+          (?:SPMax|Free|Used)Memory|
+          (?:Wall|GMT)clock|
+          Accel|
+          Agent(?:Size|Info|Language|List)|
+          Animation(?:List)?|
+          Attached(?:List)?|
+          BoundingBox|
+          ClosestNavPoint|
+          Creator|
+          Date|
+          Energy|
+          Env(?:ironment)?|
+          FreeURLs|
+          GeometricCenter|
+          HTTPHeader|
+          Inventory(?:Number|Name|Key|Type|Creator|PermMask)|
+          LandOwnerAt|
+          Link(?:PrimitiveParams|Number(?:OfSides)?|Key|Name|Media)|
+          List(?:Length|EntryType)|
+          MassMKS|
+          NotecardLine|
+          NumberOf(?:Prims|NotecardLines|Sides)|
+          Object(?:Details|PermMask|PrimCount)|
+          Omega|
+          Owner|
+          Parcel(?:MaxPrims|Details|Prim(?:Count|Owners))|
+          Permissions(?:Key)?|
+          PrimitiveParams|
+          Region(?:Name|Time(?:Dilation|OfDay)|FPS|Corner|AgentCount)|
+          (?:Region)?(?:Day(?:Length|Offset)|(?:Moon|Sun)(?:Direction|Rotation))|
+          Root(?:Position|Rotation)|
+          Script(?:Name|State)|
+          SimStats|
+          SimulatorHostname|
+          StartParameter|
+          StaticPath|
+          Texture(?:Offset|Scale|Rot)|
+          Time(?:stamp|OfDay)|
+          UnixTime|
+          Vel
+        )|
+        GetExperience(?:Details|ErrorMessage)|
+        Give(?:InventoryList|Money)|
+        Ground(?:Normal|Contour|Repel|Slope)?|
+        HTTP(?:Request|Response)|
+        InstantMessage|
+        Json(?:2List|[GS]etValue|ValueType)|
+        Key2Name|
+        List(?:Statistics|Sort|Randomize|(?:Insert|Find|Replace)List)|
+        List2(?:CSV|Integer|Json|Float|String|Key|Vector|Rot|List(?:Strided)?)|
+        Listen(?:Control|Remove)?|
+        Log(?:10)?|
+        LoopSound(?:Master|Slave)?|
+        ManageEstateAccess|
+        MapDestination|
+        MessageLinked|
+        MinEventDelay|
+        ModPow|
+        ModifyLand|
+        Name2Key|
+        NavigateTo|
+        OverMyLand|
+        ParcelMedia(?:CommandList|Query)|
+        ParseStringKeepNulls|
+        Pass(?:Collisions|Touches)|
+        PatrolPoints|
+        PlaySound(?:Slave)?|
+        Pow|
+        Pursue|
+        PushObject|
+        RegionSayTo|
+        Remote(?:DataReply|LoadScriptPin)|
+        ReplaceAgentEnvironment|
+        Request(?:
+          (?:Agent|Inventory)Data|
+          (?:Experience)?Permissions|
+          (?:Secure)?URL|
+          SimulatorData|
+          UserKey
+        )|
+        Reset(?:AnimationOverride|(?:Other)?Script)|
+        ReturnObjectsBy(?:ID|Owner)|
+        Rez(?:AtRoot|Object)|
+        Rot(?:Between|LookAt|2(?:Axis|Angle|Euler|Fwd|Left|Up))|
+        Round|
+        SameGroup|
+        ScaleByFactor|
+        Script(?:Danger|Profiler)|
+        SendRemoteData|
+        Sensor(?:Repeat|Remove)?|
+        Set(?:
+          AgentEnvironment|
+          (?:Angular)?Velocity|
+          (?:Touch|Sit)?Text|
+          Buoyancy|
+          Camera(?:Eye|At)Offset|
+          ClickAction|
+          ContentType|
+          Damage|
+          ForceAndTorque|
+          HoverHeight|
+          KeyframedMotion|
+          Link(?:
+            Alpha|
+            Camera|
+            Color|
+            Media|
+            PrimitiveParams(?:Fast)?|
+            Texture(?:Anim)?
+          )|
+          LocalRot|
+          PayPrice|
+          PrimitiveParams|
+          RegionPos|
+          RemoteScriptAccessPin|
+          ScriptState|
+          Sound(?:Queueing|Radius)|
+          TextureAnim|
+          TimerEvent|
+          Vehicle(?:Type|(?:Float|Vector|Rotation)Param)
+        )|
+        Shout|
+        Sin|
+        SitOnLink|
+        Sleep|
+        Sqrt|
+        StopHover|
+        String(?:Length|Trim)|
+        SubStringIndex|
+        Tan|
+        TargetOmega|
+        TeleportAgent(?:Home|GlobalCoords)?|
+        TextBox|
+        To(?:Upper|Lower)|
+        TransferLindenDollars|
+        TriggerSoundLimited|
+        UnSit|
+        UpdateCharacter|
+        Vec(?:Mag|Norm|Dist)|
+        VolumeDetect|
+        Water|
+        Whisper|
+        Wind|
+        XorBase64|
+        WanderWithin|
+        StartObjectAnimation|
+        StopObjectAnimation|
+        GetObjectAnimationNames
+      )
+    )
+  storage_type: |-
+    (?x:                                # ignore whitespace
+      float|
+      integer|
+      key|
+      list|
+      quaternion|
+      rotation|
+      string|
+      vector
+    )
+  identifier: |-
+    (?x:                                # ignore whitespace
+      [A-Za-z_]
+      \w*
+    )
+contexts:
+  main:
+    - include: state
+    # TODO: remove function-user-defined from here as it enables them in other scopes like events or functions or whatever
+    - include: function-user-defined
+    # - include: statement (without the block)
+    - include: variable-declaration
+
+  prototype:
+    - include: comment
+
+# statements:
+#   - match: '\}'
+#     scope: invalid.illegal.stray-brace-end.lsl
+#     pop: true
+#   - match: '\)'
+#     scope: invalid.illegal.stray-parenthesis-end.lsl
+#     pop: true
+#   - match: '\]'
+#     scope: invalid.illegal.stray-bracket-end.lsl
+#     pop: true
+#   - match: (?=\S)
+#     push: statement
+
+# statement:
+#   - match: \;
+#     scope: punctuation.terminator.statement.empty.lsl
+#     pop: true
+#   - include: block-conditional
+#   - match: '\{'
+#     scope: punctuation.section.block.begin.lsl
+#     push:
+#       - meta_scope: meta.block.lsl
+#       - match: '\}'
+#         scope: punctuation.section.block.end.lsl
+#         pop: true
+#       - include: statement
+#     - include: block-scope
+#     - include: label
+#     - include: target
+#     - include: variable-declaration
+#     - include: return (without value)
+#     - include: function (built-in or user) call
+
+  variable-declaration:
+    - match: |-
+        (?x:                                # ignore whitespace
+          # TODO: differentiate between "declare with constant language" and "declare with constant"
+          \b(float)
+          \s+
+          ({{identifier}})
+          \s*
+          (?:
+            (=)
+            \s*
+            (?:
+              ({{constant_numeric_float}}) |
+              ({{constant_numeric_integer_decimal}}) |
+              ({{constant_numeric_integer_hexadecimal}}) |
+              ({{constant_language_float}})
+            )
+            \s*
+          )?
+          (\;)
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+        4: constant.numeric.float.lsl
+        5: constant.numeric.integer.decimal.lsl
+        6: constant.numeric.integer.hexadecimal.lsl
+        7: constant.language.float.lsl
+        8: punctuation.terminator.lsl
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(integer)
+          \s+
+          ({{identifier}})
+          \s*
+          (?:
+            (=)
+            \s*
+            (?:
+              ({{constant_numeric_integer_hexadecimal}}) |
+              ({{constant_numeric_integer_decimal}}) |
+              ({{constant_language_integer}}) |
+              ({{constant_language_integer_bitfield}}) |
+              ({{constant_language_integer_bitfield_bitmask}}) |
+              ({{constant_language_integer_boolean}})
+            )
+            \s*
+          )?
+          (\;)
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+        4: constant.numeric.integer.hexadecimal.lsl
+        5: constant.numeric.integer.decimal.lsl
+        6: constant.language.integer.lsl
+        7: constant.language.integer.bit_field.lsl
+        8: constant.language.integer.bit_field.bit_mask.lsl
+        9: constant.language.integer.boolean.lsl
+        10: punctuation.terminator.lsl
+    # key
+    # list
+    # quaternion
+    # rotation
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(key)
+          \s+
+          ({{identifier}})
+          \s*
+          (=)
+          \s*
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+      push:
+        - match: '\;'
+          scope: punctuation.terminator.statement.lsl
+          pop: true
+        - include: string-quoted-double
+        - match: |-
+            (?x:                                # ignore whitespace
+              \b(
+                NULL_KEY
+              )\b
+            )
+          captures:
+            1: constant.language.string.lsl
+        - match: .*
+          scope: invalid.illegal.lsl
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(string)
+          \s+
+          ({{identifier}})
+          \s*
+          (=)
+          \s*
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+      push:
+        - match: '\;'
+          scope: punctuation.terminator.statement.lsl
+          pop: true
+        - include: string-quoted-double
+        - match: .*
+          scope: invalid.illegal.lsl
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(quaternion|rotation)
+          \s+
+          ({{identifier}})
+          \s*
+          (?:
+            (=)
+            \s*
+            (?:
+              (
+                \<
+                \s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*\,\s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*\,\s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*,\s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*
+                \>
+              )|(
+                {{constant_language_rotation}}
+              )
+            )
+            \s*
+          )?
+          (\;)
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+        4: constant.rotation.lsl
+        5: constant.language.rotation.lsl
+        6: punctuation.terminator.lsl
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(vector)
+          \s+
+          ({{identifier}})
+          \s*
+          (?:
+            (=)
+            \s*
+            (?:
+              (
+                \<
+                \s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*\,\s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*\,\s*
+                (?:
+                  {{constant_numeric_float}}|
+                  {{constant_numeric_integer_decimal}}
+                )
+                \s*
+                \>
+              )|(
+                {{constant_language_vector}}
+              )
+            )
+            \s*
+          )?
+          (\;)
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+        3: keyword.operator.assignment.lsl
+        4: constant.vector.lsl
+        5: constant.language.vector.lsl
+        6: punctuation.terminator.lsl
+
+  lists:
+    # TODO: do not contain lists, but variables, constant.language, function calls
+    - match: '\['
+      scope: punctuation.section.brackets.begin.lsl
+      push:
+        - meta_scope: meta.brackets.lsl
+        # - meta_content_scope: meta.list.body.lsl
+        - match: '\]'
+          scope: punctuation.section.brackets.end.lsl
+          pop: true
+        - include: infunc
+
+  event:
+    # TODO: check how many params, and which type in which order
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b
+          ({{event}})
+          \b
+        )
+      captures:
+        1: support.function.event.lsl
+      push:
+        # TODO: prevent multiple params for single-param events and vice versa
+        - match: '\('
+          scope: punctuation.section.block.parameters.begin.lsl
+          push:
+            - meta_content_scope: meta.block.event.parameters.lsl
+            - match: '\)'
+              scope: punctuation.section.block.parameters.end.lsl
+              pop: true
+            - include: parameters
+        - match: '\}'
+          scope: punctuation.section.block.end.lsl
+          pop: true
+        - match: '{'
+          scope: punctuation.section.block.begin.lsl
+          push:
+            - meta_content_scope: meta.block.event.lsl
+            - match: '(?=})'
+              scope: punctuation.section.block.end.lsl
+              pop: true
+            - include: infunc
+
+  keyword-control-block:
+    # TODO: revisit scope naming guide
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(jump)
+          \s+
+          ({{identifier}})
+          \s*
+          (\;)
+        )
+      captures:
+        1: 'keyword.control.flow.lsl'
+        2: 'meta.target.label.lsl'
+        3: 'punctuation.terminator.statement.lsl'
+    # TODO: revisit scope naming guide
+    - match: |-
+        (?x:                                # ignore whitespace
+          (@)
+          \s*
+          ({{identifier}})
+          \s*
+          (\;)
+        )
+      captures:
+        # TODO: maybe > punctuation.definition.target.lsl
+        1: 'keyword.control.flow.lsl'
+        2: 'entity.name.target.lsl'
+        3: 'punctuation.terminator.statement.lsl'
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(do)\b
+        )
+      captures:
+        1: 'keyword.control.loop.lsl'
+      push:
+        # TODO: prevent repitition of blocks within do-while
+        - meta_scope: 'meta.do-while.lsl'
+        - include: block-scope
+        - match: |-
+            (?x:                                # ignore whitespace
+              \b(while)\b
+            )
+          captures:
+            1: 'keyword.control.loop.lsl'
+        - include: conditional
+        - match: '(\;)'
+          scope: 'punctuation.terminator.do-while.lsl'
+          pop: true
+    # TODO: return with optional value
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(return)\b
+          \s*
+          (\;)
+        )
+      captures:
+        1: 'keyword.control.flow.lsl'
+        2: 'punctuation.terminator.lsl'
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(for)\b
+        )
+      captures:
+        1: 'keyword.control.loop.lsl'
+      push:
+        - meta_scope: meta.for.lsl
+        - include: conditional
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(while)\b
+        )
+      captures:
+        1: 'keyword.control.loop.lsl'
+      push:
+        - meta_scope: meta.while.lsl
+        - include: conditional
+    # TODO: revisit scopes and separate else from if
+    # TODO: add whitespace match before push to meta scope
+    # FIXME: match "if (...) {...};" and "if (...) ...;"
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(else\s+if|if)\b
+        )
+      captures:
+        1: keyword.control.conditional.lsl
+      push:
+        - meta_scope: meta.conditional.lsl
+        - include: conditional
+    # FIXME: match "else (...) {...};" and "else (...) ...;"
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b(else)\b
+        )
+      captures:
+        1: keyword.control.conditional.lsl
+      push:
+        - meta_scope: meta.conditional.lsl
+        - include: block-scope
+
+  conditional:
+    - match: '\('
+      scope: 'punctuation.section.parens.begin.lsl'
+      push:
+        - meta_scope: meta.parens.lsl
+        - match: '\)'
+          scope: 'punctuation.section.parens.end.lsl'
+          pop: true
+        # TODO: condition
+        # TODO: start;condition;step
+        # TODO: condition & (condition)
+        # TODO: condition | (condition)
+        # TODO: condition && (condition)
+        # TODO: condition || (condition)
+    - include: block-scope
+
+  block-scope:
+    - match: '\}'
+      scope: 'meta.block.lsl punctuation.section.block.end.lsl'
+      pop: true
+    - match: '\{'
+      scope: 'punctuation.section.block.begin.lsl'
+      push:
+        - meta_scope: 'meta.block.lsl'
+        - match: '(?=\})'
+          pop: true
+        - include: infunc
+    - match: '(?=\S)'
+      pop: true
+
+  function-user-defined:
+    - match: |-
+        (?x:                                # ignore whitespace
+          (
+            (?:
+              \b
+              ({{storage_type}})
+              \b
+              \s+
+            )?
+            (?:
+              \b
+              ({{identifier}})
+              \b
+            )
+          )(?=\s*\()
+        )
+      captures:
+        1: meta.function.user-defined.declaration.lsl
+        2: storage.type.lsl
+        3: entity.name.function.user-defined.lsl
+      push:
+        - match: '\('
+          scope: punctuation.section.parameters.begin.lsl
+          push:
+            - meta_scope: meta.parameters.lsl
+            - match: '\)'
+              scope: punctuation.section.parameters.end.lsl
+              pop: true
+            - include: parameters
+        - match: '\}'
+          scope: punctuation.section.block.end.lsl
+          pop: true
+        - match: '\{'
+          scope: punctuation.section.block.begin.lsl
+          push:
+            - meta_content_scope: meta.function.declaration.body.lsl
+            - match: '(?=})'
+              scope: punctuation.section.block.end.lsl
+              pop: true
+            - include: infunc
+
+  infunc:
+    - include: lists
+    - include: string-quoted-double
+    - include: keyword-control-block
+    - include: storage-type
+    - include: constant-language
+    - include: functions
+    - include: constant-numeric
+    - include: keyword-operator
+    - match: |-
+        (?x:                                # ignore whitespace
+          \b((?:state)\s+{{identifier}})\b
+        )
+        (\;)
+      captures:
+        1: meta.target.class.state.lsl
+        2: punctuation.terminator.statement.lsl
+
+  # http://wiki.secondlife.com/wiki/Category:LSL_Functions
+
+  functions:
+    # TODO: include function words from invalid and reserved
+    - match: '\b({{function_builtin}})(?=\()'
+      scope: support.function.builtin.lsl
+      push:
+        - match: '(\))(\;)?'
+          captures:
+            1: 'punctuation.section.parameters.end.lsl'
+            2: 'punctuation.terminator.function-call.lsl'
+          pop: true
+        - match: '\('
+          scope: 'punctuation.section.parameters.begin.lsl'
+          push:
+            - match: '(?=\))'
+              pop: true
+            - include: lists
+            - include: string-quoted-double
+            - include: constant-language
+            - include: constant-numeric
+            - include: keyword-operator
+            - include: functions
+
+  parameters:
+    - match: |-
+        (?x:                                # ignore whitespace
+          ({{storage_type}})
+          \s+
+          ({{identifier}})
+        )
+      captures:
+        1: storage.type.lsl
+        2: entity.name.variable.lsl
+    - match: '(,)'
+      scope: punctuation.separator.comma.lsl
+
+  # TODO: add UUID-4 string
+  # TODO: add general UUID string
+  string-quoted-double:
+    - match: '"'
+      scope: punctuation.definition.string.begin.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: string.quoted.double.lsl
+        - match: '"'
+          scope: punctuation.definition.string.end.lsl
+          pop: true
+        - match: |-
+            (?xi:                     # ignore whitespace and case
+              ^(?:
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[1][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[2][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[3][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[4][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[5][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})
+              )$
+            )
+          captures:
+            1: constant.other.uuid-1.lsl
+            2: constant.other.uuid-2.lsl
+            3: constant.other.uuid-3.lsl
+            4: constant.other.uuid-4.lsl
+            5: constant.other.uuid-5.lsl
+        - include: constant-character-escape
+    # - match: '"'
+    #   scope: punctuation.definition.string.begin.lsl
+    #   meta_scope: string.quoted.double.lsl
+    #   meta_include_prototype: false
+    #   embed: scope:source.json
+    #   embed_scope: meta.environment.embedded.json.lsl source.json.embedded
+    #   escape: '"'
+    #   include: constant-character-escape
+
+  state:
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b
+          ((?:state)\s+{{identifier}}|default)
+          \b
+        )
+      captures:
+        1: entity.name.class.state.lsl
+      push:
+        - match: '\}'
+          scope: punctuation.section.class.state.end.lsl
+          pop: true
+        - match: '{'
+          scope: punctuation.section.class.state.begin.lsl
+          push:
+            - meta_content_scope: meta.class.state.body.lsl
+            - match: '(?=})'
+              scope: punctuation.section.class.state.end.lsl
+              pop: true
+            - include: event
+
+  storage-type:
+    # http://wiki.secondlife.com/wiki/Category:LSL_Types
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{storage_type}})\b
+        )
+      captures:
+        1: storage.type.lsl
+
+  constant-language:
+    # http://wiki.secondlife.com/wiki/Category:LSL_Constants
+    # FIXME: only include constant words from invalid and reserved
+    - include: invalid
+    - include: reserved
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_float}})\b
+        )
+      captures:
+        1: constant.language.float.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer}})\b
+        )
+      captures:
+        1: constant.language.integer.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_bitfield}})\b
+        )
+      captures:
+        1: constant.language.integer.bit_field.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_bitfield_bitmask}})\b
+        )
+      captures:
+        1: constant.language.integer.bit_field.bit_mask.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_boolean}})\b
+        )
+      captures:
+        1: constant.language.integer.boolean.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_rotation}})\b
+        )
+      captures:
+        1: constant.language.rotation.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_string}})\b
+        )
+      captures:
+        1: constant.language.string.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_vector}})\b
+        )
+      captures:
+        1: constant.language.vector.lsl
+
+  # TODO: split invalid up by type to better handle includes
+
+  invalid:
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{invalid_deprecated}})\b
+        )
+      captures:
+        1: invalid.deprecated.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{invalid_illegal}})\b
+        )
+      captures:
+        1: invalid.illegal.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{invalid_illegal_unimplemented}})\b
+        )
+      captures:
+        1: invalid.illegal.unimplemented.lsl
+
+  # TODO: split reserved up by type to better handle includes
+
+  reserved:
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{reserved_godmode}})\b
+        )
+      captures:
+        1: reserved.godmode.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{reserved_log}})\b
+        )
+      captures:
+        1: reserved.log.lsl
+
+  constant-numeric:
+    # http://wiki.secondlife.com/wiki/Category:LSL_Types
+    # http://wiki.secondlife.com/wiki/Category:LSL_Float
+    # http://wiki.secondlife.com/wiki/Category:LSL_Integer
+    - include: constant-numeric-float
+    - include: invalid-illegal-constant-numeric
+    - include: constant-numeric-integer
+
+  constant-numeric-float:
+    - match: ({{constant_numeric_float}})
+      scope: constant.numeric.float.lsl
+
+  invalid-illegal-constant-numeric:
+    - match: ({{invalid_illegal_constant_numeric_integer_binary}})
+      scope: invalid.illegal.constant.numeric.integer.binary.lsl
+    - match: ({{invalid_illegal_constant_numeric_integer_octal}})
+      scope: invalid.illegal.constant.numeric.integer.octal.lsl
+
+  constant-numeric-integer:
+    - match: ({{constant_numeric_integer_hexadecimal}})
+      scope: constant.numeric.integer.hexadecimal.lsl
+    - match: ({{constant_numeric_integer_decimal}})
+      scope: constant.numeric.integer.decimal.lsl
+
+  keyword-operator:
+    # http://wiki.secondlife.com/wiki/LSL_Operators
+    - match: '\+\+'
+      scope: keyword.operator.arithmetic.increment.lsl
+    - match: '\-\-'
+      scope: keyword.operator.arithmetic.decrement.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          (<<<=)|
+          (<<=)|
+          (<<)
+        )
+      captures:
+        # FIXME: scope labels
+        1: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
+        2: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
+        3: keyword.operator.bitwise.shift.left.signed.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          (=>>>)|
+          (=>>)|
+          (>>)
+        )
+      captures:
+        # FIXME: scope labels
+        1: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
+        2: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
+        3: keyword.operator.bitwise.shift.right.signed.lsl
+    - match: '<='
+      scope: keyword.operator.relational.less-equal.lsl
+    - match: '>='
+      scope: keyword.operator.relational.greater-equal.lsl
+    - match: '&&'
+      scope: keyword.operator.logical.and.lsl
+    - match: '\|\|'
+      scope: keyword.operator.logical.or.lsl
+    - match: '~'
+      scope: keyword.operator.bitwise.not.lsl
+    - match: '\^'
+      scope: keyword.operator.bitwise.xor.lsl
+    - match: '&'
+      scope: keyword.operator.bitwise.and.lsl
+    - match: '\|'
+      scope: keyword.operator.bitwise.or.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          (===)|
+          (==)
+        )
+      captures:
+        1: invalid.illegal.keyword.operator.comparison.equal.value-and-type.lsl
+        2: keyword.operator.comparison.equal.value.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          (!==)|
+          (!=)
+        )
+      captures:
+        1: invalid.illegal.keyword.operator.comparison.not-equal.value-and-type.lsl
+        2: keyword.operator.comparison.not-equal.value.lsl
+    - match: '!(?!=)'
+      scope: keyword.operator.logical.not.lsl
+    - match: '<'
+      scope: keyword.operator.relational.less.lsl
+    - match: '>'
+      scope: keyword.operator.relational.greater.lsl
+    - match: '[%*+\/\-]='
+      scope: keyword.operator.assignment.augmented.lsl
+    - match: '='
+      scope: keyword.operator.assignment.lsl
+    - match: '[%*+\/\-]'
+      scope: keyword.operator.arithmetic.lsl
+    - match: ':='
+      scope: invalid.illegal.keyword.operator.assignment.augmented.division.lsl
+    - match: ':'
+      scope: invalid.illegal.keyword.operator.assignment.division.lsl
+
+  constant-character-escape:
+    # http://wiki.secondlife.com/wiki/String#Escape_Codes
+    - match: |-
+        (?x:                                # ignore whitespace
+          (\\\\)|
+          (\\\")|
+          (\\n)|
+          (\\t)|
+          (\\.)
+        )
+      captures:
+        1: constant.character.escape.back-slash.lsl
+        2: constant.character.escape.double-quote.lsl
+        3: constant.character.escape.new-line.lsl
+        4: constant.character.escape.tab.lsl
+        5: invalid.illegal.constant.character.escape.lsl
+
+  comment:
+    # comment should not include: comment
+    # comment should not be included by: string-quoted-double
+    # FIXME: TODO comment scopes currently aren't in the scope naming guide
+    - match: |-
+        (?xi:                           # ignore whitespace and case
+          (//)                          # leading double-slash
+          (\s+)                         # some whitespace
+          (
+            (?:todo|milestone|mlstn|yagni|tbd|tobedone)|
+            (?:fix\ ?me|xxx|debug|broken|refactor|refact|rfctr|oops|smell|needswork|inspect)|
+            (?:bug|bugfix)|
+            (?:nobug|nofix|wontfix|dontfix|neverfix|unfixable|cantfix)|
+            (?:req|requirement|story)|
+            (?:rfe|feetch|nyi|fr|ftrq|ftr)|
+            (?:idea)|
+            (?:\?\?\?|question|quest|qstn|wtf)|
+            (?:\!\!\!|alert)|
+            (?:hack|clever|magic)|
+            (?:port|portability|wkrd)|
+            (?:caveat|cav|cavt|warning|caution)|
+            (?:note|help)|
+            (?:faq)|
+            (?:gloss|glossary)|
+            (?:see|ref|reference)|
+            (?:todoc|docdo|dodoc|needsdoc|explain|document)|
+            (?:cred|credit|thanks)|
+            (?:stat|status)|
+            (?:rvd|reviewed|review)
+          )
+          (:)
+        )
+      captures:
+        1: punctuation.definition.comment.line.double-slash.lsl
+        2: comment.line.double-slash.lsl
+        3: comment.line.double-slash.lsl markup.other.lsl
+        4: comment.line.double-slash.lsl punctuation.definition.comment.line.todo.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: comment.line.double-slash.lsl
+        - meta_content_scope: comment.line.todo.lsl
+        - match: '\n'
+          pop: true
+    - match: |-
+        (?x:                            # ignore whitespace
+          (//)
+        )
+      captures:
+        1: punctuation.definition.comment.line.double-slash.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: comment.line.double-slash.lsl
+        - match: '\n'
+          pop: true
+    - match: '/\*\*(?!/)'
+      scope: punctuation.definition.comment.block.documentation.begin.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: comment.block.documentation.lsl
+        - match: '\*/'
+          scope: punctuation.definition.comment.block.documentation.end.lsl
+          pop: true
+    - match: '/\*'
+      scope: punctuation.definition.comment.block.begin.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: comment.block.lsl
+        - match: '\*/'
+          scope: punctuation.definition.comment.block.end.lsl
+          pop: true

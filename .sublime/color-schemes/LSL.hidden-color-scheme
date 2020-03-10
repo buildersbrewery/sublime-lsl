@@ -1,0 +1,173 @@
+{
+    "name": "LSL",
+    "author": "Builder's Brewery",
+    "variables":
+    {
+        "black": "#2d2d2d",
+        "white": "#f6eeda",
+        "orange": "#cd4d26",
+        "dark-blue": "#0000cd",
+        "blue": "#242687",
+        "light-blue": "#004d80",
+        "bright-blue": "#336699",
+        "yellow": "#f1e8a4",
+        "green": "#006600",
+        "dark-green": "#1a4d1a",
+        "red": "#820124",
+        "dark-red": "#801a4d",
+        "purple": "#4c1a80",
+        "light-purple": "#774477",
+        "gray1": "#474747",
+        "gray2": "#968f7c",
+        "gray3": "#bcb8ac",
+        "gray4": "#d3d0c8",
+        "gray5": "#f2f0ec"
+    },
+    "globals":
+    {
+        "background": "var(gray5)",
+        "foreground": "var(black)",
+        "caret": "var(black)",
+        "line_highlight": "var(gray4)",
+
+        "misspelling": "var(red)",
+        "minimap_border": "var(gray2)",
+        "accent": "",
+
+        "popup_css": "html { background-color: color(var(--background) blend(#fff 50%)); color: var(--foreground); --redish: var(red); --orangish: var(orange); --greenish: var(green); --background: var(gray5); --bluish: var(blue); --yellowish: var(yellow); --purplish: var(purple); --foreground: var(black); } a { color: var(--bluish); } html.light { background-color: color(var(--background) blend(#000 95%)); } #show-scope a { font-size: 1rem; } #show-scope { padding: 0.5rem; }",
+        "phantom_css": "html { background-color: transparent; color: var(--foreground); --redish: var(red); --orangish: var(orange); --greenish: var(green); --background: #fafafa; --bluish: var(blue); --yellowish: var(yellow); --purplish: var(purple); --foreground: var(gray1); } a { color: var(--bluish); } #inline-error .error { background-color: color(var(--redish) blend(var(--background) 30%)); } #inline-error .error a { background-color: color(var(--redish) blend(var(--background) 30%)); font-size: 1.1rem; color: var(--foreground); font-weight: normal; } #inline-error .error-arrow { border-left-color: color(var(--redish) blend(var(--background) 30%)); }",
+
+        "gutter": "var(gray5)",
+        "gutter_foreground": "var(gray2)",
+
+        "selection": "var(yellow)",
+        "selection_foreground": "var(black)",
+        "selection_border": "var(gray3)",
+        "inactive_selection": "var(gray4)",
+        "inactive_selection_foreground": "var(black)",
+
+        "highlight": "var(yellow)",
+        "find_highlight": "var(orange)",
+        "find_highlight_foreground": "var(black)",
+
+        "guide": "var(gray1)",
+        "active_guide": "var(black)",
+        "stack_guide": "var(white)",
+
+        "bracket_options": "underline",
+        "brackets_foreground": "var(gray4)",
+        "bracket_contents_options": "underline",
+        "bracket_contents_foreground": "var(gray4)",
+
+        "tag_options": "underline",
+//      "tags_foreground": "",
+
+        "shadow": "var(gray4)",
+        "shadow_width": "5",
+
+        "invisibles": "var(gray4)",
+        "highlight_foreground": "var(yellow)",
+//      "implicit_selection_foreground": "",
+        "rulers": "var(gray3)"
+    },
+    "rules":
+    [
+        {
+            "scope": "entity.name - ( entity.name.section | entity.name.tag | entity.name.label)",
+            "foreground": "var(dark-red)"
+        },
+        {
+            "scope": "storage.type",
+            "foreground": "var(green)"
+        },
+        {
+            "scope": "support.function.event",
+            "foreground": "var(light-blue)"
+        },
+        {
+            "scope": "comment, punctuation.definition.comment",
+            "foreground": "var(orange)",
+            "font_style": "italic"
+        },
+        {
+            "scope": "comment.line.todo",
+            "foreground": "var(gray5)",
+            "background": "var(orange)",
+            "font_style": "italic"
+        },
+        {
+            "scope": "constant.character",
+            "foreground": "var(orange)",
+            "font_style": "bold"
+        },
+        {
+            "scope": "string",
+            "foreground": "var(green)"
+        },
+        {
+            "scope": "support.function - support.function.event",
+            "foreground": "var(red)"
+        },
+        {
+            "scope": "constant.language - (constant.language.builtin.float | constant.language.builtin.string | constant.language.string | constant.language.rotation | constant.language.vector | constant.language.builtin.rotation | constant.language.builtin.vector)",
+            "foreground": "var(blue)"
+        },
+        {
+            "scope": "constant.language.builtin.float",
+            "foreground": "var(purple)"
+        },
+        {
+            "scope": "constant.language.string, constant.language.builtin.string",
+            "foreground": "var(bright-blue)"
+        },
+        {
+            "scope": "constant.language.rotation, constant.language.vector, constant.language.builtin.rotation, constant.language.builtin.vector",
+            "foreground": "var(light-purple)"
+        },
+        {
+            "scope": "keyword - keyword.operator",
+            "foreground": "var(dark-blue)"
+        },
+        {
+            "scope": "invalid",
+            "foreground": "var(gray5)",
+            "background": "var(red)"
+        },
+        {
+            "scope": "reserved",
+            "foreground": "var(gray5)",
+            "background": "var(orange)"
+        },
+        {
+            "scope": "markup - (markup.deleted | markup.inserted | markup.changed)",
+            "foreground": "var(gray1)"
+        },
+        {
+            "scope": "markup.deleted",
+            "foreground": "var(red)",
+            "background": "color(var(red) alpha(0.2))"
+        },
+        {
+            "scope": "markup.inserted",
+            "foreground": "var(green)",
+            "background": "color(var(green) alpha(0.2))"
+        },
+        {
+            "scope": "markup.changed",
+            "foreground": "var(orange)",
+            "background": "color(var(orange) alpha(0.2))"
+        },
+        {
+            "scope": "sublimelinter.mark.error",
+            "foreground": "var(red)"
+        },
+        {
+            "scope": "sublimelinter.gutter-mark",
+            "foreground": "var(gray1)"
+        },
+        {
+            "scope": "sublimelinter.mark.warning",
+            "foreground": "var(orange)"
+        }
+    ]
+}

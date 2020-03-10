@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+	<dict>
+		<key>scope</key><string>source.lsl</string>
+		<key>settings</key>
+		<dict>
+			<key>shellVariables</key>
+			<array>
+<!--
+	for whitespace shellVariables see "../../src/indent_styles/" which are
+	dynamically injected to "Packages/User" depending upon settings via the
+	command "lsl_change_indent" using a ListInputHandler
+-->
+				<dict>
+					<key>name</key><string>TM_COMMENT_START</string>
+					<key>value</key><string>// </string>
+				</dict>
+				<dict>
+					<key>name</key><string>TM_COMMENT_START_2</string>
+					<key>value</key><string>/*</string>
+				</dict>
+				<dict>
+					<key>name</key><string>TM_COMMENT_END_2</string>
+					<key>value</key><string>*/</string>
+				</dict>
+				<dict>
+					<key>name</key><string>TM_LINE_TERMINATOR</string>
+					<key>value</key><string>;</string>
+				</dict>
+				<dict>
+					<key>name</key><string>TM_COMPLETION_sort</string>
+					<key>value</key><string>true</string>
+				</dict>
+				<dict>
+					<key>name</key><string>TM_COMPLETION_unique</string>
+					<!-- set false here to enable completing constants with or without value -->
+					<key>value</key><string>false</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</plist>

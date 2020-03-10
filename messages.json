@@ -1,0 +1,4 @@
+{
+    "install": ".sublime/messages/install.md",
+    "6.0.0": ".sublime/messages/upgrade.md"
+}

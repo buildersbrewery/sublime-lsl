@@ -1,0 +1,98 @@
+[
+    {
+        "id": "preferences",
+        "children":
+        [
+            {
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "=BB= LSL",
+                        "children":
+                        [
+                            {
+                                "command": "lsl_open_docs",
+                                "args":
+                                {
+                                    "resource_title": "Readme",
+                                    "resource_path": "README.md"
+                                },
+                                "caption": "Readme"
+                            },
+                            {
+                                "command": "lsl_open_docs",
+                                "args":
+                                {
+                                    "resource_title": "Changelog",
+                                    "resource_path": "CHANGELOG.md"
+                                },
+                                "caption": "Changelog"
+                            },
+                            { "caption": "-" },
+                            {
+                                "caption": "Settings",
+                                "children":
+                                [
+                                    {
+                                        "command": "lsl_change_scheme",
+                                        "caption": "Use official color scheme for LSL files",
+                                        "checkbox": false
+                                    },
+                                    {
+                                        "command": "lsl_change_indent",
+                                        "caption": "Choose indent style"
+                                    }
+//                                  { "caption": "-" },
+//                                  {
+//                                      "command": "edit_settings",
+//                                      "args":
+//                                      {
+//                                          "base_file": "${packages}/=BB= LSL/.sublime/settings/LSL.sublime-settings",
+//                                          "default": "{\n\t$0\n}\n"
+//                                      },
+//                                      "caption": "Settings"
+//                                  }
+                                ]
+                            },
+                            { "caption": "-" },
+                            {
+                                "caption": "Support",
+                                "children":
+                                [
+                                    {
+                                        "command": "open_url",
+                                        "args": { "url": "https://github.com/buildersbrewery/sublime-lsl" },
+                                        "caption": "github.com/buildersbrewery/sublime-lsl"
+                                    }
+                                ]
+                            },
+                            { "caption": "-" },
+                            {
+                                "caption": "SL wiki / Server release notes",
+                                "children":
+                                [
+                                    {
+                                        "command": "open_url",
+                                        "args": { "url": "http://wiki.secondlife.com/wiki/Release_Notes/Second_Life_Server/17" },
+                                        "caption": "Second Life Server 17"
+                                    },
+                                    {
+                                        "command": "open_url",
+                                        "args": { "url": "http://wiki.secondlife.com/wiki/Release_Notes/Second_Life_Server/18" },
+                                        "caption": "Second Life Server 18"
+                                    },
+                                    {
+                                        "command": "open_url",
+                                        "args": { "url": "http://wiki.secondlife.com/wiki/Release_Notes/Second_Life_Server/19" },
+                                        "caption": "Second Life Server 19"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,14 @@
+//  To use the color scheme of the official viewer for LSL files,
+//  set "Preferences > =BB= LSL > Settings > Use official viewer color scheme for LSL files",
+//  requires Build 3149 or later.
+
+{
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_cycle": true,
+	"auto_complete_enable_plugins": true,
+	"auto_complete_with_fields": true,
+	"drag_text": false,
+	"tab_size": 4,
+	"translate_tabs_to_spaces": true,
+	"use_tab_stops": true
+}

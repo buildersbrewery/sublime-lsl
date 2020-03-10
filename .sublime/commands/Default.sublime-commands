@@ -1,0 +1,38 @@
+[
+    {
+        "caption": "=BB= LSL: Support",
+        "command": "open_url",
+        "args": { "url": "https://github.com/buildersbrewery/sublime-lsl" }
+    },
+    {
+        "caption": "=BB= LSL: Readme",
+        "command": "lsl_open_docs",
+        "args":
+        {
+            "resource_path": "README.md",
+            "resource_title": "Readme"
+        }
+    },
+    {
+        "caption": "=BB= LSL: Changelog",
+        "command": "lsl_open_docs",
+        "args":
+        {
+            "resource_path": "CHANGELOG.md",
+            "resource_title": "Changelog"
+        }
+    },
+//  {
+//      "caption": "Preferences: LSL: Settings",
+//      "command": "edit_settings",
+//      "args":
+//      {
+//          "base_file": "${packages}/=BB= LSL/.sublime/settings/LSL.sublime-settings",
+//          "default": "{\n\t$0\n}\n"
+//      }
+//  },
+    {
+        "caption": "Preferences: LSL: Settings - Indent Style",
+        "command": "lsl_change_indent"
+    }
+]
