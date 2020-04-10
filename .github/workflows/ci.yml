@@ -17,9 +17,9 @@ jobs:
         run: mv st_syntax_tests/syntax_tests ./
       - name: Cleanup syntax_tests dir
         run: rm -R st_syntax_tests*
-      - name: Setup Data/Packages/
+      - name: Setup Data/Packages/=BB= LSL
         run: mkdir -p 'Data/Packages/=BB= LSL'
       - name: Move (files and folders in) root into its own subdir within Data dir
-        run: find . -maxdepth 1 -mindepth 1 -not -name 'Data|st_syntax_tests' -exec mv -v '{}' 'Data/Packages/=BB= LSL/' \;
+        run: find . -maxdepth 1 -mindepth 1 -not -name '(.git|Data|st_syntax_tests)' -exec mv -v '{}' 'Data/Packages/=BB= LSL/' \;
       - name: Run syntax tests
         run: ./syntax_tests
