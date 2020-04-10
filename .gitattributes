@@ -21,7 +21,7 @@ CONTRIBUTING.md                         export-ignore
 
 .sublime/syntaxes/tests/                export-ignore   whitespace=tab-in-indent,trailing-space,tabwidth=4
 .sublime/color-schemes/tests/           export-ignore   whitespace=tab-in-indent,trailing-space,tabwidth=4
-package_control_channel.json            export-ignore
+package_control_channel.json            export-ignore   whitespace=-tab-in-indent,trailing-space,tabwidth=4
 
 # lslint
 
@@ -35,3 +35,4 @@ lib/lslint/windows64/lslint.exe         binary
 
 docs/img/                               binary
 TODO.md                                 export-ignore
+

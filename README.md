@@ -1,7 +1,8 @@
-[![License](https://img.shields.io/github/license/buildersbrewery/sublime-lsl.svg?style=flat-square)](https://github.com/buildersbrewery/sublime-lsl/blob/master/LICENSE.txt)
-[![Requires Sublime Text Build 4065 or later](https://img.shields.io/badge/Sublime%20Text-%3E%3D4065-orange.svg?style=flat-square)](https://www.sublimetext.com)
-[![Download the =BB= LSL on Package Control](https://img.shields.io/packagecontrol/dt/%3DBB%3D%20LSL.svg?style=flat-square)](https://packagecontrol.io/packages/%3DBB%3D%20LSL)
-[![Latest tag](https://img.shields.io/github/tag/buildersbrewery/sublime-lsl.svg?style=flat-square)](https://github.com/buildersbrewery/sublime-lsl/tags)
+[![License](https://img.shields.io/github/license/buildersbrewery/sublime-lsl.svg?style=flat-square&logo=opensourceinitiative)](https://github.com/buildersbrewery/sublime-lsl/blob/master/LICENSE.txt)
+[![Requires Sublime Text Build 4065 or later](https://img.shields.io/badge/Sublime%20Text-4065+-orange.svg?style=flat-square&logo=sublime-text)](https://www.sublimetext.com)
+[![Download =BB= LSL from Package Control](https://img.shields.io/packagecontrol/dt/%3DBB%3D%20LSL.svg?style=flat-square&logo=sublime-text)](https://packagecontrol.io/packages/%3DBB%3D%20LSL)
+[![Latest tag](https://img.shields.io/github/tag/buildersbrewery/sublime-lsl.svg?style=flat-square&logo=github)](https://github.com/buildersbrewery/sublime-lsl/tags)
+[![SublimeHQ Discord](https://img.shields.io/discord/280102180189634562?label=SublimeHQ%20Discord&logo=discord&style=flat-square)](https://discord.gg/D43Pecu)
 
 ### Table of contents
 
@@ -94,7 +95,7 @@ For a list of Sublime arguments run `subl --help` and/or refer to the [OSX Comma
 ### Usage on Windows
 
 ```text
-"C:\Program Files\Sublime Text 3\subl.exe" "%s"
+"C:\Program Files\Sublime Text\subl.exe" "%s"
 ```
 
 ## Building
@@ -109,8 +110,6 @@ Output to a `Build results` panel, in which you can double click (possible) erro
 ## Color Scheme
 
 > [`Sublime Text 3` Color Scheme documentation](https://www.sublimetext.com/docs/3/color_schemes.html)
->
-> Requires `Sublime Text Build 3149` or later
 
 You can toggle using the official Color Scheme for LSL files by selecting `Preferences > Package Settings > =BB= LSL > Settings > Use official color scheme for LSL files` from the main menu.
 
@@ -125,8 +124,8 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) and make sure tests pass before
 ## Linting
 
 > Requires the [`SublimeLinter`](https://github.com/SublimeLinter/SublimeLinter) package, uses the included binaries [`lslint`](https://github.com/Makopo/lslint) if not found in `PATH`.
-
-Linting of LSL files using the [Firestorm preprocessor](http://wiki.phoenixviewer.com/fs_preprocessor) has been deprecated in `v5.0.0` (see [CHANGELOG](https://github.com/buildersbrewery/sublime-lsl/blob/master/CHANGELOG.md) for details).
+>
+> Linting of LSL files using the [Firestorm preprocessor](http://wiki.phoenixviewer.com/fs_preprocessor) was deprecated in `v5.0.0`.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/buildersbrewery/sublime-lsl/master/docs/img/sublimelinter_with_lslint.gif"
@@ -136,8 +135,6 @@ Linting of LSL files using the [Firestorm preprocessor](http://wiki.phoenixviewe
 </p>
 
 ## Indent styles
-
-> Require `Sublime Text Build 3154` or later
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/buildersbrewery/sublime-lsl/master/docs/img/indent_styles.gif"
@@ -187,8 +184,6 @@ These `mdpopups.*` settings are needed to get LSL syntax highlighting in [toolti
 ```
 
 ## Tooltips
-
-> Require `Sublime Text Build 3124` or later
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/buildersbrewery/sublime-lsl/master/docs/img/tooltips.gif"

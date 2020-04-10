@@ -1,3 +1,8 @@
+---
+name: Pull request template
+about: Please use this to open a pull request.
+---
+
 type(scope): subject
 
 body

@@ -41,8 +41,10 @@ default
 //          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer.bit_field.bit_mask
             VEHICLE_FLAG_MOUSELOOK_BANK,
 //          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer.bit_field.bit_mask
-            VEHICLE_FLAG_MOUSELOOK_STEER
+            VEHICLE_FLAG_MOUSELOOK_STEER,
 //          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer.bit_field.bit_mask
+            VEHICLE_FLAG_NO_DEFLECTION_UP
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer.bit_field.bit_mask
         ];
 
         llRegionSayTo(llDetectedKey(0), PUBLIC_CHANNEL, (string)llGetListLength(lsl_integers));

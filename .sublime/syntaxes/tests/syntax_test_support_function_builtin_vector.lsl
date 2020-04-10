@@ -1,0 +1,101 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        return;
+
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+
+        float f;
+        integer i;
+        key k;
+        list l;
+        rotation r;
+        string s;
+        vector v;
+
+        v = llDetectedGrab(i);
+//          ^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedPos(i);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedTouchBinormal(i);
+//          ^^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedTouchNormal(i);
+//          ^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedTouchPos(i);
+//          ^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedTouchST(i);
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedTouchUV(i);
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llDetectedVel(i);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetAccel();
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llGetAgentSize(k);
+//          ^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetCameraPos();
+//          ^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetCenterOfMass();
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetColor(i);
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llGetForce();
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llGetGeometricCenter();
+//          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetLocalPos();
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetMoonDirection();
+//          ^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetOmega();
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llGetPos();
+//          ^^^^^^^^ support.function.builtin.vector
+        v = llGetRegionCorner();
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetRegionMoonDirection();
+//          ^^^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetRegionSunDirection();
+//          ^^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetRootPosition();
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetScale();
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llGetSunDirection();
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetTextureOffset(i);
+//          ^^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetTextureScale(i);
+//          ^^^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetTorque();
+//          ^^^^^^^^^^^ support.function.builtin.vector
+        v = llGetVel();
+//          ^^^^^^^^ support.function.builtin.vector
+        v = llGroundContour(v);
+//          ^^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGroundNormal(v);
+//          ^^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llGroundSlope(v);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llList2Vector(l, i);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llRot2Axis(r);
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llRot2Euler(r);
+//          ^^^^^^^^^^^ support.function.builtin.vector
+        v = llRot2Fwd(r);
+//          ^^^^^^^^^ support.function.builtin.vector
+        v = llRot2Left(r);
+//          ^^^^^^^^^^ support.function.builtin.vector
+        v = llRot2Up(r);
+//          ^^^^^^^^ support.function.builtin.vector
+        v = llVecNorm(v);
+//          ^^^^^^^^^ support.function.builtin.vector
+        v = llWind(v);
+//          ^^^^^^ support.function.builtin.vector
+    }
+}

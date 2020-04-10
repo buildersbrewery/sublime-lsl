@@ -1,3 +1,8 @@
+---
+name: Issue template
+about: Please use this to report an issue.
+---
+
 ## Short and descriptive title
 
 Any other information you want to share that is relevant to the issue being reported.
@@ -37,7 +42,7 @@ Description ...
 
 ```text
 Sublime Text:
-  build: 4068
+  build: 4073
   channel: dev
     portable: true
   platform: windows x64
@@ -47,15 +52,15 @@ Packages:
         version: 6.0.0
         installed via Package Control: True
     Package Control: 3.3.0
-    PackageDev: 3.2.9
+    PackageDev: 3.2.16
 
 Dependencies:
-    SublimeLinter: 4.11.3
+    SublimeLinter: 4.14.0
     markupsafe: 1.1.1
-    mdpopups: 3.4.0
+    mdpopups: 3.6.0
     pygments: 2.0.2
-    python-jinja2: 2.10.11
-    python-markdown: 2.6.11
+    python-jinja2: 2.10.1
+    python-markdown: 3.1.1
     pyyaml: 5.1.1
     ruamel-yaml: 1.2.0
     sublime_lib: 1.4.0
