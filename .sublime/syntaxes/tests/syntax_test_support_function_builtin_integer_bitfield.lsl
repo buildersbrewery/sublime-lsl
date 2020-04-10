@@ -19,6 +19,14 @@ default
 
         i = llGetAgentInfo(k);
 //          ^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
+        i = llGetInventoryPermMask(s, i);
+//          ^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
+        i = llGetObjectPermMask(i);
+//          ^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
+        i = llGetParcelFlags(v);
+//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
+        i = llGetRegionFlags();
+//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
         i = llGetPermissions();
 //          ^^^^^^^^^^^^^^^^ support.function.builtin.integer.bitfield
     }

@@ -22,5 +22,7 @@ default
 //          ^^^^^^^^^^^^^^ support.function.builtin.integer.status
         i = llSetPrimMediaParams(i, l);
 //          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer.status
+        i = llSitOnLink(k, i);
+//          ^^^^^^^^^^^ support.function.builtin.integer.status
     }
 }

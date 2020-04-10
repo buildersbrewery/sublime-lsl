@@ -27,6 +27,8 @@ default
 //          ^^^^^^^^^^^^ support.function.builtin.integer.boolean
         i = llSameGroup(k);
 //          ^^^^^^^^^^^ support.function.builtin.integer.boolean
+        i = llSetMemoryLimit(i);
+//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer.boolean
         i = llScriptDanger(v);
 //          ^^^^^^^^^^^^^^ support.function.builtin.integer.boolean
     }

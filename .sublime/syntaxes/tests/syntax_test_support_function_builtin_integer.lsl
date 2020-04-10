@@ -45,8 +45,6 @@ default
 //          ^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetInventoryNumber(i);
 //          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llGetInventoryPermMask(s, i);
-//          ^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetInventoryType(s);
 //          ^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetLinkNumberOfSides(i);
@@ -61,12 +59,8 @@ default
 //          ^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetNumberOfSides();
 //          ^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llGetObjectPermMask(i);
-//          ^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetObjectPrimCount(k);
 //          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llGetParcelFlags(v);
-//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetParcelMaxPrims(v, i);
 //          ^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetParcelPrimCount(v, i, i);
@@ -77,8 +71,6 @@ default
 //          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetRegionDayOffset();
 //          ^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llGetRegionFlags();
-//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetSPMaxMemory();
 //          ^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetStartParameter();
@@ -109,12 +101,8 @@ default
 //          ^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llSetAgentEnvironment(k, f, l);
 //          ^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llSetMemoryLimit(i);
-//          ^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llSetRegionPos(v);
 //          ^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llSitOnLink(k, i);
-//          ^^^^^^^^^^^ support.function.builtin.integer
         i = llStringLength(s);
 //          ^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llSubStringIndex(s, s);

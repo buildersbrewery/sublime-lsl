@@ -77,10 +77,10 @@ default
 //          ^^^^^^^^^^^^^^^^^^ support.function.builtin.key
         k = llRequestSimulatorData(s, i);
 //          ^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.key
-        k = llRequestUserKey(s);
-//          ^^^^^^^^^^^^^^^^ support.function.builtin.key
         k = llRequestURL();
 //          ^^^^^^^^^^^^ support.function.builtin.key
+        k = llRequestUserKey(s);
+//          ^^^^^^^^^^^^^^^^ support.function.builtin.key
         k = llRequestUsername(k);
 //          ^^^^^^^^^^^^^^^^^ support.function.builtin.key
         k = llSendRemoteData(k, s, i, s);

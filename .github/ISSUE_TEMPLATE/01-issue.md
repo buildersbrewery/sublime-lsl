@@ -42,7 +42,7 @@ Description ...
 
 ```text
 Sublime Text:
-  build: 4073
+  build: 4068
   channel: dev
     portable: true
   platform: windows x64
