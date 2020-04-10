@@ -55,3 +55,10 @@ def plugin_loaded():
     linter.plugin_loaded()
     tooltips.plugin_loaded()
     window_commands.plugin_loaded()
+
+
+def plugin_unloaded():
+    keyword_data_loader.plugin_unloaded()
+    linter.plugin_unloaded()
+    tooltips.plugin_unloaded()
+    window_commands.plugin_unloaded()

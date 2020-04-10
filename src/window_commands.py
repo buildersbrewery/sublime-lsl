@@ -66,6 +66,12 @@ def plugin_loaded(reload=False):
         status_msg('Reloaded settings on change.')
 
 
+def plugin_unloaded():
+
+    global settings
+    settings.clear_on_change('reload')
+
+
 # TODO: add type hints
 class LslChangeSchemeCommand(sublime_plugin.WindowCommand):
 

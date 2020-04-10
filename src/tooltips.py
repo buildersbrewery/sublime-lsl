@@ -22,6 +22,15 @@ def plugin_loaded():
     WIKIPEDIA = 'https://en.wikipedia.org/wiki/'
 
 
+def plugin_unloaded():
+
+    global SL_WIKI
+    global WIKIPEDIA
+
+    SL_WIKI = None
+    WIKIPEDIA = None
+
+
 # TODO: add type hints
 class LslTooltips(sublime_plugin.EventListener):
 

@@ -2842,7 +2842,7 @@ VEHICLE_FLAG_NO_DEFLECTION_UP:
       - LSL_Integer
       - LSL_Integer/bit_mask
       - LSL_Vehicle
-  scope: constant.language.integer
+  scope: constant.language.integer.bit_field.bit_mask
   type: integer
   value: 1
   value_description: '0x1'
@@ -8337,7 +8337,7 @@ LINK_ROOT:
       - LSL_Link
       - LSL_Link_Message
   scope: constant.language.integer
-  type: integer
+  type: integer.link
   value: 1
 LINK_SET:
   description: |-
@@ -8372,7 +8372,7 @@ LINK_SET:
       - LSL_Link
       - LSL_Link_Message
   scope: constant.language.integer
-  type: integer
+  type: integer.link
   value: -1
 LINK_ALL_OTHERS:
   description: |-
@@ -8408,7 +8408,7 @@ LINK_ALL_OTHERS:
       - LSL_Link
       - LSL_Link_Message
   scope: constant.language.integer
-  type: integer
+  type: integer.link
   value: -2
 LINK_ALL_CHILDREN:
   description: |-
@@ -8444,7 +8444,7 @@ LINK_ALL_CHILDREN:
       - LSL_Link
       - LSL_Link_Message
   scope: constant.language.integer
-  type: integer
+  type: integer.link
   value: -3
 LINK_THIS:
   description: Passed to various link functions to modify only the calling block
@@ -8479,7 +8479,7 @@ LINK_THIS:
       - LSL_Link
       - LSL_Link_Message
   scope: constant.language.integer
-  type: integer
+  type: integer.link
   value: -4
   version: '1.6.0'
 TYPE_INVALID:
@@ -8500,7 +8500,7 @@ TYPE_INVALID:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 0
 TYPE_INTEGER:
   description: Indicates that the list entry is holding an integer
@@ -8520,7 +8520,7 @@ TYPE_INTEGER:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 1
 TYPE_FLOAT:
   description: Indicates that the list entry is holding an float
@@ -8540,7 +8540,7 @@ TYPE_FLOAT:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 2
 TYPE_STRING:
   description: Indicates that the list entry is holding an string
@@ -8560,7 +8560,7 @@ TYPE_STRING:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 3
 TYPE_KEY:
   description: Indicates that the list entry is holding an key
@@ -8580,7 +8580,7 @@ TYPE_KEY:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 4
 TYPE_VECTOR:
   description: Indicates that the list entry is holding an vector
@@ -8600,7 +8600,7 @@ TYPE_VECTOR:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 5
 TYPE_ROTATION:
   description: Indicates that the list entry is holding an rotation
@@ -8620,7 +8620,7 @@ TYPE_ROTATION:
       - LSL_Integer/type/Values
       - LSL_List/Entry_Types
   scope: constant.language.integer
-  type: integer
+  type: integer.type
   value: 6
 REMOTE_DATA_CHANNEL:
   description: |-
@@ -9608,7 +9608,7 @@ PRIM_LINK_TARGET:
     affected. Compatible with all PrimitiveParams functions.
   params:
     - name: link_target
-      type: integer
+      type: integer.link
   related:
     functions:
       - llGetLinkNumber
@@ -21761,7 +21761,7 @@ PASS_IF_NOT_HANDLED:
       - LSL_Integer
       - LSL_Passable
   scope: constant.language.integer
-  type: integer
+  type: integer.pass
   usage:
     - llPassCollisions(integer pass);
     - llPassCollisions(PASS_IF_NOT_HANDLED);
@@ -21793,7 +21793,7 @@ PASS_ALWAYS:
       - LSL_Integer
       - LSL_Passable
   scope: constant.language.integer
-  type: integer
+  type: integer.pass
   usage:
     - llPassCollisions(integer pass);
     - llPassCollisions(PASS_ALWAYS);
@@ -21824,7 +21824,7 @@ PASS_NEVER:
       - LSL_Integer
       - LSL_Passable
   scope: constant.language.integer
-  type: integer
+  type: integer.pass
   usage:
     - llPassCollisions(integer pass);
     - llPassCollisions(PASS_NEVER);
@@ -24691,7 +24691,10 @@ state:
       }
 # invalid.deprecated
 ATTACH_LPEC:
-  description: Use ATTACH_LEFT_PEC instead.
+  description: |-
+    DEPRECATED
+
+    Use ATTACH_LEFT_PEC instead.
   related:
     constants:
       - ATTACH_LEFT_PEC
@@ -24702,7 +24705,10 @@ ATTACH_LPEC:
     - llAttachToAvatar(ATTACH_LEFT_PEC); // Use ATTACH_LEFT_PEC instead.
   value: 30
 ATTACH_RPEC:
-  description: Use ATTACH_RIGHT_PEC instead.
+  description: |-
+    DEPRECATED
+
+    Use ATTACH_RIGHT_PEC instead.
   related:
     constants:
       - ATTACH_RIGHT_PEC
@@ -24714,6 +24720,8 @@ ATTACH_RPEC:
   value: 29
 DATA_RATING:
   description: |-
+    DEPRECATED
+
     Passed to llRequestAgentData to get a comma separated sting of integer
     ratings.
 
@@ -24733,7 +24741,10 @@ DATA_RATING:
   value: 4
   version: '1.1.0'
 LAND_LARGE_BRUSH:
-  description: Use 2 for an 8x8 brush instead.
+  description: |-
+    DEPRECATED (wrong value)
+
+    Use 2 for an 8x8 brush instead.
   related:
     constants:
       - LAND_LEVEL
@@ -24756,7 +24767,10 @@ LAND_LARGE_BRUSH:
     - llModifyLand(LAND_RAISE, 2); // use instead for 8x8 brush
   value: 3
 LAND_MEDIUM_BRUSH:
-  description: Use 1 for a 4x4 brush instead.
+  description: |-
+    DEPRECATED (wrong value)
+
+    Use 1 for a 4x4 brush instead.
   related:
     constants:
       - LAND_LEVEL
@@ -24779,7 +24793,10 @@ LAND_MEDIUM_BRUSH:
     - llModifyLand(LAND_RAISE, 1); // use instead for 4x4 brush
   value: 2
 LAND_SMALL_BRUSH:
-  description: Use 0 for a 2x2 brush instead.
+  description: |-
+    DEPRECATED (wrong value)
+
+    Use 0 for a 2x2 brush instead.
   related:
     constants:
       - LAND_LEVEL
@@ -24803,9 +24820,11 @@ LAND_SMALL_BRUSH:
   value: 1
 PRIM_MATERIAL_LIGHT:
   description: |-
-    Sets material to light.
+    DEPRECATED
 
-    DEPRECATED - use PRIM_FULLBRIGHT instead.
+    Use PRIM_FULLBRIGHT instead.
+
+    Sets material to light.
   related:
     constants:
       - ALL_SIDES
@@ -24824,9 +24843,11 @@ PRIM_MATERIAL_LIGHT:
   value: 7
 PRIM_TYPE_LEGACY:
   description: |-
-    Sets the prim's shape.
+    DEPRECATED
 
-    DEPRECATED - use PRIM_TYPE instead.
+    Use PRIM_TYPE instead.
+
+    Sets the prim's shape.
   related:
     constants:
       - PRIM_TYPE
@@ -24841,7 +24862,10 @@ PRIM_TYPE_LEGACY:
   type: integer
   value: 1
 PSYS_SRC_INNERANGLE:
-  description: Deprecated -- Use PSYS_SRC_ANGLE_BEGIN instead.
+  description: |-
+    DEPRECATED
+
+    Use PSYS_SRC_ANGLE_BEGIN instead.
   related:
     constants:
       - PSYS_SRC_ANGLE_BEGIN
@@ -24855,7 +24879,10 @@ PSYS_SRC_INNERANGLE:
     - PSYS_SRC_ANGLE_BEGIN // use instead
   value: 10
 PSYS_SRC_OUTERANGLE:
-  description: Deprecated -- Use PSYS_SRC_ANGLE_END
+  description: |-
+    DEPRECATED
+
+    Use PSYS_SRC_ANGLE_END
   related:
     constants:
       - PSYS_SRC_ANGLE_END
@@ -24869,7 +24896,10 @@ PSYS_SRC_OUTERANGLE:
     - PSYS_SRC_ANGLE_END // use instead
   value: 11
 VEHICLE_FLAG_NO_FLY_UP:
-  description: DEPRECATED - use VEHICLE_FLAG_NO_DEFLECTION_UP
+  description: |-
+    DEPRECATED
+
+    Use VEHICLE_FLAG_NO_DEFLECTION_UP.
   related:
     constants:
       - VEHICLE_FLAG_NO_DEFLECTION_UP
@@ -24892,7 +24922,10 @@ VEHICLE_FLAG_NO_FLY_UP:
   version: '1.1.0'
 llMakeExplosion:
   delay: 0.1
-  description: (DEPRECATED) Makes a round explosion of particles
+  description: |-
+    DEPRECATED
+
+    Makes a round explosion of particles.
   function-id: 100
   params:
     - name: particles
@@ -24913,7 +24946,10 @@ llMakeExplosion:
   status: deprecated
 llMakeFire:
   delay: 0.1
-  description: (DEPRECATED) Makes fire like particles
+  description: |-
+    DEPRECATED
+
+    Makes fire like particles.
   function-id: 103
   params:
     - name: particles
@@ -24934,7 +24970,10 @@ llMakeFire:
   status: deprecated
 llMakeFountain:
   delay: 0.1
-  description: (DEPRECATED) Makes a fountain of particles
+  description: |-
+    DEPRECATED
+
+    Makes a fountain of particles.
   function-id: 101
   params:
     - name: particles
@@ -24959,7 +24998,10 @@ llMakeFountain:
   status: deprecated
 llMakeSmoke:
   delay: 0.1
-  description: (DEPRECATED) Makes smoke like particles
+  description: |-
+    DEPRECATED
+
+    Makes smoke like particles.
   function-id: 102
   params:
     - name: particles
@@ -24980,7 +25022,10 @@ llMakeSmoke:
   status: deprecated
 llRemoteDataSetRegion:
   description: |-
-      DEPRECATED! Please use llOpenRemoteDataChannel instead.
+      DEPRECATED
+
+      Use llOpenRemoteDataChannel instead.
+
       If an object using remote data channels changes regions, you must call
       this function to reregister the remote data channels. This call is not
       needed if the prim does not change regions.
@@ -24989,9 +25034,11 @@ llRemoteDataSetRegion:
   status: deprecated
 llSound:
   description: |-
-    Plays sound at volume and whether it should loop or not.
+    DEPRECATED
 
-    DEPRECATED -- Use llPlaySound / llLoopSound / llSetSoundQueueing instead.
+    Use llPlaySound / llLoopSound / llSetSoundQueueing instead.
+
+    Plays sound at volume and whether it should loop or not.
   function-id: 85
   params:
     - name: sound
@@ -25007,9 +25054,11 @@ llSound:
   version: '0.1.0'
 llSoundPreload:
   description: |-
-    Preloads a sound on viewers within range.
+    DEPRECATED
 
-    DEPRECATED -- Use llPreloadSound instead.
+    Use llPreloadSound instead.
+
+    Preloads a sound on viewers within range.
   function-id: 126
   params:
     - name: sound
@@ -25019,11 +25068,13 @@ llSoundPreload:
 llXorBase64Strings:
   delay: 0.3
   description: |-
+      DEPRECATED
+
+      Use llXorBase64 instead.
+
       Incorrectly performs an exclusive or on two Base64 strings and returns a
       Base64 string. str2 repeats if it is shorter than str1. Retained for
       backwards compatability.
-
-      DEPRECATED -- Please use llXorBase64 instead.
   function-id: 262
   params:
     - name: str1
@@ -25036,11 +25087,13 @@ llXorBase64Strings:
   version: '1.3.0'
 llXorBase64StringsCorrect:
   description: |-
+      DEPRECATED
+
+      Use llXorBase64 instead.
+
       Incorrectly performs an exclusive or on two Base64 strings and returns a
       Base64 string. str2 repeats if it is shorter than str1. Retained for
       backwards compatability.
-
-      DEPRECATED -- Please use llXorBase64 instead.
   function-id: 319
   params:
     - name: str1
@@ -25053,7 +25106,10 @@ llXorBase64StringsCorrect:
   version: '1.9.0(21)'
 # invalid.illegal
 KFM_CMD_SET_MODE:
-  description: This constant has no use for keyframed motion.
+  description: |-
+    ILLEGAL
+
+    This constant has no use for keyframed motion.
   scope: invalid.illegal
   status: illegal
   type: integer
@@ -25121,6 +25177,8 @@ PERMISSION_REMAP_CONTROLS:
   value_description: '0x8'
 PRIM_CAST_SHADOWS:
   description: |-
+    ILLEGAL / UNIMPLEMENTED
+
     Takes 1 parameter, an integer, but has no effect when set and always returns
     0 if used in llGetPrimitiveParams.
   scope: invalid.illegal.unimplemented
@@ -25137,7 +25195,10 @@ PSYS_SRC_OBJ_REL_MASK:
   type: integer
   value: 1
 STATUS_CAST_SHADOWS:
-  description: If TRUE, object casts shadows on other objects.
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    If TRUE, object casts shadows on other objects.
   params:
     - default: 'FALSE'
       name: boolean
@@ -25176,6 +25237,8 @@ llClearExperiencePermissions:
   version: '14.07.18.292162'
 llCloud:
   description: |-
+    ILLEGAL / UNIMPLEMENTED
+
     Returns the cloud density at the object position + offset.
     Always returns 0.0 now.
   function-id: 43
@@ -25187,6 +25250,8 @@ llCloud:
   type: float
 llCollisionSprite:
   description: |-
+    ILLEGAL / UNIMPLEMENTED
+
     Suppresses default collision sprites, replaces default impact sprite
     with impact_sprite (use an empty string to just suppress)
   function-id: 161
@@ -25205,7 +25270,10 @@ llGetExperienceList:
   type: list
   version: '14.07.18.292162'
 llPointAt:
-  description: Makes agent that owns object point at pos
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Makes agent that owns object point at pos
   function-id: 131
   params:
     - name: pos
@@ -25214,12 +25282,18 @@ llPointAt:
   status: unimplemented
 llRefreshPrimURL:
   delay: 20.0
-  description: Reloads the web page shown on the sides of the object
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Reloads the web page shown on the sides of the object
   function-id: 306
   scope: invalid.illegal.unimplemented
   status: unimplemented
 llReleaseCamera:
-  description: Returns camera to agent avatar
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Returns camera to agent avatar
   function-id: 116
   params:
     - name: avatar
@@ -25228,7 +25302,10 @@ llReleaseCamera:
   status: unimplemented
 llRemoteLoadScript:
   delay: 3.0
-  description: Use llRemoteLoadScriptPin instead.
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Use llRemoteLoadScriptPin instead.
   function-id: 251
   params:
     - name: target
@@ -25244,6 +25321,8 @@ llRemoteLoadScript:
 llSetPrimURL:
   delay: 20.0
   description: |-
+    ILLEGAL / UNIMPLEMENTED
+
     Updates the URL for the web page shown on the sides of the object
   function-id: 305
   params:
@@ -25252,12 +25331,18 @@ llSetPrimURL:
   scope: invalid.illegal.unimplemented
   status: unimplemented
 llStopPointAt:
-  description: Stops pointing agent that owns object
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Stops pointing agent that owns object
   function-id: 132
   scope: invalid.illegal.unimplemented
   status: unimplemented
 llTakeCamera:
-  description: Moves avatar's viewpoint to task
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Moves avatar's viewpoint to task
   function-id: 115
   params:
     - name: avatar
@@ -26349,7 +26434,7 @@ llShout:
 llListen:
   description: |-
     Sets a callback for msg on channel from name and id (name, id, and/or
-    msg can be empty) and returns an identifier that can be used to deactivate
+    msg can be empty) and returns an ID that can be used to deactivate
     or remove the listen
   function-id: 25
   params:
@@ -26397,7 +26482,7 @@ llListen:
       - LSL_Group
       - LSL_Error
   scope: support.function.builtin
-  type: integer
+  type: integer.handle
 llListenControl:
   description: Makes a listen event callback active or inactive
   function-id: 26
@@ -27025,7 +27110,7 @@ llDetectedLinkNumber:
       - LSL_Sensor
       - LSL_Touch
   scope: support.function.builtin
-  type: integer
+  type: integer.link
 llDie:
   description: Deletes the object
   function-id: 41
@@ -27865,7 +27950,7 @@ llGetForce:
   type: vector
 llTarget:
   description: |-
-    Sets positions within range of position as a target and return an
+    Sets positions within range of position as a target and returns an
     ID for the target
   function-id: 66
   params:
@@ -27895,7 +27980,7 @@ llTarget:
       - LSL_At_Target
       - LSL_Physics
   scope: support.function.builtin
-  type: integer
+  type: integer.handle
 llTargetRemove:
   description: Removes positional target handle registered with llTarget
   function-id: 67
@@ -27920,7 +28005,7 @@ llTargetRemove:
   scope: support.function.builtin
 llRotTarget:
   description: |-
-    Set rotations with error of rot as a rotational target and return
+    Set rotations with error of rot as a rotational target and returns
     an ID for the rotational target
   function-id: 68
   params:
@@ -27949,7 +28034,7 @@ llRotTarget:
       - LSL_Physics
       - LSL_Stop
   scope: support.function.builtin
-  type: integer
+  type: integer.handle
 llRotTargetRemove:
   description: Removes rotational target handle registered with llRotTarget
   function-id: 69
@@ -29542,7 +29627,7 @@ llSetLinkColor:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars) or a LINK_* flag
       name: linknumber
-      type: integer
+      type: integer.link
     - description: color in decimal RGB
       name: color
       type: vector
@@ -29646,7 +29731,7 @@ llBreakLink:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars)
       name: linknum
-      type: integer
+      type: integer.link
   related:
     constants:
       - PERMISSION_CHANGE_LINKS
@@ -29716,7 +29801,7 @@ llGetLinkKey:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars) or a LINK_* flag
       name: linknumber
-      type: integer
+      type: integer.link
   related:
     constants:
       - LINK_ROOT
@@ -29747,7 +29832,7 @@ llGetLinkName:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars) or a LINK_* flag
       name: linknumber
-      type: integer
+      type: integer.link
   related:
     constants:
       - LINK_ROOT
@@ -30019,7 +30104,7 @@ llPassTouches:
     - default: PASS_ALWAYS
       description: PASS_* flag
       name: pass
-      type: integer
+      type: integer.pass
   related:
     constants:
       - PASS_IF_NOT_HANDLED
@@ -30312,7 +30397,7 @@ llMessageLinked:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: linknum
-      type: integer
+      type: integer.link
     - description: number value to be transmitted
       name: num
       type: integer
@@ -30396,7 +30481,7 @@ llPassCollisions:
   params:
     - description: PASS_* flag
       name: pass
-      type: integer
+      type: integer.pass
   related:
     constants:
       - PASS_IF_NOT_HANDLED
@@ -31095,7 +31180,7 @@ llGetListEntryType:
       - LSL_List
       - LSL_List/Entry_Types
   scope: support.function.builtin
-  type: integer
+  type: integer.type
 llList2CSV:
   description: Creates a string of comma separated values from list
   function-id: 195
@@ -31656,7 +31741,7 @@ llOverMyLand:
       - LSL_Parcel
       - LSL_Security
   scope: support.function.builtin
-  type: integer
+  type: integer.boolean
   version: '0.6.0'
 llGetLandOwnerAt:
   description: Returns the key of the land owner, returns NULL_KEY if public
@@ -33257,7 +33342,7 @@ llSetLinkAlpha:
         link number (0 unlinked, 1 root, >1 child prims and seated avataras)
         or a LINK_* flag
       name: linknumber
-      type: integer
+      type: integer.link
     - description: in range [0.0, 1.0] from transparent to opaque
       name: alpha
       type: float
@@ -34438,8 +34523,8 @@ llGetUnixTime:
   version: '1.9.0(15)'
 llGetParcelFlags:
   description: |-
-    Returns a bit_field of the parcel flags (PARCEL_FLAG_*) for the parcel
-    that includes the point pos
+    Returns an integer bit_field of the parcel flags (PARCEL_FLAG_*) for the
+    parcel that includes the point pos
   function-id: 317
   params:
     - name: pos
@@ -34726,7 +34811,7 @@ llSetLinkPrimitiveParams:
   function-id: 328
   params:
     - name: linknumber
-      type: integer
+      type: integer.link
     - name: rules
       type: list
   related:
@@ -34820,7 +34905,7 @@ llSetLinkTexture:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars) or a LINK_* flag
       name: linknumber
-      type: integer
+      type: integer.link
     - description: |-
         a texture in the inventory of the prim this script is in or a
         UUID of a texture
@@ -35734,7 +35819,7 @@ llSetPrimMediaParams:
       - LSL_Media
       - Shared_Media
   scope: support.function.builtin
-  type: integer
+  type: integer.status
 llGetPrimMediaParams:
   delay: 1.0
   description: |-
@@ -35821,13 +35906,13 @@ llClearPrimMedia:
       - LSL_Prim_Media
       - LSL_Media
   scope: support.function.builtin
-  type: integer
+  type: integer.status
 llSetLinkPrimitiveParamsFast:
   description: Set primitive parameters for linknumber based on rules
   function-id: 353
   params:
     - name: linknumber
-      type: integer
+      type: integer.link
     - name: rules
       type: list
   related:
@@ -35913,7 +35998,7 @@ llGetLinkPrimitiveParams:
   function-id: 354
   params:
     - name: linknumber
-      type: integer
+      type: integer.link
     - name: rules
       type: list
   related:
@@ -36002,7 +36087,7 @@ llLinkParticleSystem:
   function-id: 355
   params:
     - name: linknumber
-      type: integer
+      type: integer.link
     - name: rules
       type: list
   related:
@@ -36103,7 +36188,7 @@ llSetLinkTextureAnim:
         link number (0 unlinked, 1 root prim, >1 child prims and seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: bit-field of mode flags
       name: mode
       type: integer.bit_field
@@ -36171,7 +36256,7 @@ llGetLinkNumberOfSides:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
   related:
     constants:
       - LINK_ROOT
@@ -36447,13 +36532,12 @@ llSitOnLink:
       - Experience_Tools
       - LSL_Experience
   scope: support.function.builtin
-  type: integer
+  type: integer.status
 llSetMemoryLimit:
   description: |-
       Request limit bytes to be reserved for this script.
-      Returns a success/failure flag (STATUS_OK when sucessful, another of the
-      STATUS_* flags on failure) for whether the memory limit was set. Only
-      relevant for Mono-compiled scripts.
+      Returns a success/failure flag for whether the memory limit was set.
+      Only relevant for Mono-compiled scripts.
   params:
     - name: limit
       type: integer
@@ -36514,7 +36598,7 @@ llSetLinkMedia:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: face number
       name: face
       type: integer
@@ -36579,7 +36663,7 @@ llSetLinkMedia:
       - LSL_Link/Set
       - LSL_List/instructions
   scope: support.function.builtin
-  type: integer
+  type: integer.status
   version: '11.08.10.238207'
 llGetLinkMedia:
   description: |-
@@ -36591,7 +36675,7 @@ llGetLinkMedia:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: face number
       name: face
       type: integer
@@ -36659,7 +36743,7 @@ llClearLinkMedia:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: face number
       name: face
       type: integer
@@ -36703,7 +36787,7 @@ llClearLinkMedia:
       - LSL_Media
       - LSL_List/instructions
   scope: support.function.builtin
-  type: integer
+  type: integer.status
   version: '11.08.10.238207'
 llSetLinkCamera:
   description: |-
@@ -36715,7 +36799,7 @@ llSetLinkCamera:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: |-
         offset relateive to the prim's position and expressed in local
         coordinates
@@ -36808,7 +36892,7 @@ llLinkSitTarget:
         link number (0 unlinked, 1 root prim, >1 child prims or seated
         avatars) or a LINK_* flag
       name: link
-      type: integer
+      type: integer.link
     - description: |-
         additional position for the sit target in local prim coordinates
       name: offset
@@ -36862,7 +36946,7 @@ llAvatarOnLinkSitTarget:
     NULL_KEY otherwise
   params:
     - name: link
-      type: integer
+      type: integer.link
   related:
     constants:
       - CHANGED_LINK
@@ -39645,7 +39729,7 @@ link_message:
     - name: sender_num
       type: integer
     - name: num
-      type: integer
+      type: integer.link
     - name: str
       type: string
     - name: id

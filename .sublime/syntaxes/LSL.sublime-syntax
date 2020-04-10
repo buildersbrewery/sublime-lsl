@@ -88,14 +88,14 @@ variables:
     (?x:                                # ignore whitespace
       (?:\B[-+])?
       (?:
-        \b0b[0-1]*                      # binary
+        \b0[bB][0-1]*                      # binary
       )
     )
   invalid_illegal_constant_numeric_integer_octal: |-
     (?x:                                # ignore whitespace
       (?:\B[-+])?
       (?:
-        \b0o[0-7]*                        # octal
+        \b0[oO][0-7]*                        # octal
       )
     )
   reserved_godmode: |-
@@ -136,8 +136,7 @@ variables:
     )
   constant_language_float: |-
     (?x:                                # ignore whitespace
-      PI|
-      TWO_PI|
+      (?:TWO_)?PI|
       PI_BY_TWO|
       DEG_TO_RAD|
       RAD_TO_DEG|
@@ -577,9 +576,6 @@ variables:
         )|
         BANKING_(?:EFFICIENCY|MIX|TIMESCALE)|
         BUOYANCY|
-        FLAG_(?:
-          NO_DEFLECTION_UP
-        )|
         HOVER_(?:HEIGHT|EFFICIENCY|TIMESCALE)|
         LINEAR_MOTOR_OFFSET|
         REFERENCE_FRAME|
@@ -660,7 +656,8 @@ variables:
         CAMERA_DECOUPLED|
         HOVER_(?:(?:WATER|TERRAIN|UP)_ONLY|GLOBAL_HEIGHT)|
         LIMIT_(?:MOTOR_UP|ROLL_ONLY)|
-        MOUSELOOK_(?:BANK|STEER)
+        MOUSELOOK_(?:BANK|STEER)|
+        NO_DEFLECTION_UP
       )
     )
   constant_language_integer_boolean: |-
@@ -743,27 +740,257 @@ variables:
         \b0                               # e.g. 0
       )
     )
+  function_builtin_float: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        A(?:cos|sin)|
+        AngleBetween|
+        Atan2|
+        Cos|
+        Fabs|
+        Frand|
+        Get(?:
+          Alpha|
+          Energy|
+          GMTclock|
+          (?:Object)?Mass|
+          Region(?:FPS|TimeDilation)|
+          (?:AndReset)?Time|
+          TimeOfDay|
+          Wallclock
+        )|
+        Ground|
+        List(?:2Float|Statistics)|
+        Log(?:10)?|
+        Pow|
+        Rot2Angle|
+        Sqrt|
+        Tan|
+        Vec(?:Mag|Dist)|
+        Water
+      )
+    )
+  function_builtin_integer: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Abs|
+        Base64ToInteger|
+        Ceil|
+        Detected(?:
+          Group|
+          TouchFace|
+          Type
+        )|
+        Floor|
+        Get(?:
+          (?:SPMax|Free|Used)Memory|
+          Attached|
+          FreeURLs|
+          Inventory(?:Number|Type)|
+          LinkNumberOfSides|
+          List(?:EntryType|Length)|
+          MemoryLimit|
+          NumberOf(?:NotecardLines|Prims|Sides)|
+          ObjectPrimCount|
+          Parcel(?:MaxPrims|PrimCount)|
+          RegionAgentCount|
+          StartParameter|
+          UnixTime
+        )|
+        GiveMoney|
+        List(?:2Integer|FindList)|
+        ModPow|
+        Round|
+        StringLength|
+        SubStringIndex
+      )
+    )
+  function_builtin_integer_boolean: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        EdgeOfWorld|
+        Get(?:
+          ScriptState|
+          Status
+        )|
+        OverMyLand|
+        SameGroup|
+        SetMemoryLimit|
+        ScriptDanger
+      )
+    )
+  function_builtin_integer_bitfield: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Get(?:
+          AgentInfo|
+          (?:Inventory|Object)PermMask|
+          (?:Parcel|Region)Flags|
+          Permissions
+        )
+      )
+    )
+  function_builtin_integer_handle: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Listen|
+        (?:Rot)?Target
+      )
+    )
+  function_builtin_integer_link: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        (?:Detected|Get)LinkNumber
+      )
+    )
+  function_builtin_integer_status: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Clear(?:Link|Prim)Media|
+        Set(?:LinkMedia|PrimMediaParams)|
+        SitOnLink
+      )
+    )
+  function_builtin_key: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        AvatarOn(?:Link)?SitTarget|
+        Detected(?:Key|Owner)|
+        Get(?:
+          (?:Inventory)?Creator|
+          (?:Inventory|Link)Key|
+          LandOwnerAt|
+          NotecardLine|
+          Owner(?:Key)?|
+          PermissionsKey
+        )|
+        HTTPRequest|
+        List2Key|
+        Request(?:
+          DisplayName|
+          (?:Agent|Inventory|Simulator)Data|
+          (?:Secure)?URL|
+          Username
+        )|
+        SendRemoteData
+      )
+    )
+  function_builtin_list: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        (?:CSV|ParseString)2List|
+        DeleteSubList|
+        Get(?:
+          AnimationList|
+          BoundingBox|
+          Link(?:Media|PrimitiveParams)|
+          ObjectDetails|
+          Parcel(?:Details|PrimOwners)|
+          PrimMediaParams|
+          PrimitiveParams
+        )|
+        List(?:2List(?:Strided)?|InsertList|Randomize|ReplaceList|Sort)|
+        ParcelMediaQuery|
+        ParseStringKeepNulls
+      )
+    )
+  function_builtin_rotation: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        (?:Axes|Euler)2Rot|
+        AxisAngle2Rot|
+        Get(?:
+          (?:Camera|Local)?Rot|
+          RootRotation
+        )|
+        List2Rot|
+        DetectedRot|
+        RotBetween|
+        TextureRot
+      )
+    )
+  function_builtin_string: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Base64ToString|
+        (?:(?:Delete|Get)Sub|DumpList2|Insert|MD5|SHA1)String|
+        DetectedName|
+        (?:E|Une)scapeURL|
+        Get(?:
+          AgentLanguage|
+          Animation|
+          Date|
+          DisplayName|
+          Env|
+          HTTPHeader|
+          (?:Inventory|Link|Object|Script)Name|
+          ObjectDesc|
+          RegionName|
+          SimulatorHostname|
+          Texture|
+          Timestamp|
+          Username
+        )|
+        (?:Integer|String)ToBase64|
+        Key2Name|
+        List2(?:CSV|String)|
+        StringTrim|
+        To(?:Upper|Lower)
+      )
+    )
+  function_builtin_vector: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        Detected(?:
+          Grab|
+          Pos|
+          Touch(?:
+            UV|
+            Pos|
+            (?:N|Bin)ormal|
+            ST
+          )|
+          Vel
+        )|
+        Get(?:
+          Accel|
+          AgentSize|
+          (?:Camera|Local)?Pos|
+          CenterOfMass|
+          Color|
+          Force|
+          GeometricCenter|
+          Omega|
+          (?:Region)?(?:Moon|Sun)Direction|
+          RegionCorner|
+          RootPosition|
+          Scale|
+          Texture(?:Offset|Scale)|
+          Torque|
+          Vel
+        )|
+        Ground(?:Normal|Contour|Slope)|
+        List2Vector|
+        Rot2(?:Axis|Euler|Fwd|Left|Up)|
+        VecNorm|
+        Wind
+      )
+    )
   function_builtin: |-
     (?x:                                # ignore whitespace
       ll(?:
-        (?:(?:Delete|Get)Sub|Insert|MD5|SHA1|DumpList2)String|
-        (?:AvatarOn)?(?:Link)?SitTarget|
-        (?:CSV|ParseString)2List|
+        (?:Link)?SitTarget|
         (?:Break|Create)Link|
         (?:Create|DataSize|Delete|KeyCount|Keys|Read|Update)KeyValue|
         (?:Create|Delete)Character|
-        (?:Axes|Euler)2Rot|
         (?:GetNext)?Email|
-        (?:Get|Request)(?:Username|DisplayName)|
-        (?:Get|Reset|GetAndReset)Time|
         (?:Give|Remove)Inventory|
-        (?:Integer|String)ToBase64|
         (?:Link)?ParticleSystem|
-        (?:Load|Release|(?:E|Une)scape)URL|
+        (?:Load|Release)URL|
         (?:Open|Close)RemoteDataChannel|
         (?:Region|Owner)?Say|
         (?:AddTo|RemoveFrom|Reset)Land(?:Ban|Pass)List|
-        (?:Rot)?Target(?:Remove)?|
+        (?:Rot)?TargetRemove|
         (?:Scale|Offset|Rotate)Texture|
         (?:Clear|Set)CameraParams|
         (?:Remove|Set)VehicleFlags|
@@ -773,160 +1000,91 @@ variables:
         (?:Take|Release)Controls|
         (?:Trigger|Stop|Preload)Sound|
         (?:[GS]et)(?:
-          Alpha|
           AnimationOverride|
-          Color|
-          Force|
-          MemoryLimit|
-          Object(?:Desc|Name)|
           ParcelMusicURL|
-          PhysicsMaterial|
-          Pos|
-          PrimMediaParams|
-          Rot|
-          Scale|
-          Status|
-          Texture|
-          Torque
+          PhysicsMaterial
         )|
-        A(?:cos|sin)|
-        Abs|
         AdjustSoundVolume|
         AgentInExperience|
         AllowInventoryDrop|
-        AngleBetween|
         Apply(?:Rotational)?Impulse|
-        Atan2|
         AttachToAvatar(?:Temp)?|
-        AxisAngle2Rot|
-        Base64To(?:String|Integer)|
         BreakAllLinks|
         CastRay|
-        Ceil|
-        Clear(?:Prim|Link)Media|
         Collision(?:Filter|Sound)|
-        Cos|
-        DeleteSubList|
         DetachFromAvatar|
-        Detected(?:Name|Key|Owner|Type|Pos|Vel|Grab|Rot|Group|LinkNumber)|
-        DetectedTouch(?:UV|Face|Pos|(?:N|Bin)ormal|ST)|
         Dialog|
         Die|
-        EdgeOfWorld|
         EjectFromLand|
         Evade|
         ExecCharacterCmd|
-        Fabs|
         FleeFrom|
-        Floor|
         ForceMouselook|
-        Frand|
         GenerateKey|
         Get(?:
-          (?:Camera|Local)(?:Pos|Rot)|
           (?:Max|Min)ScaleFactor|
-          (?:Object|CenterOf)?Mass|
-          (?:Owner)?Key|
-          (?:Parcel|Region)Flags|
-          (?:SPMax|Free|Used)Memory|
-          (?:Wall|GMT)clock|
-          Accel|
-          Agent(?:Size|Info|Language|List)|
-          Animation(?:List)?|
-          Attached(?:List)?|
-          BoundingBox|
+          CenterOfMass|
+          AgentList|
+          AttachedList|
           ClosestNavPoint|
-          Creator|
-          Date|
-          Energy|
-          Env(?:ironment)?|
-          FreeURLs|
-          GeometricCenter|
-          HTTPHeader|
-          Inventory(?:Number|Name|Key|Type|Creator|PermMask)|
-          LandOwnerAt|
-          Link(?:PrimitiveParams|Number(?:OfSides)?|Key|Name|Media)|
-          List(?:Length|EntryType)|
+          Environment|
           MassMKS|
-          NotecardLine|
-          NumberOf(?:Prims|NotecardLines|Sides)|
-          Object(?:Details|PermMask|PrimCount)|
-          Omega|
-          Owner|
-          Parcel(?:MaxPrims|Details|Prim(?:Count|Owners))|
-          Permissions(?:Key)?|
-          PrimitiveParams|
-          Region(?:Name|Time(?:Dilation|OfDay)|FPS|Corner|AgentCount)|
-          (?:Region)?(?:Day(?:Length|Offset)|(?:Moon|Sun)(?:Direction|Rotation))|
-          Root(?:Position|Rotation)|
-          Script(?:Name|State)|
+          RegionTimeOfDay|
+          (?:Region)?(?:Day(?:Length|Offset)|(?:Moon|Sun)Rotation)|
+          Scale|
           SimStats|
-          SimulatorHostname|
-          StartParameter|
-          StaticPath|
-          Texture(?:Offset|Scale|Rot)|
-          Time(?:stamp|OfDay)|
-          UnixTime|
-          Vel
+          StaticPath
         )|
         GetExperience(?:Details|ErrorMessage)|
-        Give(?:InventoryList|Money)|
-        Ground(?:Normal|Contour|Repel|Slope)?|
-        HTTP(?:Request|Response)|
+        GiveInventoryList|
+        GroundRepel|
+        HTTPResponse|
         InstantMessage|
         Json(?:2List|[GS]etValue|ValueType)|
-        Key2Name|
-        List(?:Statistics|Sort|Randomize|(?:Insert|Find|Replace)List)|
-        List2(?:CSV|Integer|Json|Float|String|Key|Vector|Rot|List(?:Strided)?)|
-        Listen(?:Control|Remove)?|
-        Log(?:10)?|
+        List2Json|
+        Listen(?:Control|Remove)|
         LoopSound(?:Master|Slave)?|
         ManageEstateAccess|
         MapDestination|
         MessageLinked|
         MinEventDelay|
-        ModPow|
         ModifyLand|
         Name2Key|
         NavigateTo|
-        OverMyLand|
-        ParcelMedia(?:CommandList|Query)|
-        ParseStringKeepNulls|
+        ParcelMediaCommandList|
         Pass(?:Collisions|Touches)|
         PatrolPoints|
         PlaySound(?:Slave)?|
-        Pow|
         Pursue|
         PushObject|
         RegionSayTo|
         Remote(?:DataReply|LoadScriptPin)|
         ReplaceAgentEnvironment|
         Request(?:
-          (?:Agent|Inventory)Data|
+          InventoryData|
           (?:Experience)?Permissions|
-          (?:Secure)?URL|
-          SimulatorData|
           UserKey
         )|
         Reset(?:AnimationOverride|(?:Other)?Script)|
+        ResetTime|
         ReturnObjectsBy(?:ID|Owner)|
         Rez(?:AtRoot|Object)|
-        Rot(?:Between|LookAt|2(?:Axis|Angle|Euler|Fwd|Left|Up))|
-        Round|
-        SameGroup|
+        RotLookAt|
         ScaleByFactor|
-        Script(?:Danger|Profiler)|
-        SendRemoteData|
+        ScriptProfiler|
         Sensor(?:Repeat|Remove)?|
         Set(?:
+          Alpha|
           AgentEnvironment|
           (?:Angular)?Velocity|
           (?:Touch|Sit)?Text|
           Buoyancy|
           Camera(?:Eye|At)Offset|
           ClickAction|
+          Color|
           ContentType|
           Damage|
+          Force|
           ForceAndTorque|
           HoverHeight|
           KeyframedMotion|
@@ -934,43 +1092,38 @@ variables:
             Alpha|
             Camera|
             Color|
-            Media|
             PrimitiveParams(?:Fast)?|
             Texture(?:Anim)?
           )|
           LocalRot|
+          Object(?:Desc|Name)|
           PayPrice|
+          Pos|
           PrimitiveParams|
           RegionPos|
           RemoteScriptAccessPin|
+          Rot|
           ScriptState|
           Sound(?:Queueing|Radius)|
+          Status|
+          Texture|
           TextureAnim|
           TimerEvent|
+          Torque|
           Vehicle(?:Type|(?:Float|Vector|Rotation)Param)
         )|
         Shout|
-        Sin|
-        SitOnLink|
         Sleep|
-        Sqrt|
         StopHover|
-        String(?:Length|Trim)|
-        SubStringIndex|
-        Tan|
         TargetOmega|
         TeleportAgent(?:Home|GlobalCoords)?|
         TextBox|
-        To(?:Upper|Lower)|
         TransferLindenDollars|
         TriggerSoundLimited|
         UnSit|
         UpdateCharacter|
-        Vec(?:Mag|Norm|Dist)|
         VolumeDetect|
-        Water|
         Whisper|
-        Wind|
         XorBase64|
         WanderWithin|
         StartObjectAnimation|
@@ -1483,8 +1636,37 @@ contexts:
 
   functions:
     # TODO: include function words from invalid and reserved
-    - match: '\b({{function_builtin}})(?=\()'
-      scope: support.function.builtin.lsl
+    - match: |-
+        \b
+        (?:
+          ({{function_builtin_float}})|
+          ({{function_builtin_integer}})|
+          ({{function_builtin_integer_boolean}})|
+          ({{function_builtin_integer_bitfield}})|
+          ({{function_builtin_integer_handle}})|
+          ({{function_builtin_integer_link}})|
+          ({{function_builtin_integer_status}})|
+          ({{function_builtin_key}})|
+          ({{function_builtin_list}})|
+          ({{function_builtin_rotation}})|
+          ({{function_builtin_string}})|
+          ({{function_builtin_vector}})|
+          ({{function_builtin}})
+        )(?=\()
+      captures:
+        1: support.function.builtin.float.lsl
+        2: support.function.builtin.integer.lsl
+        3: support.function.builtin.integer.boolean.lsl
+        4: support.function.builtin.integer.bitfield.lsl
+        5: support.function.builtin.integer.handle.lsl
+        6: support.function.builtin.integer.link.lsl
+        7: support.function.builtin.integer.status.lsl
+        8: support.function.builtin.key.lsl
+        9: support.function.builtin.list.lsl
+        10: support.function.builtin.rotation.lsl
+        11: support.function.builtin.string.lsl
+        12: support.function.builtin.vector.lsl
+        13: support.function.builtin.lsl
       push:
         - match: '(\))(\;)?'
           captures:

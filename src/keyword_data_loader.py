@@ -25,3 +25,8 @@ def plugin_loaded():
 
     thread = Thread(target=load_data)
     thread.start()
+
+
+def plugin_unloaded():
+    global LSL_KEYWORD_DATA
+    LSL_KEYWORD_DATA = None

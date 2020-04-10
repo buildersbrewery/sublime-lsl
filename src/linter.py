@@ -42,11 +42,16 @@ def plugin_loaded():
     else:
         pc_settings = NamedSettingsDict(PKGCTRL)
         sublinter_installed = bool(SUBLINTER in set(
+            # FIXME: fix NoneType Error on startup
             pc_settings.get('installed_packages', [])))
         if events.install(PKG_NAME) and not sublinter_installed:
             if sublime.ok_cancel_dialog('"{}" requires "{}", would you like to install it now?'.format(PKG_NAME, SUBLINTER)):
             # TODO: if sublime.ok_cancel_dialog(f'"{PKG_NAME}" requires "{SUBLINTER}", would you like to install it now?'):
                 sublime.run_command('advanced_install_package', {'packages': SUBLINTER})
+
+
+def plugin_unloaded():
+    print('=BB= LSL: plugin unloaded')
 
 
 # TODO: add type hints
