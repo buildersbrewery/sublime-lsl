@@ -1064,7 +1064,6 @@ variables:
         Rez(?:AtRoot|Object)|
         Rot(?:LookAt|TargetRemove)|
         RotateTexture|
-        Say|
         ScaleTexture|
         ScriptProfiler|
         Sensor(?:Repeat|Remove)?|
@@ -1628,22 +1627,24 @@ contexts:
   functions:
     # TODO: include function words from invalid and reserved
     - match: |-
-        \b
-        (?:
-          ({{function_builtin_float}})|
-          ({{function_builtin_integer}})|
-          ({{function_builtin_integer_boolean}})|
-          ({{function_builtin_integer_bitfield}})|
-          ({{function_builtin_integer_handle}})|
-          ({{function_builtin_integer_link}})|
-          ({{function_builtin_integer_status}})|
-          ({{function_builtin_key}})|
-          ({{function_builtin_list}})|
-          ({{function_builtin_rotation}})|
-          ({{function_builtin_string}})|
-          ({{function_builtin_vector}})|
-          ({{function_builtin}})
-        )(?=\()
+        (?x:
+          \b
+          (?:
+            ({{function_builtin_float}})|
+            ({{function_builtin_integer}})|
+            ({{function_builtin_integer_boolean}})|
+            ({{function_builtin_integer_bitfield}})|
+            ({{function_builtin_integer_handle}})|
+            ({{function_builtin_integer_link}})|
+            ({{function_builtin_integer_status}})|
+            ({{function_builtin_key}})|
+            ({{function_builtin_list}})|
+            ({{function_builtin_rotation}})|
+            ({{function_builtin_string}})|
+            ({{function_builtin_vector}})|
+            ({{function_builtin}})
+          )(?=\()
+        )
       captures:
         1: support.function.builtin.float.lsl
         2: support.function.builtin.integer.lsl

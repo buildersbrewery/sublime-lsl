@@ -19,7 +19,7 @@ jobs:
         run: rm -R st_syntax_tests*
       - name: Setup Data/Packages/
         run: mkdir -p Data/Packages/
-      - name: Move packages into Data dir
-        run: find . -maxdepth 1 -mindepth 1 -type d -not -name 'Data' -exec mv '{}' Data/Packages/ \;
+      - name: Move (files and folders in) root into its own subdir within Data dir
+        run: find . -maxdepth 1 -mindepth 1 -not -name 'Data' -exec mv '{}' 'Data/Packages/=BB= LSL/' \;
       - name: Run syntax tests
         run: ./syntax_tests
