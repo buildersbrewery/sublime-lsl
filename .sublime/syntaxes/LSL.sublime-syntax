@@ -677,9 +677,7 @@ variables:
     )
   constant_language_rotation: |-
     (?x:                                # ignore whitespace
-      (?:
-        ZERO_ROTATION
-      )
+      ZERO_ROTATION
     )
   constant_language_string: |-
     (?x:                                # ignore whitespace
@@ -1811,6 +1809,24 @@ contexts:
         )
       captures:
         1: constant.language.integer.bit_field.bit_mask.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_link}})\b
+        )
+      captures:
+        1: constant.language.integer.link.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_pass}})\b
+        )
+      captures:
+        1: constant.language.integer.pass.lsl
+    - match: |-
+        (?x:                            # ignore whitespace
+          \b({{constant_language_integer_type}})\b
+        )
+      captures:
+        1: constant.language.integer.type.lsl
     - match: |-
         (?x:                            # ignore whitespace
           \b({{constant_language_integer_boolean}})\b
