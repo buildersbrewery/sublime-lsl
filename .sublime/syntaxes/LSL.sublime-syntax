@@ -276,7 +276,6 @@ variables:
         TRANSLATION
       )|
       LAND_(?:LEVEL|RAISE|LOWER|SMOOTH|NOISE|REVERT)|
-      LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)|
       LIST_STAT_(?:
         MAX|
         MIN|
@@ -368,7 +367,7 @@ variables:
           URL
         )
       )|
-      PASS(?:IVE|_(?:ALWAYS|IF_NOT_HANDLED|NEVER))|
+      PASSIVE|
       PAYMENT_INFO_(?:ON_FILE|USED)|
       PAY_(?:HIDE|DEFAULT)|
       PERMISSION_(?:
@@ -566,7 +565,6 @@ variables:
       STRING_(?:TRIM(?:_(?:HEAD|TAIL))?)|
       TOUCH_INVALID_FACE|
       TRAVERSAL_TYPE(?:_(?:FAST|NONE|SLOW))?|
-      TYPE_(?:FLOAT|INTEGER|INVALID|KEY|ROTATION|STRING|VECTOR)|
       VEHICLE_(?:
         (?:LINEAR|ANGULAR)_(?:
           DEFLECTION_(?:EFFICIENCY|TIMESCALE)|
@@ -664,6 +662,18 @@ variables:
     (?x:                                # ignore whitespace
       FALSE|
       TRUE
+    )
+  constant_language_integer_link: |-
+    (?x:                                # ignore whitespace
+      LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)
+    )
+  constant_language_integer_pass: |-
+    (?x:                                # ignore whitespace
+      PASS_(?:ALWAYS|IF_NOT_HANDLED|NEVER)
+    )
+  constant_language_integer_type: |-
+    (?x:                                # ignore whitespace
+      TYPE_(?:FLOAT|INTEGER|INVALID|KEY|ROTATION|STRING|VECTOR)
     )
   constant_language_rotation: |-
     (?x:                                # ignore whitespace
@@ -1232,7 +1242,10 @@ contexts:
               ({{constant_language_integer}}) |
               ({{constant_language_integer_bitfield}}) |
               ({{constant_language_integer_bitfield_bitmask}}) |
-              ({{constant_language_integer_boolean}})
+              ({{constant_language_integer_boolean}})|
+              ({{constant_language_integer_link}})|
+              ({{constant_language_integer_pass}})|
+              ({{constant_language_integer_type}})
             )
             \s*
           )?
@@ -1248,7 +1261,10 @@ contexts:
         7: constant.language.integer.bit_field.lsl
         8: constant.language.integer.bit_field.bit_mask.lsl
         9: constant.language.integer.boolean.lsl
-        10: punctuation.terminator.lsl
+        10: constant.language.integer.link.lsl
+        11: constant.language.integer.pass.lsl
+        12: constant.language.integer.type.lsl
+        13: punctuation.terminator.lsl
     # key
     # list
     # quaternion
