@@ -1,0 +1,18 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        list lsl_integers = [
+            PASS_ALWAYS,
+//          ^^^^^^^^^^^ constant.language.integer.pass
+            PASS_IF_NOT_HANDLED,
+//          ^^^^^^^^^^^^^^^^^^^ constant.language.integer.pass
+            PASS_NEVER
+//          ^^^^^^^^^^ constant.language.integer.pass
+        ];
+
+        llRegionSayTo(llDetectedKey(0), PUBLIC_CHANNEL, (string)llGetListLength(lsl_integers));
+    }
+}

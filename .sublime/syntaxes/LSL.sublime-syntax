@@ -794,7 +794,7 @@ variables:
           FreeURLs|
           Inventory(?:Number|Type)|
           LinkNumberOfSides|
-          List(?:EntryType|Length)|
+          ListLength|
           MemoryLimit|
           NumberOf(?:Prims|Sides)|
           ObjectPrimCount|
@@ -863,6 +863,12 @@ variables:
         Clear(?:Link|Prim)Media|
         Set(?:LinkMedia|PrimMediaParams)|
         SitOnLink
+      )
+    )
+  function_builtin_integer_type: |-
+    (?x:                                # ignore whitespace
+      ll(?:
+        GetListEntryType
       )
     )
   function_builtin_key: |-
@@ -1637,6 +1643,7 @@ contexts:
             ({{function_builtin_integer_handle}})|
             ({{function_builtin_integer_link}})|
             ({{function_builtin_integer_status}})|
+            ({{function_builtin_integer_type}})|
             ({{function_builtin_key}})|
             ({{function_builtin_list}})|
             ({{function_builtin_rotation}})|
@@ -1653,12 +1660,13 @@ contexts:
         5: support.function.builtin.integer.handle.lsl
         6: support.function.builtin.integer.link.lsl
         7: support.function.builtin.integer.status.lsl
-        8: support.function.builtin.key.lsl
-        9: support.function.builtin.list.lsl
-        10: support.function.builtin.rotation.lsl
-        11: support.function.builtin.string.lsl
-        12: support.function.builtin.vector.lsl
-        13: support.function.builtin.lsl
+        8: support.function.builtin.integer.type.lsl
+        9: support.function.builtin.key.lsl
+        10: support.function.builtin.list.lsl
+        11: support.function.builtin.rotation.lsl
+        12: support.function.builtin.string.lsl
+        13: support.function.builtin.vector.lsl
+        14: support.function.builtin.lsl
       push:
         - match: '(\))(\;)?'
           captures:

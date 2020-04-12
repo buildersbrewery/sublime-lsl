@@ -2,8 +2,6 @@
 # coding: utf-8
 
 
-from __future__ import unicode_literals
-
 import sublime
 import sublime_plugin
 
@@ -109,9 +107,9 @@ class LSLCompletions(sublime_plugin.EventListener):
         for word, result in LSL_KEYWORD_DATA.items():
             if not word.startswith(prefix):
                 continue
+            # events
             if view.match_selector(loc, 'meta.class.state.body.lsl - meta.block.event.lsl, -string.quoted.double.lsl'):
                 if result.get('scope', None) == 'support.function.event':
-                    t = word + '\tevent'
                     if 'params' in result:
                         c = '{}({}){}'.format(
                             word,
@@ -123,11 +121,20 @@ class LSLCompletions(sublime_plugin.EventListener):
                             word,
                             r'${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}$0${LSL_WHITESPACE_INSIDE_LAST}}'
                         )
-                    if fuzzy_match(prefix, t)[0]:
-                        completions.append((t, c))
+                    if fuzzy_match(prefix, word)[0]:
+                        completions.append(
+                            sublime.CompletionItem(
+                                trigger=word,
+                                annotation='event',
+                                completion=c,
+                                completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                kind=[sublime.KIND_ID_NAVIGATION, 'e', 'Event'],
+                                details=''
+                            )
+                        )
+            # functions
             if view.match_selector(loc, 'meta.function.declaration.body.lsl, meta.block.event.lsl, meta.parameters.lsl, -string.quoted.double.lsl'):
-                if result.get('scope', None) == 'support.function.builtin':
-                    t = '{}\t({}) function'.format(word, result.get('type', 'void'))
+                if result['scope'].startswith('support.function.builtin'):
                     if 'params' in result:
                         c = '{}({})'.format(
                             word,
@@ -139,57 +146,156 @@ class LSLCompletions(sublime_plugin.EventListener):
                         )
                     if 'type' not in result:
                         c += r';${LSL_WHITESPACE_AFTER}$0'
-                    if fuzzy_match(prefix, t)[0]:
-                        completions.append((t, c))
+                    if fuzzy_match(prefix, word)[0]:
+                        completions.append(
+                            sublime.CompletionItem(
+                                trigger=word,
+                                annotation='({}) function'.format(result.get('type', 'void')),
+                                completion=c,
+                                completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                                details=''
+                            )
+                        )
+            # constants
             if view.match_selector(loc, 'source.lsl - meta.class.state.body.lsl, meta.function.declaration.body.lsl, meta.block.event.lsl, meta.parameters.lsl, -string.quoted.double.lsl'):
                 if result['scope'].startswith('constant.language.'):
-                    t = '{}\t{} ({})'.format(
-                        word,
-                        result['type'],
-                        result['value']
-                    )
-                    c = word
-                    if fuzzy_match(prefix, t)[0]:
-                        completions.append((t, c))
-                    if 'params' in result:
-                        t = '{}\t…, {}, …'.format(
-                            word,
-                            ', '.join('{} {}'.format(param['type'], param['name']) for param in result['params'])
+                    if fuzzy_match(prefix, word)[0]:
+                        completions.append(
+                            sublime.CompletionItem(
+                                trigger=word,
+                                annotation='{} ({})'.format(result['type'], result['value']),
+                                completion=word,
+                                completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                kind=[sublime.KIND_ID_VARIABLE, 'c', 'Constant'],
+                                details=''
+                            )
                         )
+                    if 'params' in result:
                         c = '{}, {}{}'.format(
                             word,
                             ', '.join('${{{}:{} {}}}'.format(idx, param['type'], param['name']) for idx, param in enumerate(result['params'], 1)),
                             r', ${LSL_WHITESPACE_AFTER}$0'
                         )
-                        if fuzzy_match(prefix, t)[0]:
-                            completions.append((t, c))
+                        if fuzzy_match(prefix, word)[0]:
+                            completions.append(
+                                sublime.CompletionItem(
+                                    trigger=word,
+                                    annotation='{}, …'.format(', '.join('{} {}'.format(param['type'], param['name']) for param in result['params'])),
+                                    completion=c,
+                                    completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                    kind=[sublime.KIND_ID_VARIABLE, 'c', 'Constant'],
+                                    details=''
+                                )
+                            )
+            # types
             if view.match_selector(loc, 'source.lsl - meta.class.state.body, meta.function.declaration.body.lsl, meta.block.event.lsl, meta.parameters.lsl, -string.quoted.double.lsl'):
                 if result.get('scope', None) == 'storage.type':
-                    t1 = '{}\tstorage type'.format(
-                        word
-                    )
-                    c1 = word
-                    if fuzzy_match(prefix, t1)[0]:
-                        completions.append((t1, c1))
-                    t2 = '{0}\t{0} x = value;'.format(
-                        word
-                    )
-                    c2 = '{} {}'.format(
-                        word,
-                        r'${1:x} = ${2:value};${LSL_WHITESPACE_AFTER}$0'
-                    )
-                    if fuzzy_match(prefix, t2)[0]:
-                        completions.append((t2, c2))
+                    if fuzzy_match(prefix, word)[0]:
+                        completions.append(
+                            sublime.CompletionItem(
+                                trigger=word,
+                                annotation='storage type',
+                                completion=word,
+                                completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                kind=[sublime.KIND_ID_TYPE, 't', 'Type'],
+                                details=''
+                            )
+                        )
+                        completions.append(
+                            sublime.CompletionItem(
+                                trigger=word,
+                                annotation='{} x = value;'.format(word),
+                                completion='{} {}'.format(
+                                    word,
+                                    r'${1:x} = ${2:value};${LSL_WHITESPACE_AFTER}$0'
+                                ),
+                                completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                                kind=[sublime.KIND_ID_TYPE, 't', 'Type'],
+                                details=''
+                            )
+                        )
+
             # completions for `keyword.control.*` moved to `./.sublime/completions/lsl_keyword_control.sublime-completions`
+
+            # log functions
             if view.match_selector(loc, 'meta.function.declaration.body.lsl, meta.block.event.lsl, -string.quoted.double.lsl'):
                 if result.get('scope', None) == 'reserved.log':
-                    t = 'print\t(any type) log function'
-                    c = 'print(${1:"value of any type"}); // don\'t spam LindenLab!${LSL_WHITESPACE_AFTER}$0'
-                    if fuzzy_match(prefix, t)[0]:
-                        completions.append((t, c))
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(float f)',
+                            completion='print(${1:float f});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(integer i)',
+                            completion='print(${1:integer i});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(key k)',
+                            completion='print(${1:key k});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(list l)',
+                            completion='print(${1:list l});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(rotation r)',
+                            completion='print(${1:rotation r});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(string s)',
+                            completion='print(${1:string s});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+                    completions.append(
+                        sublime.CompletionItem(
+                            trigger='print',
+                            annotation='(vector v)',
+                            completion='print(${1:vector v});${LSL_WHITESPACE_AFTER}$0',
+                            completion_format=sublime.COMPLETION_FORMAT_SNIPPET,
+                            kind=[sublime.KIND_ID_FUNCTION, 'f', 'Function'],
+                            details="Don't spam LindenLab!"
+                        )
+                    )
+
 
         # TODO: sort with itemgetter as that is faster
-        completions.sort(key=lambda completion: fuzzy_match(prefix, completion[0])[1], reverse=True)
+        # FIXME: fix sorting with CompletionItem
+        # completions.sort(key=lambda completion: fuzzy_match(prefix, completion[0])[1], reverse=True)
 
         if completions:
             return (completions, flags)

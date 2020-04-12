@@ -1,0 +1,22 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        list lsl_integers = [
+            LINK_ALL_CHILDREN,
+//          ^^^^^^^^^^^^^^^^^ constant.language.integer.link
+            LINK_ALL_OTHERS,
+//          ^^^^^^^^^^^^^^^ constant.language.integer.link
+            LINK_ROOT,
+//          ^^^^^^^^^ constant.language.integer.link
+            LINK_SET,
+//          ^^^^^^^^ constant.language.integer.link
+            LINK_THIS
+//          ^^^^^^^^^ constant.language.integer.link
+        ];
+
+        llRegionSayTo(llDetectedKey(0), PUBLIC_CHANNEL, (string)llGetListLength(lsl_integers));
+    }
+}

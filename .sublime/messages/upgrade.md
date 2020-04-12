@@ -25,5 +25,6 @@ Disclaimer
 
 Second Life® and the Linden Scripting Language are trademarks of
 Linden Research, Inc.
+
 The Builder's Brewery is neither affiliated with nor sponsored by
 Linden Research.

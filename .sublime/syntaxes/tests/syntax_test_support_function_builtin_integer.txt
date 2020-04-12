@@ -49,8 +49,6 @@ default
 //          ^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetLinkNumberOfSides(i);
 //          ^^^^^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
-        i = llGetListEntryType(l, i);
-//          ^^^^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetListLength(l);
 //          ^^^^^^^^^^^^^^^ support.function.builtin.integer
         i = llGetMemoryLimit();

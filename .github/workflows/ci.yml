@@ -19,9 +19,9 @@ jobs:
         run: rm -R st_syntax_tests*
       - name: Cleanup git dir
         run: rm -R .git*
-      - name: Setup Data/Packages/=BB= LSL
+      - name: Setup 'Data/Packages/=BB= LSL'
         run: mkdir -p 'Data/Packages/=BB= LSL'
-      - name: Move (files and folders in) root into its own subdir within Data dir
+      - name: Move package into its own subdir within Data dir
         run: find . -maxdepth 1 -mindepth 1 -not -name 'Data' -not -name 'syntax_tests' -exec mv -v '{}' 'Data/Packages/=BB= LSL/' \;
       - name: Run syntax tests
         run: ./syntax_tests

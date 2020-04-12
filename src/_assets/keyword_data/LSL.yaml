@@ -5,7 +5,7 @@ DEG_TO_RAD:
   description: |-
     To convert from degrees to radians
 
-    1° * π/180 = 0.0174533 rad
+    `1° * π/180 = 0.0174533 rad`
   related:
     constants:
       - PI
@@ -89,7 +89,7 @@ RAD_TO_DEG:
   description: |-
     To convert from radians to degrees
 
-    1 rad * 180/π = 57.296°
+    `1 rad * 180/π = 57.296°`
   related:
     constants:
       - DEG_TO_RAD
@@ -154,8 +154,10 @@ SQRT2:
 # constant.language.integer
 AGENT:
   description: |-
-    Passed in llSensor library function to look for other Agents (by Legacy name
+    Passed in llSensor library function to look for other agents (by legacy name
     if filtered)
+
+    Using AGENT_BY_LEGACY_NAME instead is more informative.
   related:
     constants:
       - AGENT_BY_LEGACY_NAME
@@ -168,6 +170,7 @@ AGENT:
       - llSensor
       - llSensorRepeat
     slwiki_categories:
+      - LSL_Avatar/Name
       - LSL_Constants
       - LSL_Integer
       - LSL_Sensor
@@ -175,6 +178,9 @@ AGENT:
   type: integer
   value: 1
   value_description: '0x1'
+  usage:
+    - '(ACTIVE | AGENT) == llDetectedType(integer number); // for standing agent'
+    - '(PASSIVE | AGENT) == llDetectedType(integer number); // for sitting agent'
 AGENT_BY_LEGACY_NAME:
   description: |-
     Passed in llSensor library function to look for other Agents, filtering by
@@ -194,6 +200,9 @@ AGENT_BY_LEGACY_NAME:
   type: integer
   value: 1
   value_description: '0x1'
+  usage:
+    - '(ACTIVE | AGENT_BY_LEGACY_NAME) == llDetectedType(integer number); // for standing agent'
+    - '(PASSIVE | AGENT_BY_LEGACY_NAME) == llDetectedType(integer number); // for sitting agent'
 ACTIVE:
   description: Passed in llSensor library function to look for moving objects
   related:
@@ -316,6 +325,22 @@ CONTROL_FWD:
   type: integer
   value: 1
   value_description: '0x1'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_BACK:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -350,6 +375,22 @@ CONTROL_BACK:
   type: integer
   value: 2
   value_description: '0x2'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_LEFT:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -384,6 +425,22 @@ CONTROL_LEFT:
   type: integer
   value: 4
   value_description: '0x4'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_RIGHT:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -418,6 +475,22 @@ CONTROL_RIGHT:
   type: integer
   value: 8
   value_description: '0x8'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_UP:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -452,6 +525,22 @@ CONTROL_UP:
   type: integer
   value: 16
   value_description: '0x10'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_DOWN:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -486,6 +575,22 @@ CONTROL_DOWN:
   type: integer
   value: 32
   value_description: '0x20'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_ROT_LEFT:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -520,6 +625,22 @@ CONTROL_ROT_LEFT:
   type: integer
   value: 256
   value_description: '0x100'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_ROT_RIGHT:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -554,6 +675,22 @@ CONTROL_ROT_RIGHT:
   type: integer
   value: 512
   value_description: '0x200'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_LBUTTON:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -588,6 +725,22 @@ CONTROL_LBUTTON:
   type: integer
   value: 268435456
   value_description: '0x10000000'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 CONTROL_ML_LBUTTON:
   description: |-
     Passed to llTakeControls library function and used control event handler to
@@ -622,12 +775,28 @@ CONTROL_ML_LBUTTON:
   type: integer
   value: 1073741824
   value_description: '0x40000000'
+  usage:
+    - |-
+      llTakeControls(
+          CONTROL_FWD |
+              CONTROL_BACK |
+              CONTROL_LEFT |
+              CONTROL_RIGHT |
+              CONTROL_ROT_LEFT |
+              CONTROL_ROT_RIGHT |
+              CONTROL_UP |
+              CONTROL_DOWN |
+              CONTROL_LBUTTON |
+              CONTROL_ML_BUTTON,
+          TRUE,
+          TRUE
+      )
 PERMISSION_DEBIT:
   description: |-
     Passed to llRequestPermissions library function to request permission to
-    take L$ from agent's account
+    take L$ from agent's account.
 
-    http://secondlife.com/corporate/tos.php
+    [http://secondlife.com/corporate/tos.php](http://secondlife.com/corporate/tos.php)
   related:
     events:
       - run_time_permissions
@@ -646,6 +815,15 @@ PERMISSION_DEBIT:
   type: integer
   value: 2
   value_description: '0x2'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_DEBIT)
+          {
+              ;// granted debit permissions
+          }
+      )
 PERMISSION_TAKE_CONTROLS:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -667,6 +845,15 @@ PERMISSION_TAKE_CONTROLS:
   type: integer
   value: 4
   value_description: '0x4'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_TAKE_CONTROLS)
+          {
+              ;// take controls
+          }
+      )
 PERMISSION_TRIGGER_ANIMATION:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -688,6 +875,15 @@ PERMISSION_TRIGGER_ANIMATION:
   type: integer
   value: 16
   value_description: '0x10'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_TRIGGER_ANIMATION)
+          {
+              ;// animate
+          }
+      )
 PERMISSION_ATTACH:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -710,6 +906,15 @@ PERMISSION_ATTACH:
   type: integer
   value: 32
   value_description: '0x20'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_ATTACH)
+          {
+              ;// attach to Avatar
+          }
+      )
 PERMISSION_CHANGE_LINKS:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -732,6 +937,15 @@ PERMISSION_CHANGE_LINKS:
   type: integer
   value: 128
   value_description: '0x80'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_CHANGE_LINKS)
+          {
+              ;// break links or rez object and create link in object_rez event
+          }
+      )
 PERMISSION_TRACK_CAMERA:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -753,6 +967,15 @@ PERMISSION_TRACK_CAMERA:
   type: integer
   value: 1024
   value_description: '0x400'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_TRACK_CAMERA)
+          {
+              ;// usually set a timer here and track camera in timer event
+          }
+      )
 PERMISSION_CONTROL_CAMERA:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -775,6 +998,15 @@ PERMISSION_CONTROL_CAMERA:
   value: 2048
   value_description: '0x800'
   version: '1.9.0(15)'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_CONTROL_CAMERA)
+          {
+              ;// clear then set camera params
+          }
+      )
 PERMISSION_TELEPORT:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -797,6 +1029,15 @@ PERMISSION_TELEPORT:
   type: integer
   value: 4096
   value_description: '0x1000'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_TELEPORT)
+          {
+              ;// teleport agent
+          }
+      )
 PERMISSION_SILENT_ESTATE_MANAGEMENT:
   description: |-
     A script with this permission does not notify the object owner when it
@@ -817,6 +1058,15 @@ PERMISSION_SILENT_ESTATE_MANAGEMENT:
   type: integer
   value: 16384
   value_description: '0x4000'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_SILENT_ESTATE_MANAGEMENT)
+          {
+              ;// manage estate access
+          }
+      )
 PERMISSION_OVERRIDE_ANIMATIONS:
   description: |-
     Passed to llRequestPermissions library function to request permission to
@@ -839,6 +1089,15 @@ PERMISSION_OVERRIDE_ANIMATIONS:
   type: integer
   value: 32768
   value_description: '0x8000'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_OVERRIDE_ANIMATIONS)
+          {
+              ;// get, set or reset animation override
+          }
+      )
 PERMISSION_RETURN_OBJECTS:
   related:
     events:
@@ -857,6 +1116,15 @@ PERMISSION_RETURN_OBJECTS:
   type: integer
   value: 65536
   value_description: '0x10000'
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      (
+          if (perm & PERMISSION_RETURN_OBJECTS)
+          {
+              ;// return objects by ID or Owner
+          }
+      )
 PUBLIC_CHANNEL:
   description: Chat channel that broadcasts to all nearby users
   related:
@@ -879,6 +1147,11 @@ PUBLIC_CHANNEL:
   scope: constant.language.integer
   type: integer
   value: 0
+  usage:
+    - 'llSay(PUBLIC_CHANNEL, "Hello, Avatar!");'
+    - 'llShout(PUBLIC_CHANNEL, "Hello, Avatar!");'
+    - 'llWhisper(PUBLIC_CHANNEL, "Hello, Avatar!");'
+    - 'llRegionSayTo(llGetOwner(), PUBLIC_CHANNEL, "Hello, Owner!");'
 DEBUG_CHANNEL:
   description: Chat channel reserved for debug and error messages from scripts
   related:
@@ -960,6 +1233,10 @@ AGENT_LIST_REGION:
   value: 4
   value_description: '0x4'
 PSYS_PART_FLAGS:
+  description: |-
+    Various flags controlling the behavior of the particle system. The value may
+    be specified as an integer in decimal or hex format, or by ORing together
+    (using the | operator) one or more of the following flag constants.
   related:
     constants:
       - PSYS_PART_BOUNCE_MASK
@@ -979,6 +1256,8 @@ PSYS_PART_FLAGS:
   type: integer
   value: 0
 PSYS_PART_START_COLOR:
+  description: |-
+    A vector specifiying the color of the particles upon emission.
   related:
     constants:
       - PSYS_PART_END_COLOR
@@ -989,6 +1268,9 @@ PSYS_PART_START_COLOR:
   type: integer
   value: 1
 PSYS_PART_START_ALPHA:
+  description: |-
+    Specifies the alpha of the particles upon emission. Valid values are in the
+    range `[0.0 .. 1.0]`. `0.0` is transparent, `1.0` is opaque.
   related:
     constants:
       - PSYS_PART_END_ALPHA
@@ -999,6 +1281,9 @@ PSYS_PART_START_ALPHA:
   type: integer
   value: 2
 PSYS_PART_END_COLOR:
+  description: |-
+    A vector specifiying the color the particles transition to during their
+    lifetime. Only used if the `PSYS_PART_INTERP_COLOR_MASK` flag is set.
   related:
     constants:
       - PSYS_PART_START_COLOR
@@ -1009,6 +1294,10 @@ PSYS_PART_END_COLOR:
   type: integer
   value: 3
 PSYS_PART_END_ALPHA:
+  description: |-
+    Specifies the alpha the particles transition to during their lifetime. Only
+    used if the `PSYS_PART_INTERP_COLOR_MASK` flag is set. Valid values are the
+    same as `PSYS_PART_START_ALPHA`.
   related:
     constants:
       - PSYS_PART_START_ALPHA
@@ -1019,6 +1308,12 @@ PSYS_PART_END_ALPHA:
   type: integer
   value: 4
 PSYS_PART_START_SCALE:
+  description: |-
+    Specifies the scale or size of the particles upon emission. Valid values for
+    each direction are `[0.03125 .. 4.0]`, in meters. The actual particle size
+    is always a multiple of `0.03125`. Smaller changes don't have any effect.
+    Since particles are essentially 2D sprites, the `.z` component of the vector
+    is ignored and can be set to `0.0`.
   related:
     constants:
       - PSYS_PART_END_SCALE
@@ -1029,6 +1324,10 @@ PSYS_PART_START_SCALE:
   type: integer
   value: 5
 PSYS_PART_END_SCALE:
+  description: |-
+    Specifies the scale or size the particles transition to during their
+    lifetime. Only used if the `PSYS_PART_INTERP_SCALE_MASK` flag is set. Valid
+    values are the same as `PSYS_PART_START_SCALE`.
   related:
     constants:
       - PSYS_PART_START_SCALE
@@ -1039,6 +1338,11 @@ PSYS_PART_END_SCALE:
   type: integer
   value: 6
 PSYS_PART_MAX_AGE:
+  description: |-
+    Specifies the lifetime of each particle emitted, in seconds. Maximum is
+    `30.0` seconds. During this time, the particle will appear, change
+    appearance and move according to the parameters specified in the other
+    sections, and then disappear.
   related:
     constants:
       - PSYS_SRC_MAX_AGE
@@ -1049,6 +1353,10 @@ PSYS_PART_MAX_AGE:
   type: integer
   value: 7
 PSYS_PART_INTERP_COLOR_MASK:
+  description: |-
+    When set, particle color and alpha transition from their START settings to
+    their END settings during the particle's lifetime. The transition is a
+    smooth interpolation.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1058,8 +1366,11 @@ PSYS_PART_INTERP_COLOR_MASK:
   scope: constant.language.integer
   type: integer
   value: 1
-  value_description: '0x1'
+  value_description: '0x001'
 PSYS_PART_INTERP_SCALE_MASK:
+  description: |-
+    When set, particle size/scale transitions from its START setting to its END
+    setting during the particle's lifetime.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1069,8 +1380,12 @@ PSYS_PART_INTERP_SCALE_MASK:
   scope: constant.language.integer
   type: integer
   value: 2
-  value_description: '0x2'
+  value_description: '0x002'
 PSYS_PART_BOUNCE_MASK:
+  description: |-
+    When set, specifies particles will bounce off a plane at the region Z height
+    of the emitter. On "bounce", each particle reverses velocity and angle. This
+    only works for particles above the plane falling down on it.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1080,19 +1395,27 @@ PSYS_PART_BOUNCE_MASK:
   scope: constant.language.integer
   type: integer
   value: 4
-  value_description: '0x4'
+  value_description: '0x004'
 PSYS_PART_WIND_MASK:
+  description: |-
+    When set, particle movement is affected by the wind. It is applied as a
+    secondary force on the particles.
   related:
     constants:
       - PSYS_PART_FLAGS
     functions:
       - llLinkParticleSystem
       - llParticleSystem
+      - llWind
   scope: constant.language.integer
   type: integer
   value: 8
-  value_description: '0x8'
+  value_description: '0x008'
 PSYS_PART_FOLLOW_SRC_MASK:
+  description: |-
+    When set, particles move relative to the position of the emitter. Otherwise,
+    particle position and movement are unaffected by the position/movement of
+    the emitter. This flag disables the `PSYS_SRC_BURST_RADIUS` rule.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1102,8 +1425,12 @@ PSYS_PART_FOLLOW_SRC_MASK:
   scope: constant.language.integer
   type: integer
   value: 16
-  value_description: '0x10'
+  value_description: '0x010'
 PSYS_PART_FOLLOW_VELOCITY_MASK:
+  description: |-
+    When set, particles rotate to orient their "top" towards the direction of
+    movement or emission. Otherwise, particles are oriented vertically as their
+    textures would appear (top of texture at top, left at left).
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1113,8 +1440,14 @@ PSYS_PART_FOLLOW_VELOCITY_MASK:
   scope: constant.language.integer
   type: integer
   value: 32
-  value_description: '0x20'
+  value_description: '0x020'
 PSYS_PART_TARGET_POS_MASK:
+  description: |-
+    When set, emitted particles change course during their lifetime, attempting
+    to move towards the target specified by the `PSYS_SRC_TARGET_KEY` rule by
+    the time they expire. Note that if no target is specified, the target moves
+    out of range, or an invalid target is specified, the particles target the
+    prim itself.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1124,8 +1457,16 @@ PSYS_PART_TARGET_POS_MASK:
   scope: constant.language.integer
   type: integer
   value: 64
-  value_description: '0x40'
+  value_description: '0x040'
 PSYS_PART_TARGET_LINEAR_MASK:
+  description: |-
+    When set, emitted particles move in a straight evenly-spaced line towards
+    the target specified by the `PSYS_SRC_TARGET_KEY` rule. This option ignores
+    all Non-DROP patterns and their dependent attributes (radius, burst speeds,
+    angles, and omega). `PSYS_SRC_ACCEL` and `PSYS_PART_WIND_MASK` are ignored
+    as well. Using PSYS_PART_BOUNCE_MASK while the target is 'below' the emitter
+    will cause the linear particle stream to deflect upwards, terminating above
+    the target.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1135,8 +1476,13 @@ PSYS_PART_TARGET_LINEAR_MASK:
   scope: constant.language.integer
   type: integer
   value: 128
-  value_description: '0x80'
+  value_description: '0x080'
 PSYS_PART_EMISSIVE_MASK:
+  description: |-
+    When set, particles are full-bright and are unaffected by global lighting
+    (sunlight). Otherwise, particles will be lit depending on the current global
+    lighting conditions. Note that point lights do illuminate non-emissive
+    particles.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1148,6 +1494,18 @@ PSYS_PART_EMISSIVE_MASK:
   value: 256
   value_description: '0x100'
 PSYS_PART_RIBBON_MASK:
+  description: |-
+    Joins a stream of particles together into a continuous strip. Particle
+    textures are stretched (or squeezed) to join their right edges to their
+    predecessor's left. Ribbon 'width' is controlled by the 'x' values of start
+    and end scale. (The 'y' values are ignored. The distance between particles
+    controls the 'length' of each ribbon segment). Unlike other particle
+    effects, ribbon segments are not rendered facing the viewer's camera. The Z
+    axis of each new particle mimics the Z axis of the emitter prim. Ribbon
+    segments will not render if they have no 'length' - this happens when
+    particles move only 'up' or 'down' the local Z-axis of their emitter prim.
+    `PSYS_PART_FOLLOW_VELOCITY_MASK` has no effect on ribbons. For a simple
+    ribbon effect, try using the DROP pattern, TEXTURE_BLANK, ACCEL and/or WIND.
   related:
     constants:
       - PSYS_PART_FLAGS
@@ -1159,6 +1517,8 @@ PSYS_PART_RIBBON_MASK:
   value: 1024
   value_description: '0x400'
 PSYS_SRC_PATTERN:
+  description: |-
+    Specifies the general emission pattern.
   related:
     constants:
       - PSYS_SRC_PATTERN_EXPLODE
@@ -1173,70 +1533,106 @@ PSYS_SRC_PATTERN:
   type: integer
   value: 9
 PSYS_PART_BF_ONE:
+  description: |-
+    Do not scale the source or destination RGBA values.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 0
+  value_description: '0x0'
 PSYS_PART_BF_ZERO:
+  description: |-
+    Zero out the source or destination RGBA values.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 1
+  value_description: '0x1'
 PSYS_PART_BF_DEST_COLOR:
+  description: |-
+    Scale the RGBA values by the RGBA values of the destination.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 2
+  value_description: '0x2'
 PSYS_PART_BF_SOURCE_COLOR:
+  description: |-
+    Scale the RGBA values by the RGBA values of the particle source.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 3
+  value_description: '0x3'
 PSYS_PART_BF_ONE_MINUS_DEST_COLOR:
+  description: |-
+    Scale the RGBA values by the inverted RGBA values of the destination.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 4
+  value_description: '0x4'
 PSYS_PART_BF_ONE_MINUS_SOURCE_COLOR:
+  description: |-
+    Scale the RGBA values by the inverted RGBA values of the particle source.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 5
+  value_description: '0x5'
 PSYS_PART_BF_SOURCE_ALPHA:
+  description: |-
+    Scale the RGBA values by the alpha values of the particle source.
   related:
+    constants:
+      - PSYS_PART_BLEND_FUNC_SOURCE
+      - PSYS_PART_BLEND_FUNC_DEST
     functions:
       - llLinkParticleSystem
       - llParticleSystem
   scope: constant.language.integer
   type: integer
   value: 7
-PSYS_SRC_ACCEL:
-  related:
-    functions:
-      - llLinkParticleSystem
-      - llParticleSystem
-  scope: constant.language.integer
-  type: integer
-  value: 8
+  value_description: '0x7'
 PSYS_PART_BF_ONE_MINUS_SOURCE_ALPHA:
+  description: |-
+    Scale the RGBA values by the inverted alpha values of the particle source.
   related:
     functions:
       - llLinkParticleSystem
@@ -1244,7 +1640,25 @@ PSYS_PART_BF_ONE_MINUS_SOURCE_ALPHA:
   scope: constant.language.integer
   type: integer
   value: 9
+  value_description: '0x9'
+PSYS_SRC_ACCEL:
+  description: |-
+    Specifies a directional acceleration vector applied to each particle as it
+    is emitted, in meters per second squared. Valid values are `[0.0 .. 100.0]`
+    for each direction both positive and negative, as region coordinates.
+  related:
+    functions:
+      - llLinkParticleSystem
+      - llParticleSystem
+  scope: constant.language.integer
+  type: integer
+  value: 8
 PSYS_SRC_TEXTURE:
+  description: |-
+    Specifies the name of a texture in the emitter prim's inventory to use for
+    each particle. Alternatively, you may specify an asset key UUID for a
+    texture. If using llLinkParticleSystem and texture is not a UUID, texture
+    must be in the emitter prim (not necessarily with the script).
   related:
     functions:
       - llLinkParticleSystem
@@ -1253,6 +1667,10 @@ PSYS_SRC_TEXTURE:
   type: integer
   value: 12
 PSYS_SRC_BURST_RATE:
+  description: |-
+    Specifies the time interval, in seconds, between "bursts" of particles being
+    emitted. Specifying a value of 0.0 will cause the emission of particles as
+    fast as the viewer can do so.
   related:
     functions:
       - llLinkParticleSystem
@@ -1261,6 +1679,8 @@ PSYS_SRC_BURST_RATE:
   type: integer
   value: 13
 PSYS_SRC_BURST_PART_COUNT:
+  description: |-
+    Specifies the number of particles emitted in each "burst".
   related:
     functions:
       - llLinkParticleSystem
@@ -1269,6 +1689,11 @@ PSYS_SRC_BURST_PART_COUNT:
   type: integer
   value: 15
 PSYS_SRC_BURST_RADIUS:
+  description: |-
+    Specifies the distance from the emitter where particles will be created.
+    This rule is ignored when the `PSYS_PART_FOLLOW_SRC_MASK` flag is set. A
+    test in http://forums-archive.secondlife.com/327/f5/226722/1.html indicates
+    that the maximum value is 50.00
   related:
     functions:
       - llLinkParticleSystem
@@ -1277,6 +1702,12 @@ PSYS_SRC_BURST_RADIUS:
   type: integer
   value: 16
 PSYS_SRC_BURST_SPEED_MIN:
+  description: |-
+    Specifies the minimum value of a random range of values which is selected
+    for each particle in a burst as its initial speed upon emission, in meters
+    per second. Note that the value of this parameter and
+    `PSYS_SRC_BURST_SPEED_MAX` are internally re-ordered such that this
+    parameter gets the smaller of the two values.
   related:
     functions:
       - llLinkParticleSystem
@@ -1285,6 +1716,12 @@ PSYS_SRC_BURST_SPEED_MIN:
   type: integer
   value: 17
 PSYS_SRC_BURST_SPEED_MAX:
+  description: |-
+    Specifies the maximum value of a random range of values which is selected
+    for each particle in a burst as its initial speed upon emission, in meters
+    per second. Note that the value of this parameter and
+    `PSYS_SRC_BURST_SPEED_MIN` are internally re-ordered such that this
+    parameter gets the larger of the two values.
   related:
     functions:
       - llLinkParticleSystem
@@ -1293,6 +1730,12 @@ PSYS_SRC_BURST_SPEED_MAX:
   type: integer
   value: 18
 PSYS_SRC_MAX_AGE:
+  description: |-
+    Specifies the length of time, in seconds, that the emitter will operate upon
+    coming into view range (if the particle system is already set) or upon
+    execution of this function (if already in view range). Upon expiration, no
+    more particles will be emitted, except as specified above. Zero will give
+    the particle system an infinite duration.
   related:
     functions:
       - llLinkParticleSystem
@@ -1301,6 +1744,14 @@ PSYS_SRC_MAX_AGE:
   type: integer
   value: 19
 PSYS_SRC_TARGET_KEY:
+  description: |-
+    Specifies the key of a target object, prim, or agent towards which the
+    particles will change course and move (if `PSYS_PART_TARGET_POS_MASK` is
+    specified) or will move in a straight line (if
+    `PSYS_PART_TARGET_LINEAR_MASK` is specified). They will attempt to end up at
+    the geometric center of the target at the end of their lifetime. Requires
+    the `PSYS_PART_TARGET_POS_MASK` or `PSYS_PART_TARGET_LINEAR_MASK` flag be
+    set.
   related:
     functions:
       - llLinkParticleSystem
@@ -1309,6 +1760,15 @@ PSYS_SRC_TARGET_KEY:
   type: integer
   value: 20
 PSYS_SRC_OMEGA:
+  description: |-
+    Sets how far to rotate the "pattern" after each particle burst. (Burst
+    frequency is set with `PSYS_SRC_BURST_RATE`.) Omega values are approximately
+    'radians per burst' around the prim's global (not local) X,Y,Z axes. For
+    precise and predictable pattern rotation, rotate the prim instead of using
+    `PSYS_SRC_OMEGA`. Omega has no visible effect on drop, explode and certain
+    specific angle and angle cone patterns, depending on prim orientation.
+    Pattern rotation can be used with prim orientation and llTargetOmega() but
+    won't produce consistent results.
   related:
     functions:
       - llLinkParticleSystem
@@ -1317,6 +1777,16 @@ PSYS_SRC_OMEGA:
   type: integer
   value: 21
 PSYS_SRC_ANGLE_BEGIN:
+  description: |-
+    Specifies a half angle, in radians, of a circular or spherical "dimple" or
+    conic section (starting from the emitter facing) within which particles will
+    NOT be emitted. Valid values are the same as for `PSYS_SRC_ANGLE_END`,
+    though the effects are reversed accordingly. If the pattern is
+    `PSYS_SRC_PATTERN_ANGLE`, the presentation is a 2D flat circular section. If
+    `PSYS_SRC_PATTERN_ANGLE_CONE` or `PSYS_SRC_PATTERN_ANGLE_CONE_EMPTY` is
+    used, the presentation is a 3D spherical section. Note that the value of
+    this parameter and `PSYS_SRC_ANGLE_END` are internally re-ordered such that
+    this parameter gets the smaller of the two values.
   related:
     functions:
       - llLinkParticleSystem
@@ -1325,6 +1795,19 @@ PSYS_SRC_ANGLE_BEGIN:
   type: integer
   value: 22
 PSYS_SRC_ANGLE_END:
+  description: |-
+    Specifies a half angle, in radians, of a circular or spherical "dimple" or
+    conic section (starting from the emitter facing) within which particles WILL
+    be emitted. Valid values are 0.0, which will result in particles being
+    emitted in a straight line in the direction of the emitter facing, to PI,
+    which will result in particles being emitted in a full circular or spherical
+    arc around the emitter, not including the "dimple" or conic section defined
+    by `PSYS_SRC_ANGLE_BEGIN`. If the pattern is `PSYS_SRC_PATTERN_ANGLE`, the
+    presentation is a 2D flat circular section. If
+    `PSYS_SRC_PATTERN_ANGLE_CONE` or `PSYS_SRC_PATTERN_ANGLE_CONE_EMPTY` is
+    used, the presentation is a 3D spherical section. Note that the value of
+    this parameter and `PSYS_SRC_ANGLE_BEGIN` are internally re-ordered such
+    that this parameter gets the larger of the two values.
   related:
     functions:
       - llLinkParticleSystem
@@ -1333,6 +1816,12 @@ PSYS_SRC_ANGLE_END:
   type: integer
   value: 23
 PSYS_SRC_PATTERN_DROP:
+  description: |-
+    Creates particles with no initial velocity. The DROP pattern will override
+    any values given for `PSYS_SRC_BURST_RADIUS`, `PSYS_SRC_BURST_SPEED_MIN`,
+    and `PSYS_SRC_BURST_SPEED_MAX`, setting each to 0.00000. (All patterns will
+    behave like the DROP pattern, if RADIUS, SPEED_MIN and SPEED_MAX are
+    explicitly set to 0.0000.)
   related:
     functions:
       - llLinkParticleSystem
@@ -1340,8 +1829,13 @@ PSYS_SRC_PATTERN_DROP:
   scope: constant.language.integer
   type: integer
   value: 1
-  value_description: '0x1'
+  value_description: '0x01'
 PSYS_SRC_PATTERN_EXPLODE:
+  description: |-
+    Sprays particles outwards in a spherical area. The Initial velocity of each
+    particle is determined by `PSYS_SRC_BURST_SPEED_MIN` and
+    `PSYS_SRC_BURST_SPEED_MAX`. The EXPLODE pattern ignores the ANGLE
+    parameters.
   related:
     functions:
       - llLinkParticleSystem
@@ -1349,8 +1843,12 @@ PSYS_SRC_PATTERN_EXPLODE:
   scope: constant.language.integer
   type: integer
   value: 2
-  value_description: '0x2'
+  value_description: '0x02'
 PSYS_SRC_PATTERN_ANGLE:
+  description: |-
+    Sprays particles outward in a flat circular, semi-circular, arc or ray
+    shaped areas, as defined by `PSYS_SRC_ANGLE_BEGIN` and `PSYS_SRC_ANGLE_END`.
+    The circular pattern radiates outwards around the prim's local X axis line.
   related:
     functions:
       - llLinkParticleSystem
@@ -1358,8 +1856,14 @@ PSYS_SRC_PATTERN_ANGLE:
   scope: constant.language.integer
   type: integer
   value: 4
-  value_description: '0x4'
+  value_description: '0x04'
 PSYS_SRC_PATTERN_ANGLE_CONE:
+  description: |-
+    Sprays particles outwards in a spherical, sub-spherical, conical or ring
+    shaped area, as defined by the ANGLE parameters `PSYS_SRC_ANGLE_BEGIN` and
+    `PSYS_SRC_ANGLE_END`. The ANGLE_CONE pattern can be used to imitate the
+    EXPLODE pattern by explicitly setting `PSYS_SRC_ANGLE_BEGIN` to 0.00000 and
+    `PSYS_SRC_ANGLE_END` to 3.14159 (or PI) (or vice versa).
   related:
     functions:
       - llLinkParticleSystem
@@ -1367,8 +1871,14 @@ PSYS_SRC_PATTERN_ANGLE_CONE:
   scope: constant.language.integer
   type: integer
   value: 8
-  value_description: '0x8'
+  value_description: '0x08'
 PSYS_SRC_PATTERN_ANGLE_CONE_EMPTY:
+  description: |-
+    (incomplete implementation) acts the same as the `PSYS_SRC_PATTERN_DROP`
+    pattern, it is believed that the original intention for this pattern was to
+    invert the effect of the ANGLE parameters, making them delineate an area
+    where particles were NOT to be sprayed. (effectively the inverse or opposite
+    of the behavior of the ANGLE_CONE pattern).
   related:
     functions:
       - llLinkParticleSystem
@@ -1378,6 +1888,10 @@ PSYS_SRC_PATTERN_ANGLE_CONE_EMPTY:
   value: 16
   value_description: '0x10'
 PSYS_PART_BLEND_FUNC_SOURCE:
+  description: |-
+    Specifies how blending function uses the incoming particle's color and alpha
+    information to produce the rendered result.
+    Defaults to `PSYS_PART_BF_SOURCE_ALPHA`.
   related:
     functions:
       - llLinkParticleSystem
@@ -1386,6 +1900,15 @@ PSYS_PART_BLEND_FUNC_SOURCE:
   type: integer
   value: 24
 PSYS_PART_BLEND_FUNC_DEST:
+  description: |-
+    Specifies how blending function uses the current framebuffer's color and
+    alpha information to produce the rendered result. Defaults to
+    `PSYS_PART_BF_ONE_MINUS_SOURCE_ALPHA`. To make particles blend with the
+    background in a less opaque and more luminescent way use `PSYS_PART_BF_ONE`
+    for dest and the default for source. Most other blending combinations will
+    render the invisible/alpha portion of your particle texture, unless the
+    invisible area of your texture is all black (or, in some cases, unless it is
+    all white).
   related:
     functions:
       - llLinkParticleSystem
@@ -1394,6 +1917,9 @@ PSYS_PART_BLEND_FUNC_DEST:
   type: integer
   value: 25
 PSYS_PART_START_GLOW:
+  description: |-
+    Specifies the glow of the particles upon emission. Valid values are in the
+    range of (no glow) `[0.0 .. 1.0]` (full glow).
   related:
     functions:
       - llLinkParticleSystem
@@ -1402,6 +1928,9 @@ PSYS_PART_START_GLOW:
   type: integer
   value: 26
 PSYS_PART_END_GLOW:
+  description: |-
+    Specifies the glow that the particles transition to during their lifetime.
+    Valid values are the same as `PSYS_PART_START_GLOW`.
   related:
     functions:
       - llLinkParticleSystem
@@ -1411,8 +1940,7 @@ PSYS_PART_END_GLOW:
   value: 27
 OBJECT_UNKNOWN_DETAIL:
   description: |-
-    Returned by llGetObjectDetails when passed an invalid object parameter
-    type
+    Returned by llGetObjectDetails when passed an invalid object parameter type
   related:
     functions:
       - llGetObjectDetails
@@ -1423,6 +1951,16 @@ OBJECT_UNKNOWN_DETAIL:
   type: integer
   value: -1
   version: '1.18.3(5)'
+  usage:
+    - |-
+      touch_end(integer num_detected)
+      {
+          key user = llDetectedKey(num_detected);
+          list details = llGetObjectDetails(user, [OBJECT_NAME]);
+          if ( !llGetListLength(details) ) llInstantMessage(PUBLIC_CHANNEL, "You're touching me from another region!");
+          else if (llList2Integer(details, 0) == OBJECT_UNKNOWN_DETAIL) llSay(PUBLIC_CHANNEL, "I do not know your name!");
+          else llSay(PUBLIC_CHANNEL, "Your legacy name: " + llList2String(details, 0));
+      }
 OBJECT_NAME:
   description: Used with llGetObjectDetails to get an object's name
   related:
@@ -1516,6 +2054,7 @@ OBJECT_GROUP:
     functions:
       - llGetObjectDetails
     slwiki_categories:
+      - LSL_Group
       - LSL_Constants
       - LSL_Integer
   scope: constant.language.integer
@@ -1529,6 +2068,7 @@ OBJECT_CREATOR:
       - llGetObjectDetails
       - llGetCreator
     slwiki_categories:
+      - LSL_Creator
       - LSL_Constants
       - LSL_Integer
   scope: constant.language.integer
@@ -1583,6 +2123,8 @@ OBJECT_SCRIPT_TIME:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Viewerhelp:Top_Colliders_and_Top_Scripts
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1607,6 +2149,8 @@ OBJECT_SERVER_COST:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Mesh/Mesh_Server_Weight
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1618,6 +2162,8 @@ OBJECT_STREAMING_COST:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Mesh/Mesh_Streaming_Cost
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1629,6 +2175,8 @@ OBJECT_PHYSICS_COST:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Mesh/Mesh_physics
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1640,6 +2188,8 @@ OBJECT_CHARACTER_TIME:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Viewerhelp:Pathfinding_characters
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1692,6 +2242,8 @@ OBJECT_PATHFINDING_TYPE:
       - OPT_EXCLUSION_VOLUME
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Pathfinding_Quick_Start_Guide
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -1708,6 +2260,8 @@ OBJECT_RENDER_WEIGHT:
   related:
     functions:
       - llGetObjectDetails
+    slwiki:
+      - Avatar_Rendering_Cost
     slwiki_categories:
       - LSL_Constants
       - LSL_Integer
@@ -26000,11 +26554,11 @@ llAtan2:
   type: float
 llSqrt:
   description: |-
-    Returns the square root of val, or returns 0 and triggers a Math
+    Returns the square root of val, or returns `0` and triggers a Math
     Error for imaginary results
   function-id: 4
   params:
-    - description: positive number (val >= 0.0)
+    - description: positive number (`val >= 0.0`)
       name: val
       type: float
   related:
@@ -26021,8 +26575,8 @@ llSqrt:
   type: float
 llPow:
   description: |-
-    Returns the base raised to the power exponent, or returns 0 and triggers
-    Math Error for imaginary results
+    Returns the base raised to the power exponent, or returns `0` and triggers
+    Math Error for imaginary results.
   function-id: 5
   params:
     - description: float base
@@ -26093,7 +26647,8 @@ llFrand:
   scope: support.function.builtin
   type: float
 llFloor:
-  description: Returns largest integer value <= val
+  description: |-
+    Returns largest `integer value <= val`
   function-id: 9
   params:
     - description: Any valid float value
@@ -26108,7 +26663,7 @@ llFloor:
   scope: support.function.builtin
   type: integer
 llCeil:
-  description: Returns smallest integer value >= val
+  description: Returns smallest `integer value >= val`
   function-id: 10
   params:
     - description: Any valid float value
@@ -26138,7 +26693,9 @@ llRound:
   scope: support.function.builtin
   type: integer
 llVecMag:
-  description: Returns the magnitude of v
+  description: |-
+    Returns the magnitude of v, the undirected non-negative distance from
+    origin (`<0.0, 0.0, 0.0>`) to v.
   function-id: 12
   params:
     - description: vector v
@@ -26163,6 +26720,9 @@ llVecNorm:
       - llVecDist
   scope: support.function.builtin
   type: vector
+  snippets:
+    - |-
+      float vecmag = llSqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
 llVecDist:
   description: Returns the 3D distance between v1 and v2
   function-id: 14
@@ -26369,6 +26929,9 @@ llWhisper:
     slwiki_categories:
       - LSL_Chat
   scope: support.function.builtin
+  usage:
+    - |-
+      llWhisper(PUBLIC_CHANNEL, "Hello, Avatar!");
 llSay:
   description: Says the text of msg on channel
   function-id: 23
@@ -26400,6 +26963,9 @@ llSay:
     slwiki_categories:
       - LSL_Chat
   scope: support.function.builtin
+  usage:
+    - |-
+      llSay(PUBLIC_CHANNEL, "Hello, Avatar!");
 llShout:
   description: Shouts the text of msg on channel
   function-id: 24
@@ -26431,14 +26997,18 @@ llShout:
     slwiki_categories:
       - LSL_Chat
   scope: support.function.builtin
+  usage:
+    - |-
+      llShout(PUBLIC_CHANNEL, "Hello, Avatar!");
 llListen:
   description: |-
-    Sets a callback for msg on channel from name and id (name, id, and/or
+    Sets a callback for `msg` on `channel` from `name` and `id` (name, id, and/or
     msg can be empty) and returns an ID that can be used to deactivate
     or remove the listen
   function-id: 25
   params:
-    - description: Any valid integer value
+    - description: |-
+        Any valid integer value, use PUBLIC_CHANNEL (0) for local chat
       name: channel
       type: integer
     - description: Filter for specific prim name or agent legacy name
@@ -39291,6 +39861,16 @@ llGetObjectAnimationNames:
   type: list
   version: '18.06.14.516474'
 llName2Key:
+  description: |-
+    Returns a key the Agent ID for the named agent in the region. If there is no
+    agent with the specified name currently signed onto the region, this
+    function returns the value NULL_KEY. Names are always provided in the form
+    "First[ Last]" or "first[.last]" (first name with an optional last name.) If
+    the last name is omitted a last name of "Resident" is assumed. Case is not
+    considered when resolving agent names.
+  related:
+    functions:
+      - llRequestUserKey
   params:
     - description: avatar name
       name: name
@@ -39299,63 +39879,327 @@ llName2Key:
   type: key
   version: '18.05.07.515224'
 llRequestUserKey:
+  description: |-
+    Requests the Agent ID for the agent identified by name from the dataserver.
+    The name given may be either the current name of an avatar or a historical
+    name that has been used in the past. If no agent can be found with the
+    supplied name this function returns the value NULL_KEY.
+
+    Returns a handle (a key) that can be used to identify the request when the
+    dataserver event is raised.
+
+    The agent being searched for with this function does not need to be signed
+    on to Second Life.
   params:
     - description: avatar name
       name: name
       type: string
+  related:
+    functions:
+      - llRequestUsername
+      - llName2Key
   scope: support.function.builtin
   type: key
   version: '18.05.07.515224'
 llGetDayLength:
+  description: |-
+    Return the number of seconds in the day cycle applied to the current parcel.
+    llGetDayLength returns the number of seconds for the current parcel,
+    llGetRegionDayLength is the number of seconds in the day cycle applied to
+    the entire region.
+  related:
+    functions:
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: integer
   version: '18.11.02.521379'
 llGetDayOffset:
+  description: |-
+    Return the number of seconds added to the current time before calculating
+    the current environmental time for the parcel. llGetDayOffset returns the
+    value for the current parcel, llGetRegionDayOffset produces the same value
+    for the entire region.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: integer
   version: '18.11.02.521379'
 llGetEnvironment:
+  description: |-
+    Returns a list containing the current environment values for the parcel and
+    region as a list of attributes. Takes a list of attributes to retrieve in
+    params and returns them in the order requested.
+
+    If an unknown rule is encountered in the parameter list an error is sent to
+    the debug channel.
   params:
-    - name: pos
+    - description: |-
+        A position in region coordinates. X and Y are in region coordinates and
+        determine the parcel. If X and Y are both -1, the environment for the
+        region is inspected. Z is the altitude in the region and determines
+        which sky track is accessed.
+      name: pos
       type: vector
-    - name: params
+    - description: |-
+        A list of parameters to retrieve from the current environment.
+      name: params
       type: list
+  related:
+    constants:
+      - SKY_TRACKS
+      - SKY_AMBIENT
+      - SKY_TEXTURE_DEFAULTS
+      - SKY_CLOUDS
+      - SKY_DOME
+      - SKY_GAMMA
+      - SKY_GLOW
+      - SKY_MOON
+      - SKY_STAR_BRIGHTNESS
+      - SKY_SUN
+      - SKY_PLANET
+      - SKY_REFRACTION
+      - SKY_LIGHT
+      - WATER_BLUR_MULTIPLIER
+      - WATER_FOG
+      - WATER_FRESNEL
+      - WATER_TEXTURE_DEFAULTS
+      - WATER_NORMAL_SCALE
+      - WATER_REFRACTION
+      - WATER_WAVE_DIRECTION
+      - ENVIRONMENT_DAYINFO
   scope: support.function.builtin
   type: list
   version: '18.11.02.521379'
 llGetMoonDirection:
+  description: |-
+    Returns a normalized vector to the current moon position at the location of
+    object containing the script. llGetMoonDirection is the vector to the
+    parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If
+    there is no custom environment set for the current parcel llGetMoonDirection
+    returns the direction to the region's moon. These functions are altitude
+    aware.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: vector
   version: '18.11.02.521379'
 llGetMoonRotation:
+  description: |-
+    Return the rotation applied to the moon for the parcel at the location of
+    the object containing the script. These function are altitude aware and so
+    will pick up the moon for their current track. llGetRegionMoonRotation
+    returns the rotation applied at the region level, llGetMoonRotation does the
+    same for the parcel. If there is no custom environment applied to parcel
+    llGetMoonRotation returns the same value as llGetRegionMoonRotation.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: rotation
   version: '18.11.02.521379'
 llGetRegionDayLength:
+  description: |-
+    Return the number of seconds in the day cycle applied to the current region.
+    llGetDayLength returns the number of seconds for the current parcel,
+    llGetRegionDayLength is the number of seconds in the day cycle applied to
+    the entire region.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: integer
   version: '18.11.02.521379'
 llGetRegionDayOffset:
+  description: |-
+    Return the number of seconds added to the current time before calculating
+    the current environmental time for the region. llGetDayOffset returns the
+    value for the current parcel, llGetRegionDayOffset produces the same value
+    for the entire region.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: integer
   version: '18.11.02.521379'
 llGetRegionMoonDirection:
+  description: |-
+    Returns a normalized vector to the current moon position at the location of
+    object containing the script. llGetMoonDirection is the vector to the
+    parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If
+    there is no custom environment set for the current parcel llGetMoonDirection
+    returns the direction to the region's moon. These functions are altitude
+    aware.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: vector
   version: '18.11.02.521379'
 llGetRegionMoonRotation:
+  description: |-
+    Return the rotation applied to the moon for the region at the location of
+    the object containing the script. These function are altitude aware and so
+    will pick up the moon for their current track. llGetRegionMoonRotation
+    returns the rotation applied at the region level, llGetMoonRotation does the
+    same for the parcel. If there is no custom environment applied to parcel
+    llGetMoonRotation returns the same value as llGetRegionMoonRotation.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: rotation
   version: '18.11.02.521379'
 llGetRegionSunDirection:
+  description: |-
+    Returns a normalized vector to the current sun position at the location of
+    object containing the script. llGetSunDirection is the vector to the
+    parcel's sun, llGetRegionSunDirection is the vector to region's sun. If
+    there is no custom environment set for the current parcel llGetSunDirection
+    returns the direction to the region's sun. These functions are altitude
+    aware.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: vector
   version: '18.11.02.521379'
 llGetRegionSunRotation:
+  description: |-
+    Return the rotation applied to the sun for the region at the location of the
+    object containing the script. These functions are altitude aware and so will
+    pick up the sun for their current track. llGetRegionSunRotation returns the
+    rotation applied at the region level, llGetSunRotation does the same for the
+    parcel. If there is no custom environment applied to parcel llGetSunRotation
+    returns the same value as llGetRegionSunRotation.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetSunRotation
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
   scope: support.function.builtin
   type: rotation
   version: '18.11.02.521379'
 llGetSunRotation:
+  description: |-
+    Return the rotation applied to the sun for the parcel at the location of the
+    object containing the script. These function are altitude aware and so will
+    pick up the sun for their current track. llGetRegionSunRotation returns the
+    rotation applied at the region level, llGetSunRotation does the same for the
+    parcel. If there is no custom environment applied to parcel llGetSunRotation
+    returns the same value as llGetRegionSunRotation.
+  related:
+    functions:
+      - llGetDayLength
+      - llGetDayOffset
+      - llGetMoonDirection
+      - llGetMoonRotation
+      - llGetSunDirection
+      - llGetRegionDayLength
+      - llGetRegionDayOffset
+      - llGetRegionMoonDirection
+      - llGetRegionMoonRotation
+      - llGetRegionSunDirection
+      - llGetRegionSunRotation
   scope: support.function.builtin
   type: rotation
   version: '18.11.02.521379'
@@ -39364,12 +40208,26 @@ llGetRegionTimeOfDay:
   scope: support.function.builtin
   version: '19.02.01.523934'
 llSetAgentEnvironment:
+  description: |-
+    This function sets environment values for an individual agent in an
+    experience. The changes to the environment persist until the agent moves to
+    a new region or llSetAgentEnvironment is called for an agent with an empty
+    list. Passing an empty list in params will strip all environmental settings
+    applied to this agent as part of the experience
   params:
-    - name: agent_id
+    - description: |-
+        The key for an agent in the region. The agent must be in the region and
+        must be participating in the experience.
+      name: agent_id
       type: key
-    - name: transition
+    - description: |-
+        The number of seconds over which to transition to the new settings.
+      name: transition
       type: float
-    - name: params
+    - description: |-
+        A list of parameters to retrieve from the current environment. See table
+        below for details.
+      name: params
       type: list
   related:
     constants:
@@ -39381,20 +40239,74 @@ llSetAgentEnvironment:
       - ENV_VALIDATION_FAIL
       - ENV_NO_EXPERIENCE_LAND
       - ENV_THROTTLE
+      - SKY_CLOUDS
+      - SKY_CLOUD_TEXTURE
+      - SKY_DOME
+      - SKY_GAMMA
+      - SKY_GLOW
+      - SKY_MOON
+      - SKY_MOON_TEXTURE
+      - SKY_STAR_BRIGHTNESS
+      - SKY_SUN
+      - SKY_SUN_TEXTURE
+      - SKY_PLANET
+      - SKY_REFRACTION
+      - WATER_BLUR_MULTIPLIER
+      - WATER_FOG
+      - WATER_FRESNEL
+      - WATER_NORMAL_TEXTURE
+      - WATER_NORMAL_SCALE
+      - WATER_REFRACTION
+      - WATER_WAVE_DIRECTION
   type: integer
   scope: support.function.builtin
   version: '19.02.01.523934'
 llReplaceAgentEnvironment:
+  description: |-
+    This function overrides the current region and parcel environment seen by an
+    agent. The new environment persists until the agent crosses to a new region
+    or this function is called with the NULL_KEY or empty string in the
+    environment parameter for the particular agent, doing so will strip all
+    environmental settings applied to this agent as part of the experience. This
+    function must be executed as part of an experience.
   params:
-    - name: agent_id
+    - description: |-
+        The key for an agent in the region. The agent must be in the region and
+        must be participating in the experience.
+      name: agent_id
       type: key
-    - name: transition
+    - description: |-
+        The number of seconds over which to transition to the new settings.
+      name: transition
       type: float
-    - name: environment
+    - description: |-
+        The name of an environmental setting in the object's inventory or the
+        asset ID for an environment.
+      name: environment
       type: string
   type: integer
   scope: support.function.builtin
   version: '19.02.01.523934'
+  usage:
+    - |-
+      // The script is not running as part of an experience with a valid
+      // experience key.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_NOT_EXPERIENCE
+    - |-
+      // The agent has not granted permission.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_NO_EXPERIENCE_PERMISSION
+    - |-
+      // The environment inventory object could not be found.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_NO_ENVIRONMENT
+    - |-
+      // Unable to find specified agent.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) ==  ENV_INVALID_AGENT
+    - |-
+      // The experience has not been enabled or can not run on the land.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_NO_EXPERIENCE_LAND
+    - |-
+      // The scripts have exceeded the throttle. Wait and retry the request.
+      llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_THROTTLE
 # support.function.event
 at_rot_target:
   description: Result of LLRotTarget library function call
@@ -39412,6 +40324,12 @@ at_rot_target:
     slwiki_categories:
       - LSL_At_target
   scope: support.function.event
+  usage:
+    - |-
+      at_rot_target(integer tnum, rotation targetrot, rotation ourrot)
+      {
+          ;
+      }
 at_target:
   description: Result of llTarget library function call
   params:
@@ -39428,12 +40346,31 @@ at_target:
     slwiki_categories:
       - LSL_At_target
   scope: support.function.event
+  usage:
+    - |-
+      at_rot(integer tnum, vector targetpos, vector ourpos)
+      {
+          ;
+      }
 attach:
   description: Triggered when task attaches or detaches from agent
   params:
     - name: id
       type: key
   scope: support.function.event
+  usage:
+    - |-
+      attach(key id)
+      {
+          if (id)
+          {
+              ; // attached
+          }
+          else
+          {
+              ; // detached
+          }
+      }
 changed:
   description: Triggered by various event changes to the task
   params:
@@ -39459,6 +40396,57 @@ changed:
     slwiki_categories:
       - LSL_Integer/bit_field
   scope: support.function.event
+  usage:
+    - |-
+      changed(integer change)
+      {
+          if (change & CHANGED_INVENTORY)
+          {
+              ; // inventory changed
+          }
+          if (change & CHANGED_COLOR)
+          {
+              ; // color or alpha changed
+          }
+          if (change & CHANGED_SHAPE)
+          {
+              ; // prim's shape changed
+          }
+          if (change & CHANGED_SCALE)
+          {
+              ; // prim's scale changed
+          }
+          if (change & CHANGED_TEXTURE)
+          {
+              ; // prim's texture or texture attributes changed
+          }
+          if (change & CHANGED_LINK)
+          {
+              ; // number of links changed
+          }
+          if (change & CHANGED_ALLOWED_DROP)
+          {
+              ; // inventory changed as a result of a user without mod perms
+              ; // dropping an item on the prim and it being allowed by the
+              ; // script
+          }
+          if (change & CHANGED_OWNER)
+          {
+              ; // owner changed
+          }
+          if (change & CHANGED_REGION)
+          {
+              ; // region the object is in changed
+          }
+          if (change & CHANGED_TELEPORT)
+          {
+              ; // object was teleported while attached
+          }
+          if (change & CHANGED_REGION_START)
+          {
+              ; // region has just restarted
+          }
+      }
 collision:
   description: Triggered while task is colliding with another task
   params:
@@ -39495,6 +40483,12 @@ collision:
       - LSL_Detected
       - LSL_Passable
   scope: support.function.event
+  usage:
+    - |-
+      collision(integer num_detected)
+      {
+          ;
+      }
 collision_end:
   description: Triggered when task stops colliding with another task
   params:
@@ -39531,6 +40525,12 @@ collision_end:
       - LSL_Detected
       - LSL_Passable
   scope: support.function.event
+  usage:
+    - |-
+      collision_end(integer num_detected)
+      {
+          ;
+      }
 collision_start:
   description: Triggered when task starts colliding with another task
   params:
@@ -39567,6 +40567,12 @@ collision_start:
       - LSL_Detected
       - LSL_Passable
   scope: support.function.event
+  usage:
+    - |-
+      collision_start(integer num_detected)
+      {
+          ;
+      }
 control:
   description: Result of llTakeControls library function call
   params:
@@ -39582,10 +40588,16 @@ control:
     slwiki_categories:
       - LSL_Integer/bit_field
   scope: support.function.event
+  usage:
+    - |-
+      control(key id, integer level, integer edge)
+      {
+          ;
+      }
 dataserver:
   description: Triggered when task receives asynchronous data
   params:
-    - name: queryid
+    - name: query_id
       type: key
     - name: data
       type: string
@@ -39612,6 +40624,12 @@ dataserver:
       - LSL_Communications
       - LSL_Notecard
   scope: support.function.event
+  usage:
+    - |-
+      dataserver(key query_id, string data)
+      {
+          ;
+      }
 email:
   description: Triggered when task receives email
   params:
@@ -39631,6 +40649,12 @@ email:
       - LSL_Email
   scope: support.function.event
   version: '1.3.0'
+  usage:
+    - |-
+      email(string time, string address, string subject, string message, integer num_left)
+      {
+          ;
+      }
 experience_permissions:
   description: |-
     Triggered by llRequestExperiencePermissions when the permission has
@@ -39640,6 +40664,12 @@ experience_permissions:
       type: key
   scope: support.function.event
   version: '14.07.18.292162'
+  usage:
+    - |-
+      experience_permissions(key agent)
+      {
+          ;
+      }
 experience_permissions_denied:
   description: |-
     Triggered by llRequestExperiencePermissions when the permission has
@@ -39651,6 +40681,12 @@ experience_permissions_denied:
       type: integer
   scope: support.function.event
   version: '14.07.18.292162'
+  usage:
+    - |-
+      experience_permissions_denied(key agent, integer reason)
+      {
+          ;
+      }
 http_request:
   description: |-
     Triggered when task receives an http request against a public URL
@@ -39662,6 +40698,12 @@ http_request:
     - name: body
       type: string
   scope: support.function.event
+  usage:
+    - |-
+      http_request(key id, string method, string body)
+      {
+          ;
+      }
 http_response:
   description: |-
     Triggered when task receives a response to one of its llHTTPRequests
@@ -39676,6 +40718,12 @@ http_response:
       type: string
   scope: support.function.event
   version: '1.9.1.9'
+  usage:
+    - |-
+      http_response(key request_id, integer status, list metadata, string body)
+      {
+          ;
+      }
 land_collision:
   description: Triggered when task is colliding with land
   params:
@@ -39691,6 +40739,12 @@ land_collision:
       - LSL_Collision
       - LSL_Land_Collision
   scope: support.function.event
+  usage:
+    - |-
+      land_collision(vector pos)
+      {
+          ;
+      }
 land_collision_end:
   description: Triggered when task stops colliding with land
   params:
@@ -39706,6 +40760,12 @@ land_collision_end:
       - LSL_Collision
       - LSL_Land_Collision
   scope: support.function.event
+  usage:
+    - |-
+      land_collision_end(vector pos)
+      {
+          ;
+      }
 land_collision_start:
   description: Triggered when task starts colliding with land
   params:
@@ -39721,6 +40781,12 @@ land_collision_start:
       - LSL_Collision
       - LSL_Land_Collision
   scope: support.function.event
+  usage:
+    - |-
+      land_collision_start(vector pos)
+      {
+          ;
+      }
 link_message:
   description: |-
     Triggered when task receives a link message via LLMessageLinked library
@@ -39751,6 +40817,12 @@ link_message:
       - LSL_Link
       - LSL_Link_Message
   scope: support.function.event
+  usage:
+    - |-
+      link_message(integer sender_num, integer num, string str, key id)
+      {
+          ;
+      }
 listen:
   description: Result of the llListen library function call
   params:
@@ -39763,6 +40835,12 @@ listen:
     - name: message
       type: string
   scope: support.function.event
+  usage:
+    - |-
+      listen(integer channel, string name, key id, string message)
+      {
+          ;
+      }
 money:
   description: Triggered when L$ is given to task
   params:
@@ -39785,6 +40863,12 @@ money:
       - LSL_Money
       - LSL_Pie_Menu
   scope: support.function.event
+  usage:
+    - |-
+      money(key id, integer amount)
+      {
+          ;
+      }
 moving_end:
   description: Triggered when task stops moving
   related:
@@ -39805,6 +40889,12 @@ moving_end:
       - LSL_Vehicle/Parameters
       - LSL_Vehicle/Types
   scope: support.function.event
+  usage:
+    - |-
+      moving_end()
+      {
+          ;
+      }
 moving_start:
   description: Triggered when task begins moving
   related:
@@ -39825,6 +40915,12 @@ moving_start:
       - LSL_Vehicle/Parameters
       - LSL_Vehicle/Types
   scope: support.function.event
+  usage:
+    - |-
+      moving_start()
+      {
+          ;
+      }
 no_sensor:
   description: Result of the llSensor library function call
   related:
@@ -39833,6 +40929,12 @@ no_sensor:
     slwiki_categories:
       - LSL_Sensor
   scope: support.function.event
+  usage:
+    - |-
+      no_sensor()
+      {
+          ;
+      }
 not_at_rot_target:
   description: Result of LLRotTarget library function call
   related:
@@ -39842,6 +40944,12 @@ not_at_rot_target:
     slwiki_categories:
       - LSL_At_target
   scope: support.function.event
+  usage:
+    - |-
+      not_at_rot_target()
+      {
+          ;
+      }
 not_at_target:
   description: Result of llTarget library function call
   related:
@@ -39851,6 +40959,12 @@ not_at_target:
     slwiki_categories:
       - LSL_At_target
   scope: support.function.event
+  usage:
+    - |-
+      not_at_target()
+      {
+          ;
+      }
 object_rez:
   description: Triggered when task rezzes in another task
   params:
@@ -39866,6 +40980,12 @@ object_rez:
     slwiki_categories:
       - LSL_Rez
   scope: support.function.event
+  usage:
+    - |-
+      object_rez(key id)
+      {
+          ;
+      }
 on_rez:
   description: Triggered when task is rezzed in from inventory or another task
   params:
@@ -39885,6 +41005,12 @@ on_rez:
     slwiki_categories:
       - LSL_Rez
   scope: support.function.event
+  usage:
+    - |-
+      on_rez(integer start_param)
+      {
+          ;
+      }
 path_update:
   params:
     - name: type
@@ -39892,6 +41018,12 @@ path_update:
     - name: reserved
       type: list
   scope: support.function.event
+  usage:
+    - |-
+      path_update(integer type, list reserved)
+      {
+          ;
+      }
 remote_data:
   description: |-
     Triggered by various XML-RPC calls (event_type will be one of
@@ -39927,6 +41059,12 @@ remote_data:
           - XML
           - XML-RPC
   scope: support.function.event
+  usage:
+    - |-
+      remote_data(integer event_type, key channel, key message_id, string sender, integer idata, string sdata)
+      {
+          ;
+      }
 run_time_permissions:
   description: Triggered when an agent grants run time permissions to task
   params:
@@ -39953,6 +41091,12 @@ run_time_permissions:
     slwiki_categories:
       - LSL_Permissions/Script
   scope: support.function.event
+  usage:
+    - |-
+      run_time_permissions(integer perm)
+      {
+          ;
+      }
 sensor:
   description: Result of the llSensor library function call
   params:
@@ -39981,6 +41125,12 @@ sensor:
     slwiki_categories:
       - LSL_Sensor
   scope: support.function.event
+  usage:
+    - |-
+      sensor(integer num_detected)
+      {
+          ;
+      }
 state_entry:
   description: Triggered on any state transition and startup
   related:
@@ -39993,6 +41143,12 @@ state_entry:
       - LSL_Events
       - LSL_State
   scope: support.function.event
+  usage:
+    - |-
+      state_entry()
+      {
+          ;
+      }
 state_exit:
   description: Triggered on any state transition
   related:
@@ -40002,9 +41158,21 @@ state_exit:
       - LSL_Events
       - LSL_State
   scope: support.function.event
+  usage:
+    - |-
+      state_exit()
+      {
+          ;
+      }
 timer:
   description: Result of the llSetTimerEvent library function call
   scope: support.function.event
+  usage:
+    - |-
+      timer()
+      {
+          ;
+      }
 touch:
   description: Triggered while agent is clicking on task
   params:
@@ -40041,6 +41209,12 @@ touch:
       - LSL_Passable
       - LSL_Touch
   scope: support.function.event
+  usage:
+    - |-
+      touch(integer num_detected)
+      {
+          ;
+      }
 touch_end:
   description: Triggered when agent stops clicking on task
   params:
@@ -40077,6 +41251,12 @@ touch_end:
       - LSL_Passable
       - LSL_Touch
   scope: support.function.event
+  usage:
+    - |-
+      touch_end(integer num_detected)
+      {
+          ;
+      }
 touch_start:
   description: Triggered by the start of agent clicking on task
   params:
@@ -40113,6 +41293,12 @@ touch_start:
       - LSL_Passable
       - LSL_Touch
   scope: support.function.event
+  usage:
+    - |-
+      touch_start(integer num_detected)
+      {
+          ;
+      }
 transaction_result:
   description: |-
     Triggered when transferring L$ to Agent via llTransferLindenDollars
@@ -40127,3 +41313,9 @@ transaction_result:
     functions:
       - llTransferLindenDollars
   scope: support.function.event
+  usage:
+    - |-
+      transaction_result(key id, integer success, string data)
+      {
+          ;
+      }

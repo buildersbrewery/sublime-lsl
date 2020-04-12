@@ -3,4 +3,12 @@
     <tabTrigger>default state</tabTrigger>
     <scope>source.lsl - meta.class.state.body.lsl</scope>
     <description>state declaration</description>
+<!--
+    <kind>
+        <string>navigation</string>
+        <string>s</string>
+        <string>state declaration</string>
+    </kind>
+    <details><![CDATA[]]></details>
+-->
 </snippet>

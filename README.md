@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/github/license/buildersbrewery/sublime-lsl.svg?style=flat-square&logo=opensourceinitiative)](https://github.com/buildersbrewery/sublime-lsl/blob/master/LICENSE.txt)
-[![Requires Sublime Text Build 4065 or later](https://img.shields.io/badge/Sublime%20Text-4065+-orange.svg?style=flat-square&logo=sublime-text)](https://www.sublimetext.com)
+[![Requires Sublime Text Build 4073 or later](https://img.shields.io/badge/Sublime%20Text-4073+-orange.svg?style=flat-square&logo=sublime-text)](https://www.sublimetext.com)
 [![Download =BB= LSL from Package Control](https://img.shields.io/packagecontrol/dt/%3DBB%3D%20LSL.svg?style=flat-square&logo=sublime-text)](https://packagecontrol.io/packages/%3DBB%3D%20LSL)
 [![Latest tag](https://img.shields.io/github/tag/buildersbrewery/sublime-lsl.svg?style=flat-square&logo=github)](https://github.com/buildersbrewery/sublime-lsl/tags)
 [![SublimeHQ Discord](https://img.shields.io/discord/280102180189634562?label=SublimeHQ%20Discord&logo=discord&style=flat-square)](https://discord.gg/D43Pecu)
@@ -35,9 +35,7 @@ Implicitly this might require you to be on the `dev` release channel and consequ
 
 ## Requirements
 
-* [Sublime Text](https://www.sublimetext.com) `Build 4065` or later
-    * (stable)
-    * (dev channel)
+* [Sublime Text](https://www.sublimetext.com) `Build 4073` or later
     * Buy a new license: <https://www.sublimehq.com/store/text>
     * Retrieve a lost license: <https://www.sublimetext.com/retrieve_key>
 * [`Package Control`](https://packagecontrol.io)

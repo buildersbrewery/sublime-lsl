@@ -1,0 +1,26 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        list lsl_integers = [
+            TYPE_FLOAT,
+//          ^^^^^^^^^^ constant.language.integer.type
+            TYPE_INTEGER,
+//          ^^^^^^^^^^^^ constant.language.integer.type
+            TYPE_INVALID,
+//          ^^^^^^^^^^^^ constant.language.integer.type
+            TYPE_KEY,
+//          ^^^^^^^^ constant.language.integer.type
+            TYPE_ROTATION,
+//          ^^^^^^^^^^^^^ constant.language.integer.type
+            TYPE_STRING,
+//          ^^^^^^^^^^^ constant.language.integer.type
+            TYPE_VECTOR
+//          ^^^^^^^^^^^ constant.language.integer.type
+        ];
+
+        llRegionSayTo(llDetectedKey(0), PUBLIC_CHANNEL, (string)llGetListLength(lsl_integers));
+    }
+}

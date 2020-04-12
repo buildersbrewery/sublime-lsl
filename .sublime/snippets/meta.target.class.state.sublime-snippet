@@ -3,4 +3,12 @@
     <tabTrigger>state other</tabTrigger>
     <scope>meta.function.user-defined.body.lsl, meta.block.event.lsl</scope>
     <description>state transition</description>
+<!--
+    <kind>
+        <string>navigation</string>
+        <string>s</string>
+        <string>state target</string>
+    </kind>
+    <details><![CDATA[]]></details>
+-->
 </snippet>

@@ -3,40 +3,67 @@
     "completions":
     [
         {
-            "trigger": "@\tkeyword control",
-            "contents": "@${1:label};${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "@",
+            "contents": "@${1:label};${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "do\tkeyword control",
-            "contents": "do${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_BEFORE}while (${1:condition});${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "do",
+            "contents": "do${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_BEFORE}while (${1:condition});${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "else\tkeyword control",
-            "contents": "else${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${1:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "else",
+            "contents": "else${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${1:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "else if\tkeyword control",
-            "contents": "else if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "else if",
+            "contents": "else if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "for\tkeyword control",
-            "contents": "for (${1:start}; ${2:condition}; ${3:step})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${4:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "for",
+            "contents": "for (${1:start}; ${2:condition}; ${3:step})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${4:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "if\tkeyword control",
-            "contents": "if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "if",
+            "contents": "if (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "jump\tkeyword control",
-            "contents": "jump ${1:target};${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "jump",
+            "contents": "jump ${1:target};${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "return\tkeyword control",
-            "contents": "return ${1:value};${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "return",
+            "contents": "return ${1:value};${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         },
         {
-            "trigger": "while\tkeyword control",
-            "contents": "while (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:; // do something}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0"
+            "trigger": "while",
+            "contents": "while (${1:condition})${LSL_WHITESPACE_BEFORE}{${LSL_WHITESPACE_INSIDE_FIRST}${2:;}${LSL_WHITESPACE_INSIDE_LAST}}${LSL_WHITESPACE_AFTER}$0",
+            "annotation": "keyword control",
+            "kind": ["keyword", "k", "keyword.control"],
+            "details": ""
         }
     ]
 }

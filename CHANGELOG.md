@@ -1,3 +1,25 @@
+<a name="7.0.0"></a>
+# 7.0.0 (2020-04-13)
+
+### Breaking Changes
+
+* support new completions for ST4073+
+  * added annotation, kind, details
+* use `syntax_tests` binary (ST4073) for CI
+
+### Features
+
+* add missing info to `keyword_data`
+
+### Changes
+
+* update `keyword_data` with finer grained integer return types for functions
+* split functions by return type in syntax and syntax tests
+
+### Bug fixes
+
+* fix syntax for binary and octal integers
+
 <a name="6.0.0"></a>
 # 6.0.0 (2020-03-06)
 

@@ -85,7 +85,7 @@ class LslTooltips(sublime_plugin.EventListener):
                             paramsCache.append('<a href="{}{}">{}</a> {} (Default: {})'.format(SL_WIKI, param['type'], param['type'], param['name'], param['default']))
                         else:
                             paramsCache.append('<a href="{}{}">{}</a> {}'.format(SL_WIKI, param['type'], param['type'], param['name']))
-                    params = '(' + ', '.join(paramsCache) + ')'
+                    params = '({})'.format(', '.join(paramsCache))
                 else:
                     params = ''
                 has_value = ' = {}'.format(str(result['value'])) if 'value' in result else ''

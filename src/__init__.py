@@ -10,8 +10,8 @@ import stat
 
 
 from .completions import *
-from .linter import *
 from .keyword_data_loader import *
+from .sublimelinter_contrib_lslint import *
 from .tooltips import *
 from .window_commands import *
 
@@ -52,13 +52,11 @@ def plugin_loaded():
     if PLATFORM in ['linux', 'osx']:
         chmod_lslint()
     keyword_data_loader.plugin_loaded()
-    linter.plugin_loaded()
     tooltips.plugin_loaded()
     window_commands.plugin_loaded()
 
 
 def plugin_unloaded():
     keyword_data_loader.plugin_unloaded()
-    linter.plugin_unloaded()
     tooltips.plugin_unloaded()
     window_commands.plugin_unloaded()

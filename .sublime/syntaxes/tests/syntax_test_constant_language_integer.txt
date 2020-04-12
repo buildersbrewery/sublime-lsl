@@ -417,16 +417,6 @@ default
 //          ^^^^^^^^^^^ constant.language.integer
             LAND_SMOOTH,
 //          ^^^^^^^^^^^ constant.language.integer
-            LINK_ALL_CHILDREN,
-//          ^^^^^^^^^^^^^^^^^ constant.language.integer
-            LINK_ALL_OTHERS,
-//          ^^^^^^^^^^^^^^^ constant.language.integer
-            LINK_ROOT,
-//          ^^^^^^^^^ constant.language.integer
-            LINK_SET,
-//          ^^^^^^^^ constant.language.integer
-            LINK_THIS,
-//          ^^^^^^^^^ constant.language.integer
             LIST_STAT_GEOMETRIC_MEAN,
 //          ^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer
             LIST_STAT_MAX,
@@ -651,12 +641,6 @@ default
 //          ^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer
             PASSIVE,
 //          ^^^^^^^ constant.language.integer
-            PASS_ALWAYS,
-//          ^^^^^^^^^^^ constant.language.integer
-            PASS_IF_NOT_HANDLED,
-//          ^^^^^^^^^^^^^^^^^^^ constant.language.integer
-            PASS_NEVER,
-//          ^^^^^^^^^^ constant.language.integer
             PATROL_PAUSE_AT_WAYPOINTS,
 //          ^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer
             PAYMENT_INFO_ON_FILE,
@@ -1213,20 +1197,6 @@ default
 //          ^^^^^^^^^^^^^^^^^^^ constant.language.integer
             TRAVERSAL_TYPE_SLOW,
 //          ^^^^^^^^^^^^^^^^^^^ constant.language.integer
-            TYPE_FLOAT,
-//          ^^^^^^^^^^ constant.language.integer
-            TYPE_INTEGER,
-//          ^^^^^^^^^^^^ constant.language.integer
-            TYPE_INVALID,
-//          ^^^^^^^^^^^^ constant.language.integer
-            TYPE_KEY,
-//          ^^^^^^^^ constant.language.integer
-            TYPE_ROTATION,
-//          ^^^^^^^^^^^^^ constant.language.integer
-            TYPE_STRING,
-//          ^^^^^^^^^^^ constant.language.integer
-            TYPE_VECTOR,
-//          ^^^^^^^^^^^ constant.language.integer
             VEHICLE_ANGULAR_DEFLECTION_EFFICIENCY,
 //          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer
             VEHICLE_ANGULAR_DEFLECTION_TIMESCALE,
