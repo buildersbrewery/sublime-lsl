@@ -1456,9 +1456,11 @@ contexts:
             - include: infunc
             - match: |-
                 (?x:                                # ignore whitespace
-                  \b((?:state)\s+{{identifier}})\b
+                  \b
+                  ((?:state)\s+{{identifier}})
+                  \s*
+                  (\;)
                 )
-                (\;)
               captures:
                 1: meta.target.class.state.lsl
                 2: punctuation.terminator.statement.lsl
@@ -1635,9 +1637,11 @@ contexts:
             - include: infunc
             - match: |-
                 (?x:                                # ignore whitespace
-                  \b((?:state)\s+{{identifier}})\b
+                  \b
+                  ((?:state)\s+{{identifier}})
+                  \s*
+                  (\;)
                 )
-                (\;)
               captures:
                 1: meta.target.class.state.lsl
                 2: punctuation.terminator.statement.lsl
