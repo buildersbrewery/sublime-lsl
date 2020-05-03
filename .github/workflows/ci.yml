@@ -24,10 +24,10 @@ jobs:
       - name: Move package into its own subdir within Data dir
         run: >-
           find .
-            -maxdepth 1
-            -mindepth 1
-            -not -name 'Data'
-            -not -name 'syntax_tests'
-            -exec mv -v '{}' 'Data/Packages/=BB= LSL/' \;
+          -maxdepth 1
+          -mindepth 1
+          -not -name 'Data'
+          -not -name 'syntax_tests'
+          -exec mv -v '{}' 'Data/Packages/=BB= LSL/' \;
       - name: Run syntax tests
         run: ./syntax_tests
