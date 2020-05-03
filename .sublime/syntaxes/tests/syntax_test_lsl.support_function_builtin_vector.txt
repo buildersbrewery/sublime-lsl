@@ -81,6 +81,8 @@ default
 //          ^^^^^^^^^^^^^^ support.function.builtin.vector
         v = llGroundSlope(v);
 //          ^^^^^^^^^^^^^ support.function.builtin.vector
+        v = llLinear2sRGB(v);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
         v = llList2Vector(l, i);
 //          ^^^^^^^^^^^^^ support.function.builtin.vector
         v = llRot2Axis(r);
@@ -97,5 +99,7 @@ default
 //          ^^^^^^^^^ support.function.builtin.vector
         v = llWind(v);
 //          ^^^^^^ support.function.builtin.vector
+        v = llsRGB2Linear(v);
+//          ^^^^^^^^^^^^^ support.function.builtin.vector
     }
 }

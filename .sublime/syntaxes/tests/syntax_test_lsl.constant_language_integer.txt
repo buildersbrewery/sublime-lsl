@@ -1187,6 +1187,8 @@ default
 //          ^^^^^^^^^^^^^^^^ constant.language.integer
             STRING_TRIM_TAIL,
 //          ^^^^^^^^^^^^^^^^ constant.language.integer
+            TARGETED_EMAIL_OBJECT_OWNER,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ constant.language.integer
             TOUCH_INVALID_FACE,
 //          ^^^^^^^^^^^^^^^^^^ constant.language.integer
             TRAVERSAL_TYPE,

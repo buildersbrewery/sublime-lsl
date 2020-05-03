@@ -4,7 +4,7 @@ default
 {
     at_rot_target(integer handle, rotation targetrot, rotation ourrot)
 //  ^^^^^^^^^^^^^ support.function.event
-//               ^ punctuation.section.block.parameters.begin
+//               ^ punctuation.section.event.parameters.begin
 //                ^^^^^^^ storage.type
 //                        ^^^^^^ entity.name.variable
 //                              ^ punctuation.separator.comma
@@ -13,16 +13,18 @@ default
 //                                                  ^ punctuation.separator.comma
 //                                                    ^^^^^^^^ storage.type
 //                                                             ^^^^^^ entity.name.variable
-//                                                                   ^ punctuation.section.block.parameters.end
+//                                                                   ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "handle: " + (string)handle +
                               ", targetrot: " + (string)targetrot +
                               ", ourrot: " + (string)ourrot);
     }
+//  ^ punctuation.section.event.block.end
 
     at_target(integer tnum, vector targetpos, vector ourpos)
 //  ^^^^^^^^^ support.function.event
-//           ^ punctuation.section.block.parameters.begin
+//           ^ punctuation.section.event.parameters.begin
 //            ^^^^^^^ storage.type
 //                    ^^^^ entity.name.variable
 //                        ^ punctuation.separator.comma
@@ -31,67 +33,79 @@ default
 //                                          ^ punctuation.separator.comma
 //                                            ^^^^^^ storage.type
 //                                                   ^^^^^^ entity.name.variable
-//                                                         ^ punctuation.section.block.parameters.end
+//                                                         ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "tnum: " +  (string)tnum +
                               ", targetpos: " +  (string)targetpos +
                               ", ourpos: " +  (string)ourpos);
     }
+//  ^ punctuation.section.event.block.end
 
     attach(key id)
 //  ^^^^^^ support.function.event
-//        ^ punctuation.section.block.parameters.begin
+//        ^ punctuation.section.event.parameters.begin
 //         ^^^ storage.type
 //             ^^ entity.name.variable
-//               ^ punctuation.section.block.parameters.end
+//               ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "id: " + (string)id);
     }
+//  ^ punctuation.section.event.block.end
 
     changed(integer change)
 //  ^^^^^^^ support.function.event
 //  ^^^^^^^ support.function.event
-//         ^ punctuation.section.block.parameters.begin
+//         ^ punctuation.section.event.parameters.begin
 //          ^^^^^^^ storage.type
 //                  ^^^^^^ entity.name.variable
-//                        ^ punctuation.section.block.parameters.end
+//                        ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "change: " + (string)change);
     }
+//  ^ punctuation.section.event.block.end
 
     collision(integer num_detected)
 //  ^^^^^^^^^ support.function.event
-//           ^ punctuation.section.block.parameters.begin
+//           ^ punctuation.section.event.parameters.begin
 //            ^^^^^^^ storage.type
 //                    ^^^^^^^^^^^^ entity.name.variable
-//                                ^ punctuation.section.block.parameters.end
+//                                ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     collision_end(integer num_detected)
 //  ^^^^^^^^^^^^^ support.function.event
-//               ^ punctuation.section.block.parameters.begin
+//               ^ punctuation.section.event.parameters.begin
 //                ^^^^^^^ storage.type
 //                        ^^^^^^^^^^^^ entity.name.variable
-//                                    ^ punctuation.section.block.parameters.end
+//                                    ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     collision_start(integer num_detected)
 //  ^^^^^^^^^^^^^^^ support.function.event
-//                 ^ punctuation.section.block.parameters.begin
+//                 ^ punctuation.section.event.parameters.begin
 //                  ^^^^^^^ storage.type
 //                          ^^^^^^^^^^^^ entity.name.variable
-//                                      ^ punctuation.section.block.parameters.end
+//                                      ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     control(key id, integer level, integer edge)
 //  ^^^^^^^ support.function.event
-//         ^ punctuation.section.block.parameters.begin
+//         ^ punctuation.section.event.parameters.begin
 //          ^^^ storage.type
 //              ^^ entity.name.variable
 //                ^ punctuation.separator.comma
@@ -100,30 +114,34 @@ default
 //                               ^ punctuation.separator.comma
 //                                 ^^^^^^^ storage.type
 //                                         ^^^^ entity.name.variable
-//                                             ^ punctuation.section.block.parameters.end
+//                                             ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "id: " + (string)id +
                               ", level: " + (string)level +
                               ", edge: " + (string)edge);
     }
+//  ^ punctuation.section.event.block.end
 
     dataserver(key query_id, string data)
 //  ^^^^^^^^^^ support.function.event
-//            ^ punctuation.section.block.parameters.begin
+//            ^ punctuation.section.event.parameters.begin
 //             ^^^ storage.type
 //                 ^^^^^^^^ entity.name.variable
 //                         ^ punctuation.separator.comma
 //                           ^^^^^^ storage.type
 //                                  ^^^^ entity.name.variable
-//                                      ^ punctuation.section.block.parameters.end
+//                                      ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "query_id: " + (string)query_id +
                               ", data: " + data);
     }
+//  ^ punctuation.section.event.block.end
 
     email(string time, string address, string subject, string message, integer num_left)
 //  ^^^^^ support.function.event
-//       ^ punctuation.section.block.parameters.begin
+//       ^ punctuation.section.event.parameters.begin
 //        ^^^^^^ storage.type
 //               ^^^^ entity.name.variable
 //                   ^ punctuation.separator.comma
@@ -138,42 +156,48 @@ default
 //                                                                   ^ punctuation.separator.comma
 //                                                                     ^^^^^^^ storage.type
 //                                                                             ^^^^^^^^ entity.name.variable
-//                                                                                     ^ punctuation.section.block.parameters.end
+//                                                                                     ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "time: " + time +
                               ", address: " + address +
                               ", subject: " + subject +
                               ", message: " + message +
                               ", num_left: " + (string)num_left);
     }
+//  ^ punctuation.section.event.block.end
 
     experience_permissions(key agent_id)
 //  ^^^^^^^^^^^^^^^^^^^^^^ support.function.event
-//                        ^ punctuation.section.block.parameters.begin
+//                        ^ punctuation.section.event.parameters.begin
 //                         ^^^ storage.type
 //                             ^^^^^^^^ entity.name.variable
-//                                     ^ punctuation.section.block.parameters.end
+//                                     ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "agent_id: " + (string)agent_id);
     }
+//  ^ punctuation.section.event.block.end
 
     experience_permissions_denied(key agent_id, integer reason)
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ support.function.event
-//                               ^ punctuation.section.block.parameters.begin
+//                               ^ punctuation.section.event.parameters.begin
 //                                ^^^ storage.type
 //                                    ^^^^^^^^ entity.name.variable
 //                                            ^ punctuation.separator.comma
 //                                              ^^^^^^^ storage.type
 //                                                      ^^^^^^ entity.name.variable
-//                                                            ^ punctuation.section.block.parameters.end
+//                                                            ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "agent_id: " + (string)agent_id +
                               ", reason: " + (string)reason);
     }
+//  ^ punctuation.section.event.block.end
 
     http_request(key request_id, string method, string body)
 //  ^^^^^^^^^^^^ support.function.event
-//              ^ punctuation.section.block.parameters.begin
+//              ^ punctuation.section.event.parameters.begin
 //               ^^^ storage.type
 //                   ^^^^^^^^^^ entity.name.variable
 //                             ^ punctuation.separator.comma
@@ -182,16 +206,18 @@ default
 //                                            ^ punctuation.separator.comma
 //                                              ^^^^^^ storage.type
 //                                                     ^^^^ entity.name.variable
-//                                                         ^ punctuation.section.block.parameters.end
+//                                                         ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "request_id: " + (string)request_id +
                               ", method: " + method +
                               ", body: " + body);
     }
+//  ^ punctuation.section.event.block.end
 
     http_response(key request_id, integer status, list metadata, string body)
 //  ^^^^^^^^^^^^^ support.function.event
-//               ^ punctuation.section.block.parameters.begin
+//               ^ punctuation.section.event.parameters.begin
 //                ^^^ storage.type
 //                    ^^^^^^^^^^ entity.name.variable
 //                              ^ punctuation.separator.comma
@@ -203,47 +229,55 @@ default
 //                                                             ^ punctuation.separator.comma
 //                                                               ^^^^^^ storage.type
 //                                                                      ^^^^ entity.name.variable
-//                                                                          ^ punctuation.section.block.parameters.end
+//                                                                          ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "request_id: " + (string)request_id +
                               ", status: " + (string)status +
                               ", metadata: " + (string)metadata +
                               ", body: " + (string)body);
     }
+//  ^ punctuation.section.event.block.end
 
     land_collision(vector pos)
 //  ^^^^^^^^^^^^^^ support.function.event
-//                ^ punctuation.section.block.parameters.begin
+//                ^ punctuation.section.event.parameters.begin
 //                 ^^^^^^ storage.type
 //                        ^^^ entity.name.variable
-//                           ^ punctuation.section.block.parameters.end
+//                           ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "pos: " + (string)pos);
     }
+//  ^ punctuation.section.event.block.end
 
     land_collision_end(vector pos)
 //  ^^^^^^^^^^^^^^^^^^ support.function.event
-//                    ^ punctuation.section.block.parameters.begin
+//                    ^ punctuation.section.event.parameters.begin
 //                     ^^^^^^ storage.type
 //                            ^^^ entity.name.variable
-//                               ^ punctuation.section.block.parameters.end
+//                               ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "pos: " + (string)pos);
     }
+//  ^ punctuation.section.event.block.end
 
     land_collision_start(vector pos)
 //  ^^^^^^^^^^^^^^^^^^^^ support.function.event
-//                      ^ punctuation.section.block.parameters.begin
+//                      ^ punctuation.section.event.parameters.begin
 //                       ^^^^^^ storage.type
 //                              ^^^ entity.name.variable
-//                                 ^ punctuation.section.block.parameters.end
+//                                 ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "pos: " + (string)pos);
     }
+//  ^ punctuation.section.event.block.end
 
     link_message(integer sender_num, integer num, string str, key id)
 //  ^^^^^^^^^^^^ support.function.event
-//              ^ punctuation.section.block.parameters.begin
+//              ^ punctuation.section.event.parameters.begin
 //               ^^^^^^^ storage.type
 //                       ^^^^^^^^^^ entity.name.variable
 //                                 ^ punctuation.separator.comma
@@ -255,17 +289,19 @@ default
 //                                                          ^ punctuation.separator.comma
 //                                                            ^^^ storage.type
 //                                                                ^^ entity.name.variable
-//                                                                  ^ punctuation.section.block.parameters.end
+//                                                                  ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "sender_num: " + (string)sender_num +
                               ", num: " + (string)num +
                               ", str: " + str +
                               ", id: " + (string)id);
     }
+//  ^ punctuation.section.event.block.end
 
     listen(integer channel, string name, key id, string message)
 //  ^^^^^^ support.function.event
-//        ^ punctuation.section.block.parameters.begin
+//        ^ punctuation.section.event.parameters.begin
 //         ^^^^^^^ storage.type
 //                 ^^^^^^^ entity.name.variable
 //                        ^ punctuation.separator.comma
@@ -277,105 +313,125 @@ default
 //                                             ^ punctuation.separator.comma
 //                                               ^^^^^^ storage.type
 //                                                      ^^^^^^^ entity.name.variable
-//                                                             ^ punctuation.section.block.parameters.end
+//                                                             ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "channel: " + (string)channel +
                               ", name: " + name +
                               ", id: " + (string)id +
                               ", message: " + (string)message);
     }
+//  ^ punctuation.section.event.block.end
 
     money(key id, integer amount)
 //  ^^^^^ support.function.event
-//       ^ punctuation.section.block.parameters.begin
+//       ^ punctuation.section.event.parameters.begin
 //        ^^^ storage.type
 //            ^^ entity.name.variable
 //              ^ punctuation.separator.comma
 //                ^^^^^^^ storage.type
 //                        ^^^^^^ entity.name.variable
-//                              ^ punctuation.section.block.parameters.end
+//                              ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "id: " + (string)id +
                               ", amount: " + (string)amount);
     }
+//  ^ punctuation.section.event.block.end
 
     moving_end()
 //  ^^^^^^^^^^ support.function.event
-//            ^ punctuation.section.block.parameters.begin
-//             ^ punctuation.section.block.parameters.end
+//            ^ punctuation.section.event.parameters.begin
+//             ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "moving_end()");
     }
+//  ^ punctuation.section.event.block.end
 
     moving_start()
 //  ^^^^^^^^^^^^ support.function.event
-//              ^ punctuation.section.block.parameters.begin
-//               ^ punctuation.section.block.parameters.end
+//              ^ punctuation.section.event.parameters.begin
+//               ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "moving_start()");
     }
+//  ^ punctuation.section.event.block.end
 
     no_sensor()
 //  ^^^^^^^^^ support.function.event
-//           ^ punctuation.section.block.parameters.begin
-//            ^ punctuation.section.block.parameters.end
+//           ^ punctuation.section.event.parameters.begin
+//            ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "no_sensor()");
     }
+//  ^ punctuation.section.event.block.end
 
     not_at_rot_target()
 //  ^^^^^^^^^^^^^^^^^ support.function.event
-//                   ^ punctuation.section.block.parameters.begin
-//                    ^ punctuation.section.block.parameters.end
+//                   ^ punctuation.section.event.parameters.begin
+//                    ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "not_at_rot_target()");
     }
+//  ^ punctuation.section.event.block.end
 
     not_at_target()
 //  ^^^^^^^^^^^^^ support.function.event
-//               ^ punctuation.section.block.parameters.begin
-//                ^ punctuation.section.block.parameters.end
+//               ^ punctuation.section.event.parameters.begin
+//                ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "not_at_target()");
     }
+//  ^ punctuation.section.event.block.end
 
     object_rez(key id)
 //  ^^^^^^^^^^ support.function.event
-//            ^ punctuation.section.block.parameters.begin
+//            ^ punctuation.section.event.parameters.begin
 //             ^^^ storage.type
 //                 ^^ entity.name.variable
-//                   ^ punctuation.section.block.parameters.end
+//                   ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "id: " + (string)id);
     }
+//  ^ punctuation.section.event.block.end
 
     on_rez(integer start_param)
 //  ^^^^^^ support.function.event
-//        ^ punctuation.section.block.parameters.begin
+//        ^ punctuation.section.event.parameters.begin
 //         ^^^^^^^ storage.type
 //                 ^^^^^^^^^^^ entity.name.variable
-//                            ^ punctuation.section.block.parameters.end
+//                            ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "start_param: " + (string)start_param);
     }
+//  ^ punctuation.section.event.block.end
 
     path_update(integer type, list reserved)
 //  ^^^^^^^^^^^ support.function.event
-//             ^ punctuation.section.block.parameters.begin
+//             ^ punctuation.section.event.parameters.begin
 //              ^^^^^^^ storage.type
 //                      ^^^^ entity.name.variable
 //                          ^ punctuation.separator.comma
 //                            ^^^^ storage.type
 //                                 ^^^^^^^^ entity.name.variable
-//                                         ^ punctuation.section.block.parameters.end
+//                                         ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "type: " + (string)type +
                               ", reserved: " + (string)reserved);
     }
+//  ^ punctuation.section.event.block.end
 
     remote_data(integer event_type, key channel, key message_id, string sender, integer idata, string sdata)
 //  ^^^^^^^^^^^ support.function.event
-//             ^ punctuation.section.block.parameters.begin
+//             ^ punctuation.section.event.parameters.begin
 //              ^^^^^^^ storage.type
 //                      ^^^^^^^^^^ entity.name.variable
 //                                ^ punctuation.separator.comma
@@ -393,8 +449,9 @@ default
 //                                                                                           ^ punctuation.separator.comma
 //                                                                                             ^^^^^^ storage.type
 //                                                                                                    ^^^^^ entity.name.variable
-//                                                                                                         ^ punctuation.section.block.parameters.end
+//                                                                                                         ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "event_type: " + (string)event_type +
                               ", channel: " + (string)channel +
                               ", message_id: " + (string)message_id +
@@ -402,84 +459,101 @@ default
                               ", idata: " + (string)idata +
                               ", sdata: " + sdata);
     }
+//  ^ punctuation.section.event.block.end
 
     run_time_permissions(integer perm)
 //  ^^^^^^^^^^^^^^^^^^^^ support.function.event
-//                      ^ punctuation.section.block.parameters.begin
+//                      ^ punctuation.section.event.parameters.begin
 //                       ^^^^^^^ storage.type
 //                               ^^^^ entity.name.variable
-//                                   ^ punctuation.section.block.parameters.end
+//                                   ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "perm: " + (string)perm);
     }
+//  ^ punctuation.section.event.block.end
 
     sensor(integer num_detected)
 //  ^^^^^^ support.function.event
-//        ^ punctuation.section.block.parameters.begin
+//        ^ punctuation.section.event.parameters.begin
 //         ^^^^^^^ storage.type
 //                 ^^^^^^^^^^^^ entity.name.variable
-//                             ^ punctuation.section.block.parameters.end
+//                             ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     state_entry()
 //  ^^^^^^^^^^^ support.function.event
-//             ^ punctuation.section.block.parameters.begin
-//              ^ punctuation.section.block.parameters.end
+//             ^ punctuation.section.event.parameters.begin
+//              ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "state_entry()");
     }
+//  ^ punctuation.section.event.block.end
 
     state_exit()
 //  ^^^^^^^^^^ support.function.event
-//            ^ punctuation.section.block.parameters.begin
-//             ^ punctuation.section.block.parameters.end
+//            ^ punctuation.section.event.parameters.begin
+//             ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "state_exit()");
     }
+//  ^ punctuation.section.event.block.end
 
     timer()
 //  ^^^^^ support.function.event
-//       ^ punctuation.section.block.parameters.begin
-//        ^ punctuation.section.block.parameters.end
+//       ^ punctuation.section.event.parameters.begin
+//        ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "timer()");
     }
+//  ^ punctuation.section.event.block.end
 
     touch(integer num_detected)
 //  ^^^^^ support.function.event
-//       ^ punctuation.section.block.parameters.begin
+//       ^ punctuation.section.event.parameters.begin
 //        ^^^^^^^ storage.type
 //                ^^^^^^^^^^^^ entity.name.variable
-//                            ^ punctuation.section.block.parameters.end
+//                            ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     touch_end(integer num_detected)
 //  ^^^^^^^^^ support.function.event
-//           ^ punctuation.section.block.parameters.begin
+//           ^ punctuation.section.event.parameters.begin
 //            ^^^^^^^ storage.type
 //                    ^^^^^^^^^^^^ entity.name.variable
-//                                ^ punctuation.section.block.parameters.end
+//                                ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     touch_start(integer num_detected)
 //  ^^^^^^^^^^^ support.function.event
-//             ^ punctuation.section.block.parameters.begin
+//             ^ punctuation.section.event.parameters.begin
 //              ^^^^^^^ storage.type
 //                      ^^^^^^^^^^^^ entity.name.variable
-//                                  ^ punctuation.section.block.parameters.end
+//                                  ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "num_detected: " + (string)num_detected);
     }
+//  ^ punctuation.section.event.block.end
 
     transaction_result(key id, integer success, string data)
 //  ^^^^^^^^^^^^^^^^^^ support.function.event
-//                    ^ punctuation.section.block.parameters.begin
+//                    ^ punctuation.section.event.parameters.begin
 //                     ^^^ storage.type
 //                         ^^ entity.name.variable
 //                           ^ punctuation.separator.comma
@@ -488,10 +562,12 @@ default
 //                                            ^ punctuation.separator.comma
 //                                              ^^^^^^ storage.type
 //                                                     ^^^^ entity.name.variable
-//                                                         ^ punctuation.section.block.parameters.end
+//                                                         ^ punctuation.section.event.parameters.end
     {
+//  ^ punctuation.section.event.block.begin
         llSay(PUBLIC_CHANNEL, "id: " + (string)id +
                               ", success: " + (string)success +
                               ", data: " + data);
     }
+//  ^ punctuation.section.event.block.end
 }

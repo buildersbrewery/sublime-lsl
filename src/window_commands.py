@@ -166,21 +166,12 @@ class LslOpenDocs(sublime_plugin.WindowCommand):
             w = self.window
             v = w.active_view()
             import mdpopups
-            md_preview = mdpopups.md2html(
-                view=v,
-                markup=sublime.load_resource('Packages/{}/{}'.format(PKG_NAME, resource_path)),
-                # TODO: markup=sublime.load_resource(f'Packages/{PKG_NAME}/{resource_path}'),
-                template_vars=None,
-                template_env_options=None
-            )
-            preview_sheet = w.new_html_sheet(
+            preview_sheet = mdpopups.new_html_sheet(
+                window=w,
+                # TODO: update for Py3.8 with f-strings
                 name='{}: {}'.format(PKG_NAME, resource_title),
-                # TODO: name=f'{PKG_NAME}: {resource_title}',
-                contents=md_preview,
-                cmd='open_url',
-                args=None,
-                flags=0,
-                group=-1
+                contents=sublime.load_resource('Packages/{}/{}'.format(PKG_NAME, resource_path)),
+                md=True
             )
         except Exception as e:
             print('{}: Exception: {}'.format(PKG_NAME, e))

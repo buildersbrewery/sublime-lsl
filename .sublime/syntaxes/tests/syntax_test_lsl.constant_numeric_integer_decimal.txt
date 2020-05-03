@@ -1,0 +1,102 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+integer int_a = 0;
+// <- storage.type
+ // <- storage.type
+//^^^^^ storage.type
+//     ^ source.lsl
+//      ^^^^^ variable.other
+//           ^ source.lsl
+//            ^ keyword.operator.assignment
+//             ^ source.lsl
+//              ^ constant.numeric.integer.decimal
+//               ^ punctuation.terminator
+
+integer int_b = -0;
+// <- storage.type
+ // <- storage.type
+//^^^^^ storage.type
+//     ^ source.lsl
+//      ^^^^^ variable.other
+//           ^ source.lsl
+//            ^ keyword.operator.assignment
+//             ^ source.lsl
+//              ^^ constant.numeric.integer.decimal
+//                ^ punctuation.terminator
+
+integer int_c = 1;
+// <- storage.type
+ // <- storage.type
+//^^^^^ storage.type
+//     ^ source.lsl
+//      ^^^^^ variable.other
+//           ^ source.lsl
+//            ^ keyword.operator.assignment
+//             ^ source.lsl
+//              ^ constant.numeric.integer.decimal
+//               ^ punctuation.terminator
+
+integer int_d = -1;
+// <- storage.type
+ // <- storage.type
+//^^^^^ storage.type
+//     ^ source.lsl
+//      ^^^^^ variable.other
+//           ^ source.lsl
+//            ^ keyword.operator.assignment
+//             ^ source.lsl
+//              ^^ constant.numeric.integer.decimal
+//                ^ punctuation.terminator
+
+integer int_e = −2147483648;
+//              ^^^^^^^^^^^ constant.numeric.integer.decimal
+integer int_f = 2147483647;
+//              ^^^^^^^^^^^ constant.numeric.integer.decimal
+integer int_g = −2147483649;
+//              ^^^^^^^^^^^ invalid.illegal.constant.numeric.integer.decimal
+integer int_h = 2147483648;
+//              ^^^^^^^^^^^ invalid.illegal.constant.numeric.integer.decimal
+
+reassign()
+{
+    int_a = 0;
+//          ^ constant.numeric.integer.decimal
+    int_b = -0;
+//          ^^ constant.numeric.integer.decimal
+    int_c = 1;
+//          ^ constant.numeric.integer.decimal
+    int_d = -1;
+//          ^^ constant.numeric.integer.decimal
+}
+
+default
+{
+    touch_start(integer num_detected)
+    {
+        reassign();
+    }
+
+    touch_end(integer num_detected)
+    {
+        int_a = 0;
+//              ^ constant.numeric.integer.decimal
+        int_b = -0;
+//              ^^ constant.numeric.integer.decimal
+        int_c = 1;
+//              ^ constant.numeric.integer.decimal
+        int_d = -1;
+//              ^^ constant.numeric.integer.decimal
+
+        if (TRUE)
+        {
+            int_a = 0;
+//                  ^ constant.numeric.integer.decimal
+            int_b = -0;
+//                  ^^ constant.numeric.integer.decimal
+            int_c = 1;
+//                  ^ constant.numeric.integer.decimal
+            int_d = -1;
+//                  ^^ constant.numeric.integer.decimal
+        }
+    }
+}

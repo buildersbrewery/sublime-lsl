@@ -24,7 +24,7 @@ float float_c = 0;
 // ^^ storage.type
 //    ^^^^^^^ variable.other
 //            ^ keyword.operator.assignment
-//              ^ constant.numeric.integer.decimal
+//              ^ constant.numeric.float.integer.decimal
 //               ^ punctuation.terminator
 
 float float_d = -0;
@@ -33,7 +33,7 @@ float float_d = -0;
 // ^^ storage.type
 //    ^^^^^^^ variable.other
 //            ^ keyword.operator.assignment
-//              ^^ constant.numeric.integer.decimal
+//              ^^ constant.numeric.float.integer.decimal
 //                ^ punctuation.terminator
 
 float float_e = 1;
@@ -42,7 +42,7 @@ float float_e = 1;
 // ^^ storage.type
 //    ^^^^^^^ variable.other
 //            ^ keyword.operator.assignment
-//              ^ constant.numeric.integer.decimal
+//              ^ constant.numeric.float.integer.decimal
 //               ^ punctuation.terminator
 
 float float_f = -1;
@@ -51,7 +51,7 @@ float float_f = -1;
 // ^^ storage.type
 //    ^^^^^^^ variable.other
 //            ^ keyword.operator.assignment
-//              ^^ constant.numeric.integer.decimal
+//              ^^ constant.numeric.float.integer.decimal
 //                ^ punctuation.terminator
 
 float float_g = 0.1;

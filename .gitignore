@@ -12,10 +12,6 @@ Thumbs.db
 node_modules/
 package-lock.json
 
-# Vuepress
-
-.temp/
-
 # Python
 
 __pycache__/
@@ -30,3 +26,7 @@ __pycache__/
 # Sublime Text
 
 *.sublime-workspace
+
+# Notes
+
+TODO.md

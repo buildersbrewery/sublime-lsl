@@ -8,29 +8,29 @@ default
 
         list lsl_invalid = [
             CHARACTER_MAX_ANGULAR_ACCEL,
-//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             CHARACTER_MAX_ANGULAR_SPEED,
-//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             CHARACTER_TURN_SPEED_MULTIPLIER,
-//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             KFM_CMD_SET_MODE,
-//          ^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_ATTACHMENT_GEOMETRY_BYTES,
-//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_ATTACHMENT_SURFACE_AREA,
-//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_RETURN_TIME,
-//          ^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_REZ_TIME,
-//          ^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_SAT_UPON,
-//          ^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             OBJECT_SELECTED,
-//          ^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             PERMISSION_EXPERIENCE,
-//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             PRIM_PHYSICS_MATERIAL,
-//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal
+//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.constant.language
             0b01,
 //          ^^^^ invalid.illegal.constant.numeric.integer.binary
             0B01,

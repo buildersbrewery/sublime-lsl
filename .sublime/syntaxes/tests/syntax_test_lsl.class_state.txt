@@ -5,10 +5,16 @@ default
  // <- entity.name.class.state
 //^^^^^ entity.name.class.state
 {
+// <- punctuation.section.class.state.begin
+
+// <- meta.class.state.body
+
     state_entry()
     {
         llSay(PUBLIC_CHANNEL, "state default");
     }
+
+// <- meta.class.state.body
 
     touch_end(integer num_detected)
     {
@@ -16,7 +22,10 @@ default
 //      ^^^^^^^^^^^ meta.target.class.state
 //                 ^ punctuation.terminator.statement
     }
+
+// <- meta.class.state.body
 }
+// <- punctuation.section.class.state.end
 
 state other
 // <- entity.name.class.state

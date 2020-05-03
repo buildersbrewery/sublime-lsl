@@ -1,14 +1,12 @@
 %YAML 1.2
 ---
 # https://yaml.org/spec/1.2/spec.html
-# https://www.sublimetext.com/docs/3/syntax.html
-# https://www.sublimetext.com/docs/3/syntax.html#testing
-# https://www.sublimetext.com/docs/3/scope_naming.html
+# https://www.sublimetext.com/docs/syntax.html
+# https://www.sublimetext.com/docs/syntax.html#testing
+# https://www.sublimetext.com/docs/scope_naming.html
 # http://wiki.secondlife.com/wiki/LSL_Portal
 # https://bitbucket.org/lindenlab/viewer/src/master/indra/newview/app_settings/keywords_lsl_default.xml
-# https://bitbucket.org/lindenlab/viewer/raw/master/indra/newview/app_settings/keywords_lsl_default.xml
-# https://bitbucket.org/Sei_Lisa/kwdb/src/default/database/kwdb.xml
-# https://bitbucket.org/Sei_Lisa/kwdb/raw/default/database/kwdb.xml
+# https://github.com/Sei-Lisa/kwdb/blob/master/database/kwdb.xml
 name: LSL
 author: "Builder's Brewery <buildersbrewery@gmail.com>"
 comment: 'Linden Scripting Language of Second Life by Linden Labs'
@@ -16,27 +14,28 @@ hidden: false
 file_extensions:
   - lsl
 first_line_match: |-
-  (?x:                                # ignore whitespace
-    \b(?:
-      default                           # entity.name.class.state
-    )\b
+  (?x:                                                                          # ignore whitespace
+    \b
+    (?:default)
+    \b
     (?:
       \s*
-      \{                                # punctuation.section.class.state.begin
+      \{
     )?
   )
 scope: source.lsl
 variables:
-  # FIXME: remove capture groups from variables
-  # FIXME: sort by most used for better performance
-  invalid_deprecated: |-
-    (?x:                                # ignore whitespace
+  invalid_deprecated_constant_language: |-
+    (?x:                                                                        # ignore whitespace
       ATTACH_[LR]PEC|
       DATA_RATING|
       LAND_(?:LARGE|MEDIUM|SMALL)_BRUSH|
       PRIM_(?:MATERIAL_LIGHT|TYPE_LEGACY)|
       PSYS_SRC_(?:INNER|OUTER)ANGLE|
-      VEHICLE_FLAG_NO_FLY_UP|
+      VEHICLE_FLAG_NO_FLY_UP
+    )
+  invalid_deprecated_support_function_builtin: |-
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Make(?:Explosion|Fire|Fountain|Smoke)|
         RemoteDataSetRegion|
@@ -44,8 +43,8 @@ variables:
         XorBase64Strings(?:Correct)?
       )
     )
-  invalid_illegal: |-
-    (?x:                                # ignore whitespace
+  invalid_illegal_constant_language: |-
+    (?x:                                                                        # ignore whitespace
       CHARACTER_(?:
         MAX_ANGULAR_(?:ACCEL|SPEED)|
         TURN_SPEED_MULTIPLIER
@@ -60,8 +59,8 @@ variables:
       PERMISSION_EXPERIENCE|
       PRIM_PHYSICS_MATERIAL
     )
-  invalid_illegal_unimplemented: |-
-    (?x:                                # ignore whitespace
+  invalid_illegal_unimplemented_constant_language: |-
+    (?x:                                                                        # ignore whitespace
       PERMISSION_(?:
         CHANGE_(?:JOINTS|PERMISSIONS)|
         RELEASE_OWNERSHIP|
@@ -74,7 +73,14 @@ variables:
         DENSITY_PROFILE_COUNTS
       )|
       STATUS_CAST_SHADOWS|
-      event|
+      TARGETED_EMAIL_ROOT_CREATOR
+    )
+  invalid_illegal_unimplemented_word: |-
+    (?x:                                                                        # ignore whitespace
+      event
+    )
+  invalid_illegal_unimplemented_support_function_builtin: |-
+    (?x:                                                                        # ignore whitespace
       ll(?:
         ClearExperiencePermissions|
         Cloud|
@@ -87,32 +93,32 @@ variables:
       )
     )
   invalid_illegal_constant_numeric_integer_binary: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       (?:\B[-+])?
       (?:
-        \b0[bB][0-1]*                      # binary
+        \b0[bB][0-1]*
       )
     )
   invalid_illegal_constant_numeric_integer_octal: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       (?:\B[-+])?
       (?:
-        \b0[oO][0-7]*                        # octal
+        \b0[oO][0-7]*
       )
     )
   reserved_godmode: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         GodLikeRezObject|
         Set(?:Inventory|Object)PermMask
       )
     )
   reserved_log: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       print
     )
-  event: |-
-    (?x:                                # ignore whitespace
+  support_function_event: |-
+    (?x:                                                                        # ignore whitespace
       state_(?:entry|exit)|
       touch(?:_(?:start|end))?|
       (?:land_)?collision(?:_(?:start|end))?|
@@ -137,7 +143,7 @@ variables:
       transaction_result
     )
   constant_language_float: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       (?:TWO_)?PI|
       PI_BY_TWO|
       DEG_TO_RAD|
@@ -145,7 +151,7 @@ variables:
       SQRT2
     )
   constant_language_integer: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       (?:DEBUG|PUBLIC)_CHANNEL|
       (?:PATROL|WANDER)_PAUSE_AT_WAYPOINTS|
       ACTIVE|
@@ -565,6 +571,7 @@ variables:
         WHITELIST_FAILED
       )|
       STRING_(?:TRIM(?:_(?:HEAD|TAIL))?)|
+      TARGETED_EMAIL_OBJECT_OWNER|
       TOUCH_INVALID_FACE|
       TRAVERSAL_TYPE(?:_(?:FAST|NONE|SLOW))?|
       VEHICLE_(?:
@@ -611,7 +618,7 @@ variables:
       )
     )
   constant_language_integer_bitfield: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       AGENT_(?:
         ALWAYS_RUN|
         ATTACHMENTS|
@@ -643,7 +650,7 @@ variables:
       )
     )
   constant_language_integer_bitfield_bitmask: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       STATUS_(?:
         (?:DIE|RETURN)_AT_EDGE|
         BLOCK_GRAB(?:_OBJECT)?|
@@ -661,28 +668,28 @@ variables:
       )
     )
   constant_language_integer_boolean: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       FALSE|
       TRUE
     )
   constant_language_integer_link: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)
     )
   constant_language_integer_pass: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       PASS_(?:ALWAYS|IF_NOT_HANDLED|NEVER)
     )
   constant_language_integer_type: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       TYPE_(?:FLOAT|INTEGER|INVALID|KEY|ROTATION|STRING|VECTOR)
     )
   constant_language_rotation: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ZERO_ROTATION
     )
   constant_language_string: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       EOF|
       IMG_USE_BAKED_(?:
         AUX(?:1|2|3)|
@@ -710,48 +717,40 @@ variables:
       URL_REQUEST_(?:GRANTED|DENIED)
     )
   constant_language_vector: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       TOUCH_INVALID_(?:TEXCOORD|VECTOR)|
       ZERO_VECTOR
     )
   constant_numeric_float: |-
-    (?xi:                               # ignore whitespace and case
-      # TODO: valid float range: 1.401298464E-45 to 3.402823466E+38
-      (?:\B[-+])?
+    (?xi:                                                                       # ignore case and whitespace
+      # FIXME: valid float range: 1.401298464E-45 to 3.402823466E+38
       (?:
+        [+-]?                                                                   # optional sign
         (?:
-          \B\.[0-9]+|                     # e.g. .999
-          \b(?:
-            [1-9]+[0-9]*|
-            0
-          )\.(?:[0-9]+)?                  # e.g. 999.999
-        )(?:e[-+]?[1-9]+[0-9]*)? |        # e.g. base float with exponent
-        (?:
-          \b(?:
-            [1-9]+[0-9]*|
-            0
-          )(?:e[-+]?[1-9]+[0-9]*)         # e.g. base integer with exponent
+          0([.][0-9]*)?|                                                        # e.g. 0 or 0. or 0.999
+          [1-9]+[0-9]*([.][0-9]*)?|                                             # e.g. 999 or 999. or 999.999
+          [.][0-9]+                                                             # e.g. .0 or .999
         )
+        (?:e[-+]?[1-9]+[0-9]*)?                                                 # optional exponent
       )
     )
   constant_numeric_integer_hexadecimal: |-
-    (?x:                                # ignore whitespace
+    (?xi:                                                                       # ignore case and whitespace
       (?:\B[-+])?
       (?:
-        \b0x\h*                           # hex
+        \b0x\h*
       )
     )
   constant_numeric_integer_decimal: |-
-    (?x:                                # ignore whitespace
-      # TODO: valid integer range: −2,147,483,648 to +2,147,483,647
-      (?:\B[-+])?
+    (?x:                                                                        # ignore whitespace
+      # FIXME: valid integer range: −2,147,483,648 to +2,147,483,647
       (?:
-        \b[1-9]+[0-9]*|                   # e.g. 999
-        \b0                               # e.g. 0
+        [-+]?                                                                   # optional sign
+        0|[1-9]+[0-9]*                                                          # e.g. 999
       )
     )
   function_builtin_float: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         A(?:cos|sin|tan2)|
         AngleBetween|
@@ -785,7 +784,7 @@ variables:
       )
     )
   function_builtin_integer: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Abs|
         AgentInExperience|
@@ -830,7 +829,7 @@ variables:
       )
     )
   function_builtin_integer_bitfield: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Get(?:
           AgentInfo|
@@ -841,7 +840,7 @@ variables:
       )
     )
   function_builtin_integer_boolean: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         EdgeOfWorld|
         Get(?:
@@ -855,20 +854,20 @@ variables:
       )
     )
   function_builtin_integer_handle: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Listen|
         (?:Rot)?Target
       )
     )
   function_builtin_integer_link: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         (?:Detected|Get)LinkNumber
       )
     )
   function_builtin_integer_status: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Clear(?:Link|Prim)Media|
         Set(?:LinkMedia|PrimMediaParams)|
@@ -876,13 +875,13 @@ variables:
       )
     )
   function_builtin_integer_type: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         GetListEntryType
       )
     )
   function_builtin_key: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         AvatarOn(?:Link)?SitTarget|
         (?:Create|DataSize|Delete|KeyCount|Keys|Read|Update)KeyValue|
@@ -913,7 +912,7 @@ variables:
       )
     )
   function_builtin_list: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         CSV2List|
         CastRay|
@@ -939,7 +938,7 @@ variables:
       )
     )
   function_builtin_rotation: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         (?:Ax(?:es|isAngle)|Euler|List)2Rot|
         (?:Detected|Texture)Rot|
@@ -951,7 +950,7 @@ variables:
       )
     )
   function_builtin_string: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         (?:Base64To|(?:Delete|Get)Sub|DumpList2|Insert|MD5|SHA1)String|
         DetectedName|
@@ -981,7 +980,7 @@ variables:
       )
     )
   function_builtin_vector: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         Detected(?:
           Grab|
@@ -1012,14 +1011,16 @@ variables:
           Vel
         )|
         Ground(?:Contour|Normal|Slope)|
+        Linear2sRGB|
         List2Vector|
         Rot2(?:Axis|Euler|Fwd|Left|Up)|
         VecNorm|
-        Wind
+        Wind|
+        sRGB2Linear
       )
     )
   function_builtin: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       ll(?:
         (?:Link)?SitTarget|
         (?:Break|Create)Link|
@@ -1126,6 +1127,7 @@ variables:
         Shout|
         Sleep|
         StopHover|
+        TargetedEmail|
         TargetOmega|
         TeleportAgent(?:Home|GlobalCoords)?|
         TextBox|
@@ -1138,7 +1140,7 @@ variables:
       )
     )
   storage_type: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       float|
       integer|
       key|
@@ -1149,69 +1151,38 @@ variables:
       vector
     )
   identifier: |-
-    (?x:                                # ignore whitespace
+    (?x:                                                                        # ignore whitespace
       [A-Za-z_]
       \w*
     )
 contexts:
   main:
-    - include: state
-    # TODO: remove function-user-defined from here as it enables them in other scopes like events or functions or whatever
-    - include: function-user-defined
-    # - include: statement (without the block)
+    - include: top-level
+
+  top-level:
     - include: variable-declaration
+    - include: function-user-defined
+    - include: state
 
   prototype:
-    - include: comment
-
-# statements:
-#   - match: '\}'
-#     scope: invalid.illegal.stray-brace-end.lsl
-#     pop: true
-#   - match: '\)'
-#     scope: invalid.illegal.stray-parenthesis-end.lsl
-#     pop: true
-#   - match: '\]'
-#     scope: invalid.illegal.stray-bracket-end.lsl
-#     pop: true
-#   - match: (?=\S)
-#     push: statement
-
-# statement:
-#   - match: \;
-#     scope: punctuation.terminator.statement.empty.lsl
-#     pop: true
-#   - include: block-conditional
-#   - match: '\{'
-#     scope: punctuation.section.block.begin.lsl
-#     push:
-#       - meta_scope: meta.block.lsl
-#       - match: '\}'
-#         scope: punctuation.section.block.end.lsl
-#         pop: true
-#       - include: statement
-#     - include: block-scope
-#     - include: label
-#     - include: target
-#     - include: variable-declaration
-#     - include: return (without value)
-#     - include: function (built-in or user) call
+    - include: comments
 
   variable-declaration:
+    # TODO: add declarations with implicit and explicit casts
     - match: |-
-        (?x:                                # ignore whitespace
-          # TODO: differentiate between "declare with constant language" and "declare with constant"
-          \b(float)
+        (?x:                                                                    # ignore whitespace
+          \b
+          (float)
           \s+
           ({{identifier}})
-          \s*
           (?:
+            \s*
             (=)
             \s*
             (?:
-              ({{constant_numeric_float}}) |
-              ({{constant_numeric_integer_decimal}}) |
-              ({{constant_numeric_integer_hexadecimal}}) |
+              ({{constant_numeric_integer_hexadecimal}})|                       # implicit cast to float
+              ({{constant_numeric_integer_decimal}})|                           # implicit cast to float
+              ({{constant_numeric_float}})|
               ({{constant_language_float}})
             )
             \s*
@@ -1222,26 +1193,29 @@ contexts:
         1: storage.type.lsl
         2: variable.other.lsl
         3: keyword.operator.assignment.lsl
-        4: constant.numeric.float.lsl
-        5: constant.numeric.integer.decimal.lsl
-        6: constant.numeric.integer.hexadecimal.lsl
+        4: constant.numeric.float.integer.hexadecimal.lsl
+        5: constant.numeric.float.integer.decimal.lsl
+        6: constant.numeric.float.lsl
         7: constant.language.float.lsl
         8: punctuation.terminator.lsl
     - match: |-
-        (?x:                                # ignore whitespace
-          \b(integer)
+        (?x:                                                                    # ignore whitespace
+          \b
+          (integer)
           \s+
           ({{identifier}})
-          \s*
           (?:
+            \s*
             (=)
             \s*
             (?:
-              ({{constant_numeric_integer_hexadecimal}}) |
-              ({{constant_numeric_integer_decimal}}) |
-              ({{constant_language_integer}}) |
-              ({{constant_language_integer_bitfield}}) |
-              ({{constant_language_integer_bitfield_bitmask}}) |
+              ({{constant_numeric_integer_hexadecimal}})|
+              ({{constant_numeric_integer_decimal}})|
+              ({{constant_numeric_float}})|                                     # implicit cast to integer
+              ({{constant_language_float}})|                                    # implicit cast to integer
+              ({{constant_language_integer}})|
+              ({{constant_language_integer_bitfield}})|
+              ({{constant_language_integer_bitfield_bitmask}})|
               ({{constant_language_integer_boolean}})|
               ({{constant_language_integer_link}})|
               ({{constant_language_integer_pass}})|
@@ -1257,21 +1231,55 @@ contexts:
         3: keyword.operator.assignment.lsl
         4: constant.numeric.integer.hexadecimal.lsl
         5: constant.numeric.integer.decimal.lsl
-        6: constant.language.integer.lsl
-        7: constant.language.integer.bit_field.lsl
-        8: constant.language.integer.bit_field.bit_mask.lsl
-        9: constant.language.integer.boolean.lsl
-        10: constant.language.integer.link.lsl
-        11: constant.language.integer.pass.lsl
-        12: constant.language.integer.type.lsl
-        13: punctuation.terminator.lsl
-    # key
-    # list
-    # quaternion
-    # rotation
+        6: constant.numeric.integer.float.lsl
+        7: constant.language.float.lsl constant.numeric.integer.lsl
+        8: constant.language.integer.lsl
+        9: constant.language.integer.bit_field.lsl
+        10: constant.language.integer.bit_field.bit_mask.lsl
+        11: constant.language.integer.boolean.lsl
+        12: constant.language.integer.link.lsl
+        13: constant.language.integer.pass.lsl
+        14: constant.language.integer.type.lsl
+        15: punctuation.terminator.lsl
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(key)
+          \s+
+          ({{identifier}})
+        )
+      captures:
+        1: storage.type.lsl
+        2: variable.other.lsl
+      push:
+        - match: '\;'
+          scope: punctuation.terminator.statement.lsl
+          pop: true
+        - match: |-
+            (?x:
+              \s*
+              (=)
+              \s*
+            )
+          captures:
+            1: keyword.operator.assignment.lsl
+          push:
+            - match: '(?=\;)'
+              pop: true
+            # TODO: key constants
+            - include: string-quoted-double
+            - match: |-
+                (?x:                                                                # ignore whitespace
+                  \b
+                  (NULL_KEY)
+                  \b
+                )
+              captures:
+                1: constant.language.string.lsl
+            - match: .*
+              scope: invalid.illegal.lsl
+    - match: |-
+        (?x:                                                                    # ignore whitespace
+          \b(list)
           \s+
           ({{identifier}})
           \s*
@@ -1286,19 +1294,11 @@ contexts:
         - match: '\;'
           scope: punctuation.terminator.statement.lsl
           pop: true
-        - include: string-quoted-double
-        - match: |-
-            (?x:                                # ignore whitespace
-              \b(
-                NULL_KEY
-              )\b
-            )
-          captures:
-            1: constant.language.string.lsl
+        - include: lists
         - match: .*
           scope: invalid.illegal.lsl
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(string)
           \s+
           ({{identifier}})
@@ -1318,7 +1318,7 @@ contexts:
         - match: .*
           scope: invalid.illegal.lsl
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(quaternion|rotation)
           \s+
           ({{identifier}})
@@ -1367,7 +1367,7 @@ contexts:
         5: constant.language.rotation.lsl
         6: punctuation.terminator.lsl
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(vector)
           \s+
           ({{identifier}})
@@ -1395,9 +1395,8 @@ contexts:
                 )
                 \s*
                 \>
-              )|(
-                {{constant_language_vector}}
-              )
+              )|
+              ({{constant_language_vector}})
             )
             \s*
           )?
@@ -1417,18 +1416,17 @@ contexts:
       scope: punctuation.section.brackets.begin.lsl
       push:
         - meta_scope: meta.brackets.lsl
-        # - meta_content_scope: meta.list.body.lsl
+        - meta_content_scope: meta.list.body.lsl
         - match: '\]'
           scope: punctuation.section.brackets.end.lsl
           pop: true
         - include: infunc
 
-  event:
-    # TODO: check how many params, and which type in which order
+  events:
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b
-          ({{event}})
+          ({{support_function_event}})
           \b
         )
       captures:
@@ -1436,26 +1434,26 @@ contexts:
       push:
         # TODO: prevent multiple params for single-param events and vice versa
         - match: '\('
-          scope: punctuation.section.block.parameters.begin.lsl
+          scope: punctuation.section.event.parameters.begin.lsl
           push:
             - meta_content_scope: meta.block.event.parameters.lsl
             - match: '\)'
-              scope: punctuation.section.block.parameters.end.lsl
+              scope: punctuation.section.event.parameters.end.lsl
               pop: true
             - include: parameters
         - match: '\}'
-          scope: punctuation.section.block.end.lsl
+          scope: punctuation.section.event.block.end.lsl
           pop: true
         - match: '{'
-          scope: punctuation.section.block.begin.lsl
+          scope: punctuation.section.event.block.begin.lsl
           push:
             - meta_content_scope: meta.block.event.lsl
             - match: '(?=})'
-              scope: punctuation.section.block.end.lsl
+              scope: punctuation.section.event.block.end.lsl
               pop: true
             - include: infunc
             - match: |-
-                (?x:                                # ignore whitespace
+                (?x:                                                            # ignore whitespace
                   \b
                   ((?:state)\s+{{identifier}})
                   \s*
@@ -1466,35 +1464,24 @@ contexts:
                 2: punctuation.terminator.statement.lsl
 
   keyword-control-block:
-    # TODO: revisit scope naming guide
     - match: |-
-        (?x:                                # ignore whitespace
-          \b(jump)
-          \s+
-          ({{identifier}})
-          \s*
-          (\;)
+        (?x:                                                                    # ignore whitespace
+          \b(jump)\s+({{identifier}})\s*(\;)
         )
       captures:
         1: 'keyword.control.flow.lsl'
         2: 'meta.target.label.lsl'
         3: 'punctuation.terminator.statement.lsl'
-    # TODO: revisit scope naming guide
     - match: |-
-        (?x:                                # ignore whitespace
-          (@)
-          \s*
-          ({{identifier}})
-          \s*
-          (\;)
+        (?x:                                                                    # ignore whitespace
+          (@)\s*({{identifier}})\s*(\;)
         )
       captures:
-        # TODO: maybe > punctuation.definition.target.lsl
         1: 'keyword.control.flow.lsl'
         2: 'entity.name.target.lsl'
         3: 'punctuation.terminator.statement.lsl'
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(do)\b
         )
       captures:
@@ -1504,7 +1491,7 @@ contexts:
         - meta_scope: 'meta.do-while.lsl'
         - include: block-scope
         - match: |-
-            (?x:                                # ignore whitespace
+            (?x:                                                                # ignore whitespace
               \b(while)\b
             )
           captures:
@@ -1513,18 +1500,13 @@ contexts:
         - match: '(\;)'
           scope: 'punctuation.terminator.do-while.lsl'
           pop: true
-    # TODO: return with optional value
-    - match: |-
-        (?x:                                # ignore whitespace
-          \b(return)\b
-          \s*
-          (\;)
-        )
+    # FIXME: return with optional value
+    - match: '(return)\s*(\;)'
       captures:
         1: 'keyword.control.flow.lsl'
         2: 'punctuation.terminator.lsl'
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(for)\b
         )
       captures:
@@ -1533,7 +1515,7 @@ contexts:
         - meta_scope: meta.for.lsl
         - include: conditional
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(while)\b
         )
       captures:
@@ -1545,7 +1527,7 @@ contexts:
     # TODO: add whitespace match before push to meta scope
     # FIXME: match "if (...) {...};" and "if (...) ...;"
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(else\s+if|if)\b
         )
       captures:
@@ -1555,7 +1537,7 @@ contexts:
         - include: conditional
     # FIXME: match "else (...) {...};" and "else (...) ...;"
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b(else)\b
         )
       captures:
@@ -1596,18 +1578,15 @@ contexts:
 
   function-user-defined:
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           (
             (?:
               \b
               ({{storage_type}})
-              \b
               \s+
             )?
             (?:
-              \b
               ({{identifier}})
-              \b
             )
           )(?=\s*\()
         )
@@ -1636,7 +1615,7 @@ contexts:
               pop: true
             - include: infunc
             - match: |-
-                (?x:                                # ignore whitespace
+                (?x:                                                            # ignore whitespace
                   \b
                   ((?:state)\s+{{identifier}})
                   \s*
@@ -1656,11 +1635,10 @@ contexts:
     - include: constant-numeric
     - include: keyword-operator
 
-  # http://wiki.secondlife.com/wiki/Category:LSL_Functions
-
   functions:
     # TODO: include function words from invalid and reserved
-    - match: |-
+    - comment: http://wiki.secondlife.com/wiki/Category:LSL_Functions
+      match: |-
         (?x:
           \b
           (?:
@@ -1715,7 +1693,7 @@ contexts:
 
   parameters:
     - match: |-
-        (?x:                                # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           ({{storage_type}})
           \s+
           ({{identifier}})
@@ -1726,46 +1704,9 @@ contexts:
     - match: '(,)'
       scope: punctuation.separator.comma.lsl
 
-  # TODO: add UUID-4 string
-  # TODO: add general UUID string
-  string-quoted-double:
-    - match: '"'
-      scope: punctuation.definition.string.begin.lsl
-      push:
-        - meta_include_prototype: false
-        - meta_scope: string.quoted.double.lsl
-        - match: '"'
-          scope: punctuation.definition.string.end.lsl
-          pop: true
-        - match: |-
-            (?xi:                     # ignore whitespace and case
-              ^(?:
-                ([0-9a-f]{8}\-[0-9a-f]{4}\-[1][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
-                ([0-9a-f]{8}\-[0-9a-f]{4}\-[2][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
-                ([0-9a-f]{8}\-[0-9a-f]{4}\-[3][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
-                ([0-9a-f]{8}\-[0-9a-f]{4}\-[4][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
-                ([0-9a-f]{8}\-[0-9a-f]{4}\-[5][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})
-              )$
-            )
-          captures:
-            1: constant.other.uuid-1.lsl
-            2: constant.other.uuid-2.lsl
-            3: constant.other.uuid-3.lsl
-            4: constant.other.uuid-4.lsl
-            5: constant.other.uuid-5.lsl
-        - include: constant-character-escape
-    # - match: '"'
-    #   scope: punctuation.definition.string.begin.lsl
-    #   meta_scope: string.quoted.double.lsl
-    #   meta_include_prototype: false
-    #   embed: scope:source.json
-    #   embed_scope: meta.environment.embedded.json.lsl source.json.embedded
-    #   escape: '"'
-    #   include: constant-character-escape
-
   state:
     - match: |-
-        (?x:                            # ignore whitespace
+        (?x:                                                                    # ignore whitespace
           \b
           ((?:state)\s+{{identifier}}|default)
           \b
@@ -1783,253 +1724,14 @@ contexts:
             - match: '(?=})'
               scope: punctuation.section.class.state.end.lsl
               pop: true
-            - include: event
+            - include: events
 
-  storage-type:
-    # http://wiki.secondlife.com/wiki/Category:LSL_Types
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{storage_type}})\b
-        )
-      captures:
-        1: storage.type.lsl
-
-  constant-language:
-    # http://wiki.secondlife.com/wiki/Category:LSL_Constants
-    # FIXME: only include constant words from invalid and reserved
-    - include: invalid
-    - include: reserved
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_float}})\b
-        )
-      captures:
-        1: constant.language.float.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer}})\b
-        )
-      captures:
-        1: constant.language.integer.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_bitfield}})\b
-        )
-      captures:
-        1: constant.language.integer.bit_field.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_bitfield_bitmask}})\b
-        )
-      captures:
-        1: constant.language.integer.bit_field.bit_mask.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_link}})\b
-        )
-      captures:
-        1: constant.language.integer.link.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_pass}})\b
-        )
-      captures:
-        1: constant.language.integer.pass.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_type}})\b
-        )
-      captures:
-        1: constant.language.integer.type.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_integer_boolean}})\b
-        )
-      captures:
-        1: constant.language.integer.boolean.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_rotation}})\b
-        )
-      captures:
-        1: constant.language.rotation.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_string}})\b
-        )
-      captures:
-        1: constant.language.string.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{constant_language_vector}})\b
-        )
-      captures:
-        1: constant.language.vector.lsl
-
-  # TODO: split invalid up by type to better handle includes
-
-  invalid:
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{invalid_deprecated}})\b
-        )
-      captures:
-        1: invalid.deprecated.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{invalid_illegal}})\b
-        )
-      captures:
-        1: invalid.illegal.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{invalid_illegal_unimplemented}})\b
-        )
-      captures:
-        1: invalid.illegal.unimplemented.lsl
-
-  # TODO: split reserved up by type to better handle includes
-
-  reserved:
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{reserved_godmode}})\b
-        )
-      captures:
-        1: reserved.godmode.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          \b({{reserved_log}})\b
-        )
-      captures:
-        1: reserved.log.lsl
-
-  constant-numeric:
-    # http://wiki.secondlife.com/wiki/Category:LSL_Types
-    # http://wiki.secondlife.com/wiki/Category:LSL_Float
-    # http://wiki.secondlife.com/wiki/Category:LSL_Integer
-    - include: constant-numeric-float
-    - include: invalid-illegal-constant-numeric
-    - include: constant-numeric-integer
-
-  constant-numeric-float:
-    - match: ({{constant_numeric_float}})
-      scope: constant.numeric.float.lsl
-
-  invalid-illegal-constant-numeric:
-    - match: ({{invalid_illegal_constant_numeric_integer_binary}})
-      scope: invalid.illegal.constant.numeric.integer.binary.lsl
-    - match: ({{invalid_illegal_constant_numeric_integer_octal}})
-      scope: invalid.illegal.constant.numeric.integer.octal.lsl
-
-  constant-numeric-integer:
-    - match: ({{constant_numeric_integer_hexadecimal}})
-      scope: constant.numeric.integer.hexadecimal.lsl
-    - match: ({{constant_numeric_integer_decimal}})
-      scope: constant.numeric.integer.decimal.lsl
-
-  keyword-operator:
-    # http://wiki.secondlife.com/wiki/LSL_Operators
-    - match: '\+\+'
-      scope: keyword.operator.arithmetic.increment.lsl
-    - match: '\-\-'
-      scope: keyword.operator.arithmetic.decrement.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          (<<<=)|
-          (<<=)|
-          (<<)
-        )
-      captures:
-        # FIXME: scope labels
-        1: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
-        2: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
-        3: keyword.operator.bitwise.shift.left.signed.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          (=>>>)|
-          (=>>)|
-          (>>)
-        )
-      captures:
-        # FIXME: scope labels
-        1: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
-        2: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
-        3: keyword.operator.bitwise.shift.right.signed.lsl
-    - match: '<='
-      scope: keyword.operator.relational.less-equal.lsl
-    - match: '>='
-      scope: keyword.operator.relational.greater-equal.lsl
-    - match: '&&'
-      scope: keyword.operator.logical.and.lsl
-    - match: '\|\|'
-      scope: keyword.operator.logical.or.lsl
-    - match: '~'
-      scope: keyword.operator.bitwise.not.lsl
-    - match: '\^'
-      scope: keyword.operator.bitwise.xor.lsl
-    - match: '&'
-      scope: keyword.operator.bitwise.and.lsl
-    - match: '\|'
-      scope: keyword.operator.bitwise.or.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          (===)|
-          (==)
-        )
-      captures:
-        1: invalid.illegal.keyword.operator.comparison.equal.value-and-type.lsl
-        2: keyword.operator.comparison.equal.value.lsl
-    - match: |-
-        (?x:                            # ignore whitespace
-          (!==)|
-          (!=)
-        )
-      captures:
-        1: invalid.illegal.keyword.operator.comparison.not-equal.value-and-type.lsl
-        2: keyword.operator.comparison.not-equal.value.lsl
-    - match: '!(?!=)'
-      scope: keyword.operator.logical.not.lsl
-    - match: '<'
-      scope: keyword.operator.relational.less.lsl
-    - match: '>'
-      scope: keyword.operator.relational.greater.lsl
-    - match: '[%*+\/\-]='
-      scope: keyword.operator.assignment.augmented.lsl
-    - match: '='
-      scope: keyword.operator.assignment.lsl
-    - match: '[%*+\/\-]'
-      scope: keyword.operator.arithmetic.lsl
-    - match: ':='
-      scope: invalid.illegal.keyword.operator.assignment.augmented.division.lsl
-    - match: ':'
-      scope: invalid.illegal.keyword.operator.assignment.division.lsl
-
-  constant-character-escape:
-    # http://wiki.secondlife.com/wiki/String#Escape_Codes
-    - match: |-
-        (?x:                                # ignore whitespace
-          (\\\\)|
-          (\\\")|
-          (\\n)|
-          (\\t)|
-          (\\.)
-        )
-      captures:
-        1: constant.character.escape.back-slash.lsl
-        2: constant.character.escape.double-quote.lsl
-        3: constant.character.escape.new-line.lsl
-        4: constant.character.escape.tab.lsl
-        5: invalid.illegal.constant.character.escape.lsl
-
-  comment:
-    # comment should not include: comment
-    # comment should not be included by: string-quoted-double
-    # FIXME: TODO comment scopes currently aren't in the scope naming guide
-    - match: |-
-        (?xi:                           # ignore whitespace and case
-          (//)                          # leading double-slash
-          (\s+)                         # some whitespace
+  comments:
+    - comment: Doc comment line
+      match: |-
+        (?xi:                                                                   # ignore whitespace and case
+          (//)
+          (\s+)
           (
             (?:todo|milestone|mlstn|yagni|tbd|tobedone)|
             (?:fix\ ?me|xxx|debug|broken|refactor|refact|rfctr|oops|smell|needswork|inspect)|
@@ -2065,8 +1767,9 @@ contexts:
         - meta_content_scope: comment.line.todo.lsl
         - match: '\n'
           pop: true
-    - match: |-
-        (?x:                            # ignore whitespace
+    - comment: Comment line
+      match: |-
+        (?x:                                                                    # ignore whitespace
           (//)
         )
       captures:
@@ -2076,7 +1779,8 @@ contexts:
         - meta_scope: comment.line.double-slash.lsl
         - match: '\n'
           pop: true
-    - match: '/\*\*(?!/)'
+    - comment: Doc comment block
+      match: '/\*\*(?!/)'
       scope: punctuation.definition.comment.block.documentation.begin.lsl
       push:
         - meta_include_prototype: false
@@ -2084,7 +1788,8 @@ contexts:
         - match: '\*/'
           scope: punctuation.definition.comment.block.documentation.end.lsl
           pop: true
-    - match: '/\*'
+    - comment: Comment block
+      match: '/\*'
       scope: punctuation.definition.comment.block.begin.lsl
       push:
         - meta_include_prototype: false
@@ -2092,3 +1797,232 @@ contexts:
         - match: '\*/'
           scope: punctuation.definition.comment.block.end.lsl
           pop: true
+
+  string-quoted-double:
+    - match: '"'
+      scope: punctuation.definition.string.begin.lsl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: string.quoted.double.lsl
+        - match: '"'
+          scope: punctuation.definition.string.end.lsl
+          pop: true
+        - include: constant-character-escape
+        - match: |-
+            (?xi:                                                               # ignore whitespace and case
+              (?:
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[1][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[2][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[3][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[4][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})|
+                ([0-9a-f]{8}\-[0-9a-f]{4}\-[5][0-9a-f]{3}\-[89ab][0-9a-f]{3}\-[0-9a-f]{12})
+              )
+            )
+          captures:
+            1: constant.other.uuid-1.lsl
+            2: constant.other.uuid-2.lsl
+            3: constant.other.uuid-3.lsl
+            4: constant.other.uuid-4.lsl
+            5: constant.other.uuid-5.lsl
+    # - match: '"'
+    #   scope: punctuation.definition.string.begin.lsl
+    #   meta_scope: string.quoted.double.lsl
+    #   meta_include_prototype: false
+    #   embed: scope:source.json
+    #   embed_scope: meta.environment.embedded.json.lsl source.json.embedded
+    #   escape: '"'
+    #   include: constant-character-escape
+
+  constant-character-escape:
+    - comment: http://wiki.secondlife.com/wiki/String#Escape_Codes
+      match: |-
+        (?x:                                                                    # ignore whitespace
+          (\\\\)|
+          (\\\")|
+          (\\n)|
+          (\\t)|
+          (\\.)
+        )
+      captures:
+        1: constant.character.escape.back-slash.lsl
+        2: constant.character.escape.double-quote.lsl
+        3: constant.character.escape.new-line.lsl
+        4: constant.character.escape.tab.lsl
+        5: invalid.illegal.constant.character.escape.lsl
+
+  storage-type:
+    - comment: http://wiki.secondlife.com/wiki/Category:LSL_Types
+      match: '({{storage_type}})'
+      scope: storage.type.lsl
+
+  constant-language:
+    # http://wiki.secondlife.com/wiki/Category:LSL_Constants
+    # FIXME: only include constant words from invalid and reserved
+    - include: invalid
+    - include: reserved
+    - match: '({{constant_language_float}})'
+      scope: constant.language.float.lsl
+    - match: '({{constant_language_integer}})'
+      scope: constant.language.integer.lsl
+    - match: '({{constant_language_integer_bitfield}})'
+      scope: constant.language.integer.bit_field.lsl
+    - match: '({{constant_language_integer_bitfield_bitmask}})'
+      scope: constant.language.integer.bit_field.bit_mask.lsl
+    - match: '({{constant_language_integer_link}})'
+      scope: constant.language.integer.link.lsl
+    - match: '({{constant_language_integer_pass}})'
+      scope: constant.language.integer.pass.lsl
+    - match: '({{constant_language_integer_type}})'
+      scope: constant.language.integer.type.lsl
+    - match: '({{constant_language_integer_boolean}})'
+      scope: constant.language.integer.boolean.lsl
+    - match: '({{constant_language_rotation}})'
+      scope: constant.language.rotation.lsl
+    - match: '({{constant_language_string}})'
+      scope: constant.language.string.lsl
+    - match: '({{constant_language_vector}})'
+      scope: constant.language.vector.lsl
+
+  invalid:
+    - match: '({{invalid_deprecated_constant_language}})'
+      scope: invalid.deprecated.constant.language.lsl
+    - match: '({{invalid_deprecated_support_function_builtin}})'
+      scope: invalid.deprecated.support.function.builtin.lsl
+    - match: '({{invalid_illegal_constant_language}})'
+      scope: invalid.illegal.constant.language.lsl
+    - match: '({{invalid_illegal_unimplemented_constant_language}})'
+      scope: invalid.illegal.unimplemented.constant.language.lsl
+    - match: '({{invalid_illegal_unimplemented_word}})'
+      scope: invalid.illegal.unimplemented.word.lsl
+    - match: '({{invalid_illegal_unimplemented_support_function_builtin}})'
+      scope: invalid.illegal.unimplemented.support.function.builtin.lsl
+
+  reserved:
+    - match: '({{reserved_godmode}})'
+      scope: reserved.godmode.lsl
+    - match: '({{reserved_log}})'
+      scope: reserved.log.lsl
+
+  constant-numeric:
+    - include: invalid-illegal-constant-numeric
+    - include: constant-numeric-float
+    - include: constant-numeric-integer
+
+  invalid-illegal-constant-numeric:
+    - match: ({{invalid_illegal_constant_numeric_integer_binary}})
+      scope: invalid.illegal.constant.numeric.integer.binary.lsl
+    - match: ({{invalid_illegal_constant_numeric_integer_octal}})
+      scope: invalid.illegal.constant.numeric.integer.octal.lsl
+
+  constant-numeric-float:
+    - comment: |-
+        http://wiki.secondlife.com/wiki/Category:LSL_Float
+      match: ({{constant_numeric_float}})
+      scope: constant.numeric.float.lsl
+
+  constant-numeric-integer:
+    - match: ({{constant_numeric_integer_hexadecimal}})
+      scope: constant.numeric.integer.hexadecimal.lsl
+    - comment: http://wiki.secondlife.com/wiki/Category:LSL_Integer
+      match: ({{constant_numeric_integer_decimal}})
+      scope: constant.numeric.integer.decimal.lsl
+
+  keyword-operator:
+    - include: invalid-illegal-keyword-operator
+    # http://wiki.secondlife.com/wiki/LSL_Operators
+    - include: keyword-operator-bitwise-shift
+    - include: keyword-operator-relational
+    - include: keyword-operator-arithmetic
+    - include: keyword-operator-logical
+    - include: keyword-operator-bitwise
+    - include: keyword-operator-comparison
+    - include: keyword-operator-assignment
+
+  invalid-illegal-keyword-operator:
+    - include: invalid-illegal-keyword-operator-assignment
+    - include: invalid-illegal-keyword-operator-bitwise
+    - include: invalid-illegal-keyword-operator-comparison
+
+  invalid-illegal-keyword-operator-assignment:
+    - match: ':='
+      scope: invalid.illegal.keyword.operator.assignment.augmented.division.lsl
+    - match: ':'
+      scope: invalid.illegal.keyword.operator.assignment.division.lsl
+
+  invalid-illegal-keyword-operator-bitwise:
+    - match: |-
+        (?x:
+          (<<<=)|
+          (<<=)
+        )
+      captures:
+        1: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
+        2: invalid.illegal.keyword.operator.bitwise.shift.left.lsl
+    - match: |-
+        (?x:
+          (=>>>)|
+          (=>>)
+        )
+      captures:
+        1: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
+        2: invalid.illegal.keyword.operator.bitwise.shift.right.lsl
+
+  invalid-illegal-keyword-operator-comparison:
+    - match: '==='
+      scope: invalid.illegal.keyword.operator.comparison.equal.value-and-type.lsl
+    - match: '!=='
+      scope: invalid.illegal.keyword.operator.comparison.not-equal.value-and-type.lsl
+
+  keyword-operator-arithmetic:
+    - match: '\+\+'
+      scope: keyword.operator.arithmetic.increment.lsl
+    - match: '\-\-'
+      scope: keyword.operator.arithmetic.decrement.lsl
+    - match: '[%*+\/\-]'
+      scope: keyword.operator.arithmetic.lsl
+
+  keyword-operator-assignment:
+    - match: '[%*+\/\-]='
+      scope: keyword.operator.assignment.augmented.lsl
+    - match: '='
+      scope: keyword.operator.assignment.lsl
+
+  keyword-operator-bitwise:
+    - match: '~'
+      scope: keyword.operator.bitwise.not.lsl
+    - match: '\^'
+      scope: keyword.operator.bitwise.xor.lsl
+    - match: '&'
+      scope: keyword.operator.bitwise.and.lsl
+    - match: '\|'
+      scope: keyword.operator.bitwise.or.lsl
+
+  keyword-operator-bitwise-shift:
+    - match: '<<'
+      scope: keyword.operator.bitwise.shift.left.signed.lsl
+    - match: '>>'
+      scope: keyword.operator.bitwise.shift.right.signed.lsl
+
+  keyword-operator-comparison:
+    - match: '=='
+      scope: keyword.operator.comparison.equal.value.lsl
+    - match: '!='
+      scope: keyword.operator.comparison.not-equal.value.lsl
+
+  keyword-operator-logical:
+    - match: '&&'
+      scope: keyword.operator.logical.and.lsl
+    - match: '\|\|'
+      scope: keyword.operator.logical.or.lsl
+    - match: '!(?!=)'
+      scope: keyword.operator.logical.not.lsl
+
+  keyword-operator-relational:
+    - match: '<='
+      scope: keyword.operator.relational.less-equal.lsl
+    - match: '>='
+      scope: keyword.operator.relational.greater-equal.lsl
+    - match: '<'
+      scope: keyword.operator.relational.less.lsl
+    - match: '>'
+      scope: keyword.operator.relational.greater.lsl

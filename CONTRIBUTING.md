@@ -12,8 +12,8 @@ The following files:
 
 ```text
 lib/lslint/linux/lslint
+lib/lslint/linux32/lslint
 lib/lslint/osx/lslint
-lib/lslint/windows/lslint.exe
 lib/lslint/windows32/lslint.exe
 lib/lslint/windows64/lslint.exe
 ```

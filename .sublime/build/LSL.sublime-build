@@ -10,6 +10,7 @@
     "quiet": true,
     "linux":
     {
+        // FIXME: fix for linux32
         "cmd":
         [
             "${packages}/=BB= LSL/lib/lslint/linux/lslint",
@@ -51,15 +52,6 @@
             "cmd":
             [
                 "${packages}\\=BB= LSL\\lib\\lslint\\windows64\\lslint.exe",
-                "-i",
-                "${file}"
-            ]
-        },
-        {
-            "name": "lslint (Windows XP)",
-            "cmd":
-            [
-                "${packages}\\=BB= LSL\\lib\\lslint\\windows\\lslint.exe",
                 "-i",
                 "${file}"
             ]

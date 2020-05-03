@@ -37,7 +37,7 @@ Implicitly this might require you to be on the `dev` release channel and consequ
 
 * [Sublime Text](https://www.sublimetext.com) `Build 4073` or later
     * Buy a new license: <https://www.sublimehq.com/store/text>
-    * Retrieve a lost license: <https://www.sublimetext.com/retrieve_key>
+    * Retrieve a lost license: <https://www.sublimehq.com/store/retrieve_key>
 * [`Package Control`](https://packagecontrol.io)
     * via `Tools > Install Package Control …`
 * [`SublimeLinter`](https://github.com/sublimelinter/sublimelinter)
@@ -197,6 +197,6 @@ To get LSL syntax highlighting in tooltips, refer to the [settings](#settings) s
 
 ## Disclaimer
 
-> Second Life® and the Linden Scripting Language are trademarks of Linden Research, Inc.
+> Second Life (R) and the Linden Scripting Language are trademarks of Linden Research, Inc.
 >
 > The Builder's Brewery is neither affiliated with nor sponsored by Linden Research.

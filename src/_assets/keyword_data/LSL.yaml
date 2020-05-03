@@ -23257,6 +23257,18 @@ ENV_THROTTLE:
     functions:
       - llSetAgentEnvironment
   version: '19.08.06.529800'
+TARGETED_EMAIL_OBJECT_OWNER:
+  description: |-
+    Causes the message to be sent to the owner of the calling object.
+  related:
+    constants:
+      - TARGETED_EMAIL_ROOT_CREATOR
+    functions:
+      - llTargetedEmail
+  scope: constant.language.integer
+  type: integer
+  value: 2
+  version: '2020-04-10'
 # constant.language.integer.bit_field
 AGENT_ALWAYS_RUN:
   description: |-
@@ -25779,6 +25791,21 @@ STATUS_CAST_SHADOWS:
   type: integer
   value: 512
   value_description: '0x200'
+TARGETED_EMAIL_ROOT_CREATOR:
+  description: |-
+    ILLEGAL / UNIMPLEMENTED
+
+    Causes the message to be sent to the creator of the root prim in the calling object.
+  related:
+    constants:
+      - TARGETED_EMAIL_OBJECT_OWNER
+    functions:
+      - llTargetedEmail
+  scope: invalid.illegal.unimplemented
+  status: unimplemented
+  type: integer
+  value: 1
+  version: '2020-04-10'
 event:
   scope: invalid.illegal.unimplemented
   status: unimplemented
@@ -40307,6 +40334,63 @@ llReplaceAgentEnvironment:
     - |-
       // The scripts have exceeded the throttle. Wait and retry the request.
       llReplaceAgentEnvironment(key agent_id, float transition, string environment) == ENV_THROTTLE
+llTargetedEmail:
+  delay: 20.0
+  description: |-
+    Sends an email to the owner or creator (selected by target) of an object
+    with subject and message.
+
+    The entire message (including address, subject and other miscellaneous
+    fields) cannot be longer than 4096 bytes combined.
+
+    There is a limit of 500 messages per object per hour.
+  params:
+    - description: |-
+        Selects which agent the email is sent to.
+      name: target
+      type: integer
+    - name: subject
+      type: string
+    - description: |-
+        The message is prefixed with information about the prim sending the
+        email.
+      name: message
+      type: string
+  related:
+    constants:
+      - TARGETED_EMAIL_OBJECT_OWNER
+      - TARGETED_EMAIL_ROOT_CREATOR
+  scope: support.function.builtin
+  version: '2020-04-03'
+llsRGB2Linear:
+  description: |-
+    Transforms a color specified in the sRGB colorspace to the linear RGB colorspace.
+  params:
+    - description: |-
+        Color in the sRGB color space.
+      name: srgb
+      type: vector
+  related:
+    functions:
+      - llLinear2sRGB
+  type: vector
+  scope: support.function.builtin
+  version: '2020-04-16'
+llLinear2sRGB:
+  description: |-
+    Transforms a color specified in linear RGB color space into the sRGB
+    colorspace.
+  params:
+    - description: |-
+        Color in the linear color space.
+      name: color
+      type: vector
+  related:
+    functions:
+      - llsRGB2Linear
+  type: vector
+  scope: support.function.builtin
+  version: '2020-04-16'
 # support.function.event
 at_rot_target:
   description: Result of LLRotTarget library function call

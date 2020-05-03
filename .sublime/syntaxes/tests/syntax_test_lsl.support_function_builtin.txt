@@ -321,6 +321,8 @@ default
 //      ^^^^^^^^^^^^^^ support.function.builtin
         llTargetOmega(v, f, f);
 //      ^^^^^^^^^^^^^ support.function.builtin
+        llTargetedEmail(i, s, s);
+//      ^^^^^^^^^^^^^^^ support.function.builtin
         llTargetRemove(i);
 //      ^^^^^^^^^^^^^^ support.function.builtin
         llTeleportAgent(k, s, v, v);

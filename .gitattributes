@@ -34,5 +34,3 @@ lib/lslint/windows64/lslint.exe         binary
 # assets
 
 docs/img/                               binary
-TODO.md                                 export-ignore
-

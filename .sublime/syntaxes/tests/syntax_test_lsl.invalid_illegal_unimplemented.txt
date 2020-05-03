@@ -1,0 +1,83 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        return;
+
+        list invalid_illegal_unimplemented_constant_language = [
+            PERMISSION_CHANGE_JOINTS,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            PERMISSION_CHANGE_PERMISSIONS,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            PERMISSION_RELEASE_OWNERSHIP,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            PERMISSION_REMAP_CONTROLS,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            PRIM_CAST_SHADOWS,
+//          ^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            PSYS_SRC_OBJ_REL_MASK,
+//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            SKY_ABSORPTION_CONFIG,
+//          ^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            SKY_DENSITY_PROFILE_COUNTS,
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            SKY_MIE_CONFIG,
+//          ^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            SKY_RAYLEIGH_CONFIG,
+//          ^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            STATUS_CAST_SHADOWS,
+//          ^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+            TARGETED_EMAIL_ROOT_CREATOR
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.constant.language
+        ];
+
+        llRegionSayTo(
+                llDetectedKey(0),
+                PUBLIC_CHANNEL,
+                (string)llGetListLength(invalid_illegal_unimplemented_constant_language)
+        );
+
+        list invalid_illegal_unimplemented_word = [
+            event
+//          ^^^^^ invalid.illegal.unimplemented.word
+        ];
+
+        llRegionSayTo(
+                llDetectedKey(0),
+                PUBLIC_CHANNEL,
+                (string)llGetListLength(invalid_illegal_unimplemented_word)
+        );
+
+        float f;
+        integer i;
+        key k;
+        list l;
+        string s;
+        vector v;
+
+        llClearExperiencePermissions(k);
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        f = llCloud(v);
+//          ^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llCollisionSprite(s);
+//      ^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        l = llGetExperienceList(k);
+//          ^^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llPointAt(v);
+//      ^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llStopPointAt();
+//      ^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llRefreshPrimURL();
+//      ^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llSetPrimURL(s);
+//      ^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llReleaseCamera(k);
+//      ^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llTakeCamera(k);
+//      ^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+        llRemoteLoadScript(k, s, i, i);
+//      ^^^^^^^^^^^^^^^^^^ invalid.illegal.unimplemented.support.function.builtin
+    }
+}

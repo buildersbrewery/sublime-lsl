@@ -1,0 +1,60 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+default
+{
+    touch_end(integer num_detected)
+    {
+        return;
+
+        list invalid_deprecated = [
+            ATTACH_LPEC,
+//          ^^^^^^^^^^^ invalid.deprecated.constant.language
+            ATTACH_RPEC,
+//          ^^^^^^^^^^^ invalid.deprecated.constant.language
+            DATA_RATING,
+//          ^^^^^^^^^^^ invalid.deprecated.constant.language
+            LAND_LARGE_BRUSH,
+//          ^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            LAND_MEDIUM_BRUSH,
+//          ^^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            LAND_SMALL_BRUSH,
+//          ^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            PRIM_MATERIAL_LIGHT,
+//          ^^^^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            PRIM_TYPE_LEGACY,
+//          ^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            PSYS_SRC_INNERANGLE,
+//          ^^^^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            PSYS_SRC_OUTERANGLE,
+//          ^^^^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+            VEHICLE_FLAG_NO_FLY_UP
+//          ^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.constant.language
+        ];
+
+        llRegionSayTo(llDetectedKey(0), PUBLIC_CHANNEL, (string)llGetListLength(invalid_deprecated));
+
+        float f;
+        integer i;
+        string s;
+        vector v;
+
+        llMakeExplosion(i, f, f, f, f, s, v);
+//      ^^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        llMakeFire(i, f, f, f, f, s, v);
+//      ^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        llMakeFountain(i, f, f, f, f, i, s, v, f);
+//      ^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        llMakeSmoke(i, f, f, f, f, s, v);
+//      ^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        llRemoteDataSetRegion();
+//      ^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        llSound(s, f, i, i);
+//      ^^^^^^^ invalid.deprecated.support.function.builtin
+        llSoundPreload(s);
+//      ^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        s = llXorBase64Strings(s, s);
+//          ^^^^^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+        s = llXorBase64StringsCorrect(s, s);
+//          ^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.support.function.builtin
+    }
+}

@@ -54,7 +54,8 @@ class Lslint(Linter):
     def which(self, executable):
         PKGS_PATH = sublime.packages_path()
         PLATFORM = sublime.platform()
-        if PLATFORM in ['linux', 'osx'] or platform.release() == 'XP':
+        # FIXME: fix for linux32
+        if PLATFORM in ['linux', 'osx']:
             subdir = PLATFORM
         else:
             subdir = 'windows' + platform.architecture()[0][:-3]

@@ -1,0 +1,314 @@
+// SYNTAX TEST "Packages/=BB= LSL/.sublime/syntaxes/LSL.sublime-syntax"
+
+float zero_float = 0.0;
+//                 ^^^ constant.numeric.float
+float minus_zero_float = -0.0;
+//                       ^^^^ constant.numeric.float
+float zero = 0;
+//           ^ constant.numeric.float.integer.decimal
+float minus_zero = -0;
+//                 ^^ constant.numeric.float.integer.decimal
+float one = 1;
+//          ^ constant.numeric.float.integer.decimal
+float minus_one = -1;
+//                ^^ constant.numeric.float.integer.decimal
+float zero_dot_one = 0.1;
+//                   ^^^ constant.numeric.float
+float minus_zero_dot_one = -0.1;
+//                         ^^^^ constant.numeric.float
+float dot_one = .1;
+//              ^^ constant.numeric.float
+float minus_dot_one = -.1;
+//                    ^^^ constant.numeric.float
+float one_dot_zero = 1.0;
+//                   ^^^ constant.numeric.float
+float minus_one_dot_zero = -1.0;
+//                         ^^^^ constant.numeric.float
+float zero_e_one = 0E1;
+//                 ^^^ constant.numeric.float
+float zero_e_plus_one = 0E+1;
+//                      ^^^^ constant.numeric.float
+float zero_e_minus_one = 0E-1;
+//                       ^^^^ constant.numeric.float
+float one_e_one = 1E1;
+//                ^^^ constant.numeric.float
+float one_e_plus_one = 1E+1;
+//                     ^^^^ constant.numeric.float
+float one_e_minus_one = 1E-1;
+//                      ^^^^ constant.numeric.float
+float zero_dot_zero_e_one = 0.0E1;
+//                          ^^^^^ constant.numeric.float
+float zero_dot_zero_e_plus_one = 0.0E+1;
+//                               ^^^^^^ constant.numeric.float
+float zero_dot_zero_e_minus_one = 0.0E-1;
+//                                ^^^^^^ constant.numeric.float
+float minus_zero_dot_zero_e_one = -0.0E1;
+//                                ^^^^^^ constant.numeric.float
+float minus_zero_dot_zero_e_plus_one = -0.0E+1;
+//                                     ^^^^^^^ constant.numeric.float
+float minus_zero_dot_zero_e_minus_one = -0.0E-1;
+//                                      ^^^^^^^ constant.numeric.float
+float dot_zero_e_one = .0E1;
+//                     ^^^^ constant.numeric.float
+float dot_zero_e_plus_one = .0E+1;
+//                          ^^^^^ constant.numeric.float
+float dot_zero_e_minus_one = .0E-1;
+//                           ^^^^^ constant.numeric.float
+float minus_dot_zero_e_one = -.0E1;
+//                           ^^^^^ constant.numeric.float
+float minus_dot_zero_e_plus_one = -.0E+1;
+//                                ^^^^^^ constant.numeric.float
+float minus_dot_zero_e_minus_one = -.0E-1;
+//                                 ^^^^^^ constant.numeric.float
+float one_dot_zero_e_one = 1.0E1;
+//                         ^^^^^ constant.numeric.float
+float one_dot_zero_e_plus_one = 1.0E+1;
+//                              ^^^^^^ constant.numeric.float
+float one_dot_zero_e_minus_one = 1.0E-1;
+//                               ^^^^^^ constant.numeric.float
+float dot_one_e_one = .1E1;
+//                    ^^^^ constant.numeric.float
+float dot_one_e_plus_one = .1E+1;
+//                         ^^^^^ constant.numeric.float
+float dot_one_e_minus_one = .1E-1;
+//                          ^^^^^ constant.numeric.float
+float min_float = 1.401298E-45;
+//                ^^^^^^^^^^^^ constant.numeric.float
+float max_float = 3.402823E38;
+//                ^^^^^^^^^^^ constant.numeric.float
+
+reassign()
+{
+    zero_float = 0.0;
+//               ^^^ constant.numeric.float
+    minus_zero_float = -0.0;
+//                     ^^^^ constant.numeric.float
+    zero = 0;
+//         ^ constant.numeric.integer.decimal
+    minus_zero = -0;
+//               ^^ constant.numeric.integer.decimal
+    one = 1;
+//        ^ constant.numeric.integer.decimal
+    minus_one = -1;
+//              ^^ constant.numeric.integer.decimal
+    zero_dot_one = 0.1;
+//                 ^^^ constant.numeric.float
+    minus_zero_dot_one = -0.1;
+//                       ^^^^ constant.numeric.float
+    dot_one = .1;
+//            ^^ constant.numeric.float
+    minus_dot_one = -.1;
+//                  ^^^ constant.numeric.float
+    one_dot_zero = 1.0;
+//                 ^^^ constant.numeric.float
+    minus_one_dot_zero = -1.0;
+//                       ^^^^ constant.numeric.float
+    zero_e_one = 0E1;
+//               ^^^ constant.numeric.float
+    zero_e_plus_one = 0E+1;
+//                    ^^^^ constant.numeric.float
+    zero_e_minus_one = 0E-1;
+//                     ^^^^ constant.numeric.float
+    one_e_one = 1E1;
+//              ^^^ constant.numeric.float
+    one_e_plus_one = 1E+1;
+//                   ^^^^ constant.numeric.float
+    one_e_minus_one = 1E-1;
+//                    ^^^^ constant.numeric.float
+    zero_dot_zero_e_one = 0.0E1;
+//                        ^^^^^ constant.numeric.float
+    zero_dot_zero_e_plus_one = 0.0E+1;
+//                             ^^^^^^ constant.numeric.float
+    zero_dot_zero_e_minus_one = 0.0E-1;
+//                              ^^^^^^ constant.numeric.float
+    minus_zero_dot_zero_e_one = -0.0E1;
+//                              ^^^^^^ constant.numeric.float
+    minus_zero_dot_zero_e_plus_one = -0.0E+1;
+//                                   ^^^^^^^ constant.numeric.float
+    minus_zero_dot_zero_e_minus_one = -0.0E-1;
+//                                    ^^^^^^^ constant.numeric.float
+    dot_zero_e_one = .0E1;
+//                   ^^^^ constant.numeric.float
+    dot_zero_e_plus_one = .0E+1;
+//                        ^^^^^ constant.numeric.float
+    dot_zero_e_minus_one = .0E-1;
+//                         ^^^^^ constant.numeric.float
+    minus_dot_zero_e_one = -.0E1;
+//                         ^^^^^ constant.numeric.float
+    minus_dot_zero_e_plus_one = -.0E+1;
+//                              ^^^^^^ constant.numeric.float
+    minus_dot_zero_e_minus_one = -.0E-1;
+//                               ^^^^^^ constant.numeric.float
+    one_dot_zero_e_one = 1.0E1;
+//                       ^^^^^ constant.numeric.float
+    one_dot_zero_e_plus_one = 1.0E+1;
+//                            ^^^^^^ constant.numeric.float
+    one_dot_zero_e_minus_one = 1.0E-1;
+//                             ^^^^^^ constant.numeric.float
+    dot_one_e_one = .1E1;
+//                  ^^^^ constant.numeric.float
+    dot_one_e_plus_one = .1E+1;
+//                       ^^^^^ constant.numeric.float
+    dot_one_e_minus_one = .1E-1;
+//                        ^^^^^ constant.numeric.float
+}
+
+default
+{
+    touch_start(integer num_detected)
+    {
+        reassign();
+    }
+
+    touch_end(integer num_detected)
+    {
+        zero_float = 0.0;
+//                   ^^^ constant.numeric.float
+        minus_zero_float = -0.0;
+//                         ^^^^ constant.numeric.float
+        zero = 0;
+//             ^ constant.numeric.integer.decimal
+        minus_zero = -0;
+//                   ^^ constant.numeric.integer.decimal
+        one = 1;
+//            ^ constant.numeric.integer.decimal
+        minus_one = -1;
+//                  ^^ constant.numeric.integer.decimal
+        zero_dot_one = 0.1;
+//                     ^^^ constant.numeric.float
+        minus_zero_dot_one = -0.1;
+//                           ^^^^ constant.numeric.float
+        dot_one = .1;
+//                ^^ constant.numeric.float
+        minus_dot_one = -.1;
+//                      ^^^ constant.numeric.float
+        one_dot_zero = 1.0;
+//                     ^^^ constant.numeric.float
+        minus_one_dot_zero = -1.0;
+//                           ^^^^ constant.numeric.float
+        zero_e_one = 0E1;
+//                   ^^^ constant.numeric.float
+        zero_e_plus_one = 0E+1;
+//                        ^^^^ constant.numeric.float
+        zero_e_minus_one = 0E-1;
+//                         ^^^^ constant.numeric.float
+        one_e_one = 1E1;
+//                  ^^^ constant.numeric.float
+        one_e_plus_one = 1E+1;
+//                       ^^^^ constant.numeric.float
+        one_e_minus_one = 1E-1;
+//                        ^^^^ constant.numeric.float
+        zero_dot_zero_e_one = 0.0E1;
+//                            ^^^^^ constant.numeric.float
+        zero_dot_zero_e_plus_one = 0.0E+1;
+//                                 ^^^^^^ constant.numeric.float
+        zero_dot_zero_e_minus_one = 0.0E-1;
+//                                  ^^^^^^ constant.numeric.float
+        minus_zero_dot_zero_e_one = -0.0E1;
+//                                  ^^^^^^ constant.numeric.float
+        minus_zero_dot_zero_e_plus_one = -0.0E+1;
+//                                       ^^^^^^^ constant.numeric.float
+        minus_zero_dot_zero_e_minus_one = -0.0E-1;
+//                                        ^^^^^^^ constant.numeric.float
+        dot_zero_e_one = .0E1;
+//                       ^^^^ constant.numeric.float
+        dot_zero_e_plus_one = .0E+1;
+//                            ^^^^^ constant.numeric.float
+        dot_zero_e_minus_one = .0E-1;
+//                             ^^^^^ constant.numeric.float
+        minus_dot_zero_e_one = -.0E1;
+//                             ^^^^^ constant.numeric.float
+        minus_dot_zero_e_plus_one = -.0E+1;
+//                                  ^^^^^^ constant.numeric.float
+        minus_dot_zero_e_minus_one = -.0E-1;
+//                                   ^^^^^^ constant.numeric.float
+        one_dot_zero_e_one = 1.0E1;
+//                           ^^^^^ constant.numeric.float
+        one_dot_zero_e_plus_one = 1.0E+1;
+//                                ^^^^^^ constant.numeric.float
+        one_dot_zero_e_minus_one = 1.0E-1;
+//                                 ^^^^^^ constant.numeric.float
+        dot_one_e_one = .1E1;
+//                      ^^^^ constant.numeric.float
+        dot_one_e_plus_one = .1E+1;
+//                           ^^^^^ constant.numeric.float
+        dot_one_e_minus_one = .1E-1;
+//                            ^^^^^ constant.numeric.float
+
+        if (TRUE)
+        {
+            zero_float = 0.0;
+//                       ^^^ constant.numeric.float
+            minus_zero_float = -0.0;
+//                             ^^^^ constant.numeric.float
+            zero = 0;
+//                 ^ constant.numeric.integer.decimal
+            minus_zero = -0;
+//                       ^^ constant.numeric.integer.decimal
+            one = 1;
+//                ^ constant.numeric.integer.decimal
+            minus_one = -1;
+//                      ^^ constant.numeric.integer.decimal
+            zero_dot_one = 0.1;
+//                         ^^^ constant.numeric.float
+            minus_zero_dot_one = -0.1;
+//                               ^^^^ constant.numeric.float
+            dot_one = .1;
+//                    ^^ constant.numeric.float
+            minus_dot_one = -.1;
+//                          ^^^ constant.numeric.float
+            one_dot_zero = 1.0;
+//                         ^^^ constant.numeric.float
+            minus_one_dot_zero = -1.0;
+//                               ^^^^ constant.numeric.float
+            zero_e_one = 0E1;
+//                       ^^^ constant.numeric.float
+            zero_e_plus_one = 0E+1;
+//                            ^^^^ constant.numeric.float
+            zero_e_minus_one = 0E-1;
+//                             ^^^^ constant.numeric.float
+            one_e_one = 1E1;
+//                      ^^^ constant.numeric.float
+            one_e_plus_one = 1E+1;
+//                           ^^^^ constant.numeric.float
+            one_e_minus_one = 1E-1;
+//                            ^^^^ constant.numeric.float
+            zero_dot_zero_e_one = 0.0E1;
+//                                ^^^^^ constant.numeric.float
+            zero_dot_zero_e_plus_one = 0.0E+1;
+//                                     ^^^^^^ constant.numeric.float
+            zero_dot_zero_e_minus_one = 0.0E-1;
+//                                      ^^^^^^ constant.numeric.float
+            minus_zero_dot_zero_e_one = -0.0E1;
+//                                      ^^^^^^ constant.numeric.float
+            minus_zero_dot_zero_e_plus_one = -0.0E+1;
+//                                           ^^^^^^^ constant.numeric.float
+            minus_zero_dot_zero_e_minus_one = -0.0E-1;
+//                                            ^^^^^^^ constant.numeric.float
+            dot_zero_e_one = .0E1;
+//                           ^^^^ constant.numeric.float
+            dot_zero_e_plus_one = .0E+1;
+//                                ^^^^^ constant.numeric.float
+            dot_zero_e_minus_one = .0E-1;
+//                                 ^^^^^ constant.numeric.float
+            minus_dot_zero_e_one = -.0E1;
+//                                 ^^^^^ constant.numeric.float
+            minus_dot_zero_e_plus_one = -.0E+1;
+//                                      ^^^^^^ constant.numeric.float
+            minus_dot_zero_e_minus_one = -.0E-1;
+//                                       ^^^^^^ constant.numeric.float
+            one_dot_zero_e_one = 1.0E1;
+//                               ^^^^^ constant.numeric.float
+            one_dot_zero_e_plus_one = 1.0E+1;
+//                                    ^^^^^^ constant.numeric.float
+            one_dot_zero_e_minus_one = 1.0E-1;
+//                                     ^^^^^^ constant.numeric.float
+            dot_one_e_one = .1E1;
+//                          ^^^^ constant.numeric.float
+            dot_one_e_plus_one = .1E+1;
+//                               ^^^^^ constant.numeric.float
+            dot_one_e_minus_one = .1E-1;
+//                                ^^^^^ constant.numeric.float
+        }
+    }
+}
