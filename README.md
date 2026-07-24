@@ -18,7 +18,7 @@ Kireji — thank you, dear friend, for everything you created and for the help i
 — Senn Maximus  
 Co-Founder & CEO, Builders Brewery
 
-==================================
+---
 
 
 [![License](https://img.shields.io/github/license/buildersbrewery/sublime-lsl.svg?style=flat-square&logo=opensourceinitiative)](https://github.com/buildersbrewery/sublime-lsl/blob/master/LICENSE.txt)
